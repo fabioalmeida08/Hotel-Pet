@@ -26,6 +26,13 @@ export const GlobalStyle = createGlobalStyle`
     --info: 16px;
     --card-types: 8px;
 }
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 `
 
 export default GlobalStyle
