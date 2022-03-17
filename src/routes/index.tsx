@@ -7,10 +7,10 @@ import Signup from "../pages/signup";
 const Router = () => {
   return (
     <Routes>
-       <Route path="/" element={<Home />}>
+      <Route path="/" element={<Home />}>
         <Route path="login" element={<Login />}/>
         <Route path="signup" element={<Signup />}/>
-        <Route path="dashboard" element={<Dashboard />}/>
+        <Route path="dashboard/:id" element={<Dashboard />}/>
       </Route>
     </Routes>
   )
