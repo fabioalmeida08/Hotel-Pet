@@ -56,6 +56,11 @@ const StyledCardPet = styled.div`
       font-family: 'Roboto';
       font-weight: 500;
     }
+
+    span{
+      color: "#606060";
+      font-weight: 500;
+    }
   }
 button{
   padding: 8px 16px;
