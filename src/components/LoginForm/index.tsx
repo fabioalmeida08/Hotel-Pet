@@ -12,13 +12,17 @@ import {
 } from '@mui/material'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import {useAuth} from '../../contexts/AuthProvider'
 
 interface IFormData {
   email: string
   password: string
 }
 
+
 const LoginForm = () => {
+  const {signIn,logOut} = useAuth()
+  
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -27,10 +31,6 @@ const LoginForm = () => {
     password: yup
       .string()
       .required('Campo obrigatório')
-      .matches(
-        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-        'Minimo 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caracter especial'
-      ),
   })
 
   const {
@@ -44,7 +44,7 @@ const LoginForm = () => {
   const onSubmit: SubmitHandler<IFormData> = (
     data: IFormData
   ) => {
-    console.log(data)
+    signIn(data)
   }
 
   return (
