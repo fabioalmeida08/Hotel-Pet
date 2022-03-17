@@ -5,7 +5,7 @@ const StyledCardPet = styled.div`
   height: 200px;
   display: flex;
   align-items: flex-start;
-  border-radius: 20px;
+  border-radius: 8px;
   background-color: #FFFFFF;
   color: #333333;
   position: relative;
