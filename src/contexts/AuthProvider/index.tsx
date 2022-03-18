@@ -63,6 +63,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     localStorage.clear()
     setAuthToken('')
     navigate('/')
+    setAdmin(false)
   }
 
   return (
