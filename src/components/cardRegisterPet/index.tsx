@@ -1,7 +1,7 @@
 import { MenuItem, TextField } from '@mui/material';
 import { StyledForm, DivButtons, DivWrapper, DivHeader, DivImgDesktop } from './styles';
-import DogPaw from "./images/pata.png"
-import backgroundCat from "./images/backgroundRegisterCat.png"
+import DogPaw from "../../assets/img/pata.png"
+import backgroundCat from "../../assets/img/backgroundRegisterCat.png"
 import * as yup from 'yup';
 import { Controller, useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';

@@ -6,6 +6,7 @@ const DivWrapper = styled.div`
   justify-content: center;
   width: 280px;
   height: 440px;
+  font-family: var(--font-family-3);
   border-radius: 8px;
 
   @media (min-width: 768px) {
@@ -33,8 +34,8 @@ const DivHeader = styled.div`
   width: 180px;
   h1 {
     font-size: 16px;
-    color: #333333;
-    text-decoration: underline #f4a91999 3px;
+    color: var(--grey-3);
+    text-decoration: underline var(--secundary-1) 3px;
   }
   img {
     width: 30px;
@@ -63,12 +64,18 @@ const DivButtons = styled.div`
     height: 35px;
     border-radius: 5px;
     border-style: none;
-    color: #ffff;
+    color: var(--white);
     margin-top: 8px;
-    background-color: #354fd8;
+    background-color: var(--primary-1);
+  }
+  button:hover{
+    background-color:var(--primary-2);
   }
   .backButton {
-    background-color: orange;
+    background-color: var(--secundary-1);
+  }
+  .backButton:hover{
+    background-color: #F4A919;
   }
   @media (min-width: 768px) {
     margin-left: 1px;
