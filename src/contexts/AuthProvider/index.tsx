@@ -20,6 +20,7 @@ interface AuthProviderValue {
   signIn: (userData: IFormData) => void
   authToken: string
   logOut: () => void
+  admin: boolean
 }
 
 const AuthContext = createContext<AuthProviderValue>(
@@ -31,6 +32,8 @@ const useAuth = () => useContext(AuthContext)
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const navigate = useNavigate()
 
+  const [admin, setAdmin] = useState(false)
+ 
   const [authToken, setAuthToken] = useState(
     () => localStorage.getItem('@hotelPet:token') || ''
   )
@@ -39,12 +42,18 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     hotelPetApi
       .post('/login', userData)
       .then((res) => {
+        const admin = res.data.user.admin
+        
         const id = res.data.user.id
         localStorage.setItem(
           '@hotelPet:token',
           JSON.stringify(res.data.accessToken)
         )
         setAuthToken(res.data)
+        
+        if(admin) setAdmin(true)
+        
+        
         navigate(`/dashboard/${id}`)
       })
       .catch((err) => console.log(err))
@@ -54,11 +63,12 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     localStorage.clear()
     setAuthToken('')
     navigate('/')
+    setAdmin(false)
   }
 
   return (
     <AuthContext.Provider
-      value={{ signIn, authToken, logOut }}
+      value={{ signIn, authToken, logOut ,admin}}
     >
       {children}
     </AuthContext.Provider>
