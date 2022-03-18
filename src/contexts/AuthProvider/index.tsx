@@ -52,7 +52,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         setAuthToken(res.data)
         
         if(admin) setAdmin(true)
-        console.log(!!admin)
+        
         
         navigate(`/dashboard/${id}`)
       })
