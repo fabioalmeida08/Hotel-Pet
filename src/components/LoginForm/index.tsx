@@ -12,25 +12,22 @@ import {
 } from '@mui/material'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import {useAuth} from '../../contexts/AuthProvider'
-
+import { useAuth } from '../../contexts/AuthProvider'
+import { NavLink } from 'react-router-dom'
 interface IFormData {
   email: string
   password: string
 }
 
-
 const LoginForm = () => {
-  const {signIn,logOut} = useAuth()
-  
+  const { signIn, logOut } = useAuth()
+
   const schema = yup.object().shape({
     email: yup
       .string()
       .required('Email obrigatório')
       .email('Email invalido'),
-    password: yup
-      .string()
-      .required('Campo obrigatório')
+    password: yup.string().required('Campo obrigatório'),
   })
 
   const {
@@ -90,7 +87,7 @@ const LoginForm = () => {
             />
           )}
         />
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{mt:2,mb:5}}>
           <Grid item xs={12} sm={6}>
             <Button
               fullWidth
@@ -106,6 +103,13 @@ const LoginForm = () => {
             </Button>
           </Grid>
         </Grid>
+          <Grid container justifyContent='flex-end'>
+            <Grid item>
+              <NavLink to='/signup'>
+                Primeira vez aqui? Cadastre-se
+              </NavLink>
+            </Grid>
+          </Grid>
       </Box>
     </Container>
   )
