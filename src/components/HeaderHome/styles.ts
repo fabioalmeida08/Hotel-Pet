@@ -18,22 +18,27 @@ export const Container = styled.div`
   }
 `;
 
-export const ButtonNav = styled.div`
+export const ButtonNav = styled.button`
   color: var(--white);
   font-size: var(--paragraph-2);
   //font-family: var(--font-family-1);
   font-weight: bold;
   cursor: pointer;
+  background: transparent;
+  border: 0;
+  
   :hover {
     color: var(--secundary-1);
   }
 `;
 
-export const Home = styled.div`
+export const Home = styled.button`
   display: flex;
   align-items: center;
   color: var(--white);
   gap: 6px;
+  background: transparent;
+  border: 0;
 
   :hover {
     color: var(--secundary-1);
@@ -47,7 +52,7 @@ export const DivNav = styled.div`
   align-items: center;
 `;
 
-export const ButtonLogin = styled.div`
+export const ButtonLogin = styled.button`
   background: linear-gradient(180deg, rgba(244, 169, 25, 0.6) 0%, #F4A919 100%);
   color: var(--white);
   font-size: var(--paragraph-2);

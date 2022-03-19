@@ -41,7 +41,7 @@ const HeaderHome = () => {
             </Home>
             <ButtonNav>Sobre</ButtonNav>
             <ButtonNav>Contato</ButtonNav>
-            <ButtonLogin onClick={() => navigate('login')}>Login</ButtonLogin>
+            <ButtonLogin onClick={() => navigate('/login')}>Login</ButtonLogin>
           </DivNav>
         ) : (
           <Grid>
@@ -84,7 +84,9 @@ const HeaderHome = () => {
                   display: 'flex',
                   gap: '5px',
                   alignItems: 'center',
-                }}>
+                }}
+                onClick={() => navigate('login')}
+                >
                   <IoPaw />
                   Login
                 </MenuItem>
