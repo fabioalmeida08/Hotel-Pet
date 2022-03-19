@@ -14,7 +14,7 @@ interface propType {
     background?: boolean
     invert?: boolean
 }
-const HomeInfoComponent = ({ svg, label, paragraph, background, invert }: propType) => {
+const HomeInfo = ({ svg, label, paragraph, background, invert }: propType) => {
     const [isMobile, setMobile] = useState(true)
 
     window.addEventListener('resize', function () {
@@ -71,4 +71,4 @@ const HomeInfoComponent = ({ svg, label, paragraph, background, invert }: propTy
 
     )
 }
-export default HomeInfoComponent
+export default HomeInfo
