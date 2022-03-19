@@ -9,7 +9,7 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import LoginForm from '../../components/LoginForm'
 import Logo from '../../assets/svg/logo.svg'
 import Cachorro from '../../assets/svg/cachorroLogo.svg'
-const Signup = () => {
+const Login = () => {
   const matches = useMediaQuery('(max-width:1110px)')
 
   return (
@@ -86,4 +86,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Login
