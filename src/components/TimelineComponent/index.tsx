@@ -18,8 +18,7 @@ const TimelineComponent = () => {
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineConnector />
-          <TimelineDot>
-            
+          <TimelineDot>        
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
