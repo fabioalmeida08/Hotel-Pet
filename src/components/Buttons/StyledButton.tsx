@@ -8,6 +8,7 @@ interface buttonProps{
   hoverBackground?: string
 }
 const StyledButton = styled.button<buttonProps>`
+  width: 100%;
   padding: 12px 24px;
   font-family: 'Roboto';
   text-transform: uppercase;
@@ -31,6 +32,10 @@ const StyledButton = styled.button<buttonProps>`
   img{
     width: 20px;
     height: 20px;
+  }
+
+  @media (min-width: 600px){
+    width: fit-content;
   }
 
 `
