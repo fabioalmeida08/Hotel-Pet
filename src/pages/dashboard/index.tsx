@@ -1,8 +1,7 @@
+import DasboardHeader from "../../components/HeaderDashboard"
 const Dashboard = () => {
     return (
-      <>
-        Dashboard
-      </>
+      <DasboardHeader />
     )   
   }
   
