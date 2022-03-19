@@ -10,6 +10,8 @@ import {
   Paper,
   Typography,
   useMediaQuery,
+  Avatar,
+  Stack,
 } from '@mui/material'
 import { useState } from 'react'
 import { MdOutlineMoreVert } from 'react-icons/md'
@@ -59,21 +61,35 @@ const DasboardHeader = () => {
             <img src={Logo} alt='' />
           </>
         ) : (
-          <Typography variant='h6' sx={{ color: 'white' }}>
-            {userName}
-          </Typography>
+          <Stack
+            direction='row'
+            alignItems='center'
+            spacing={2}
+          >
+            <Typography
+              variant='h6'
+              sx={{ color: 'white' }}
+            >
+              Bem vindo, {userName}
+            </Typography>
+            <Avatar>{userName[0]}</Avatar>
+          </Stack>
         )}
-
         <Grid sx={{ button: { width: 'fit-content' } }}>
           {!matches ? (
-            <>
+            <Stack
+              direction='row'
+              alignItems='center'
+              spacing={2}
+            >
               <Typography
                 variant='h6'
                 sx={{ color: 'white' }}
               >
-                {userName}
+                Bem vindo, {userName}
               </Typography>
-            </>
+              <Avatar>{userName[0]}</Avatar>
+            </Stack>
           ) : (
             <Grid>
               <IconButton
