@@ -9,10 +9,14 @@ import {
   Box,
   TextField,
   Button,
+  IconButton
 } from '@mui/material'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import {NavLink} from 'react-router-dom'
+import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
+import { useState } from 'react'
+
 interface IFormData {
   name: string
   email: string
@@ -44,6 +48,7 @@ const RegisterForm = () => {
       .oneOf([yup.ref('password')], 'Senhas diferentes')
       .required('Campo obrigatório'),
   })
+  
   const {
     handleSubmit,
     control,
@@ -52,6 +57,17 @@ const RegisterForm = () => {
     resolver: yupResolver(schema),
   })
 
+  const [hide, setHide] = useState(false)
+  const [hideConfirmPassword , setHideConfirmPassword] = useState(false)
+  
+  const handlePasswordVisibility = () => {
+    setHide(!hide)
+  }
+
+  const handleConfirmPasswordVisibility = () => {
+    setHideConfirmPassword(!hideConfirmPassword)
+  }
+  
   const onSubmit: SubmitHandler<IFormData> = (
     data: IFormData
   ) => {
@@ -113,9 +129,23 @@ const RegisterForm = () => {
               margin='normal'
               id='password'
               label='Senha'
-              type='password'
+              type={!hide ? 'password' : 'text'}
               helperText={errors.password?.message}
               error={!!errors.password?.message}
+              InputProps={{
+                endAdornment: (
+                  <IconButton
+                    aria-label='toggle password visibility'
+                    onClick={handlePasswordVisibility}
+                  >
+                    {hide ? (
+                      <MdVisibilityOff />
+                    ) : (
+                      <MdVisibility />
+                    )}
+                  </IconButton>
+                ),
+              }}
             />
           )}
         />
@@ -129,11 +159,25 @@ const RegisterForm = () => {
               required
               fullWidth
               margin='normal'
-              id='email'
+              id='passwordConfirm'
               label='Confirmar Senha'
-              type='password'
+              type={!hideConfirmPassword ? 'password' : 'text'}
               helperText={errors.passwordConfirm?.message}
               error={!!errors.passwordConfirm?.message}
+              InputProps={{
+                endAdornment: (
+                  <IconButton
+                    aria-label='toggle password visibility'
+                    onClick={handleConfirmPasswordVisibility}
+                  >
+                    {hideConfirmPassword ? (
+                      <MdVisibilityOff />
+                    ) : (
+                      <MdVisibility />
+                    )}
+                  </IconButton>
+                ),
+              }}
             />
           )}
         />
