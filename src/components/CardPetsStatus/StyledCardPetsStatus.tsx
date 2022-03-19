@@ -23,13 +23,13 @@ export const StyledCardPetsStatus = styled.div`
 
   .svg{
     position: absolute;
-    left: 47%;
+    left: 48.2%;
     bottom: 20px;
     cursor: pointer;
   }
   .svg-top{
     position: absolute;
-    left: 47%;
+    left: 48.2%;
     transform: rotate(180deg);
     cursor: pointer;
     z-index: 100;
@@ -82,6 +82,10 @@ export const StyledCardPetsStatus = styled.div`
       width: 252px;
       animation: picture-desktop 1s;
       z-index: 2;
+    }
+
+    .svg, .svg-top{
+      left: 47%;
     }
   }
 
