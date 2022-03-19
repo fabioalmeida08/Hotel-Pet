@@ -12,7 +12,7 @@ import {
 } from '@mui/material'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-
+import {NavLink} from 'react-router-dom'
 interface IFormData {
   name: string
   email: string
@@ -137,12 +137,27 @@ const RegisterForm = () => {
             />
           )}
         />
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{mt:2,mb:5}}>
           <Grid item xs={12} sm={6}>
-            <Button fullWidth type='submit' variant='contained'>Cadastrar</Button>
+            <Button
+              fullWidth
+              type='submit'
+              variant='contained'
+            >
+              Cadastrar
+            </Button>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <Button fullWidth variant='contained'>Voltar</Button>
+          <Grid item xs={12} sm={6} >
+            <Button fullWidth variant='contained'>
+              Voltar
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid container justifyContent='flex-end'>
+          <Grid item>
+            <NavLink to='/login'>
+              Já tem cadastro? Fazer login
+            </NavLink>
           </Grid>
         </Grid>
       </Box>
