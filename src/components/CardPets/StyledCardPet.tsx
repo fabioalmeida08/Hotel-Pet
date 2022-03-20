@@ -10,11 +10,14 @@ const StyledCardPet = styled.div`
   color: #333333;
   position: relative;
 
+  
+
   .paw{
     position: absolute;
     bottom: 4px;
     right: 4px;
     z-index: 0;
+
   }
 
   .FotoPet{
