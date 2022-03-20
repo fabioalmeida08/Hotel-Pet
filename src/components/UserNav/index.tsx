@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import Container from "./StyledUserNav"
-
+import { useAuth } from "../../contexts/AuthProvider"
 
 const UserNav = () => {
 
@@ -14,11 +14,13 @@ const UserNav = () => {
 
     let navigate = useNavigate()
 
+    const { logOut } = useAuth()
+
     const handleClick = (parm: string) => {
 
         if (parm !== ""){
             if(parm === "/"){
-                localStorage.clear()
+                logOut()
             }
             navigate(parm)
         }
