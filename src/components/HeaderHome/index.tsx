@@ -37,7 +37,7 @@ const HeaderHome = () => {
           <DivNav>
             <Home>
               <IoPaw />
-              <ButtonNav onClick={() => navigate('/')}>Home</ButtonNav>
+              <ButtonNav  onClick={() => navigate('/')}>Home</ButtonNav>
             </Home>
             <ButtonNav>Sobre</ButtonNav>
             <ButtonNav>Contato</ButtonNav>

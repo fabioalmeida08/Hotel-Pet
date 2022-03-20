@@ -32,7 +32,7 @@ export const ButtonNav = styled.button`
   }
 `;
 
-export const Home = styled.button`
+export const Home = styled.div`
   display: flex;
   align-items: center;
   color: var(--white);

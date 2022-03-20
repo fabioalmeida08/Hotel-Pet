@@ -8,13 +8,13 @@ import { DivWrapper, DivOrganizer } from "./styles"
 import { useState } from "react"
 
 interface propType {
-    paragraph: string,
-    label: string,
-    svg: string,
+    paragraph: string
+    label: string
+    svg: string
     background?: boolean
     invert?: boolean
 }
-const HomeInfoComponent = ({ svg, label, paragraph, background, invert }: propType) => {
+const HomeInfo = ({ svg, label, paragraph, background, invert }: propType) => {
     const [isMobile, setMobile] = useState(true)
 
     window.addEventListener('resize', function () {
@@ -26,7 +26,6 @@ const HomeInfoComponent = ({ svg, label, paragraph, background, invert }: propTy
         }
     });
 
-
     const selectBackGround = () => {
 
         switch (svg) {
@@ -34,8 +33,6 @@ const HomeInfoComponent = ({ svg, label, paragraph, background, invert }: propTy
             case "Beach": return isMobile ? Beach : BeachDesktop
             case "Healty": return isMobile ? Healty : HealtyDesktop
             default: return ""
-
-
         }
     }
 
@@ -56,7 +53,6 @@ const HomeInfoComponent = ({ svg, label, paragraph, background, invert }: propTy
         const transFormInString = separateWords.join(" ")
 
         return transFormInString
-
     }
 
     return (
@@ -71,4 +67,4 @@ const HomeInfoComponent = ({ svg, label, paragraph, background, invert }: propTy
 
     )
 }
-export default HomeInfoComponent
+export default HomeInfo
