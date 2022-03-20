@@ -9,28 +9,33 @@ import {
   Box,
   TextField,
   Button,
+  IconButton,
 } from '@mui/material'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-
+import { useAuth } from '../../contexts/AuthProvider'
+import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
+import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
 interface IFormData {
   email: string
   password: string
 }
 
 const LoginForm = () => {
+  const { signIn, logOut } = useAuth()
+
+  const [hide, setHide] = useState(false)
+  const handlePasswordVisibility = () => {
+    setHide(!hide)
+  }
+
   const schema = yup.object().shape({
     email: yup
       .string()
       .required('Email obrigatório')
       .email('Email invalido'),
-    password: yup
-      .string()
-      .required('Campo obrigatório')
-      .matches(
-        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-        'Minimo 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caracter especial'
-      ),
+    password: yup.string().required('Campo obrigatório'),
   })
 
   const {
@@ -44,7 +49,7 @@ const LoginForm = () => {
   const onSubmit: SubmitHandler<IFormData> = (
     data: IFormData
   ) => {
-    console.log(data)
+    signIn(data)
   }
 
   return (
@@ -84,13 +89,27 @@ const LoginForm = () => {
               margin='normal'
               id='password'
               label='Senha'
-              type='password'
+              type={!hide ? 'password' : 'text'}
               helperText={errors.password?.message}
               error={!!errors.password?.message}
+              InputProps={{
+                endAdornment: (
+                  <IconButton
+                    aria-label='toggle password visibility'
+                    onClick={handlePasswordVisibility}
+                  >
+                    {hide ? (
+                      <MdVisibilityOff />
+                    ) : (
+                      <MdVisibility />
+                    )}
+                  </IconButton>
+                ),
+              }}
             />
           )}
         />
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{ mt: 2, mb: 5 }}>
           <Grid item xs={12} sm={6}>
             <Button
               fullWidth
@@ -104,6 +123,13 @@ const LoginForm = () => {
             <Button fullWidth variant='contained'>
               Voltar
             </Button>
+          </Grid>
+        </Grid>
+        <Grid container justifyContent='flex-end'>
+          <Grid item>
+            <NavLink to='/signup'>
+              Primeira vez aqui? Cadastre-se
+            </NavLink>
           </Grid>
         </Grid>
       </Box>

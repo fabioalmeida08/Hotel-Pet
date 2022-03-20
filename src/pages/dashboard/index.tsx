@@ -1,8 +1,13 @@
+import DasboardHeader from "../../components/HeaderDashboard"
+import CardUser from "../../components/CardUser"
+import { Container } from "./styles"
+
 const Dashboard = () => {
     return (
-      <>
-        Dashboard
-      </>
+      <Container>
+        <DasboardHeader />
+        <CardUser />
+      </Container>
     )   
   }
   
