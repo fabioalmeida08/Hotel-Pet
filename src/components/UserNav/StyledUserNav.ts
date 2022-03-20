@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
-    display: flex;
+    display: none;
     justify-content: flex-start;
     flex-direction: column;
     align-items: stretch;
@@ -13,7 +13,7 @@ const Container = styled.div`
     color: var(--white);
     border-radius: 49px 0px 0px 49px;
 
-    width: 300px;
+    min-width: 200px;
     height: 100%;
 
     hr {
@@ -43,6 +43,13 @@ const Container = styled.div`
         }
     }
 
+    @media(min-width: 580px ) {
+        display: flex;
+    }
+
+    @media(min-width: 900px ) {
+        width: 300px;
+    }
 
     `;
 
