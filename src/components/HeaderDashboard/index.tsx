@@ -14,7 +14,7 @@ import {
   Stack,
 } from '@mui/material'
 import { useState } from 'react'
-import { MdOutlineMoreVert } from 'react-icons/md'
+import { AiOutlineMenu } from 'react-icons/ai'
 import Logo from '../../assets/svg/dashboardLogo.svg'
 import { useAuth } from '../../contexts/AuthProvider'
 
@@ -95,8 +95,12 @@ const DasboardHeader = () => {
               <IconButton
                 aria-label='menu'
                 onClick={handleClick}
+                sx={{
+                fontSize: '35px',
+                color: 'var(--secundary-1)'
+              }}
               >
-                <MdOutlineMoreVert />
+                <AiOutlineMenu />
               </IconButton>
               <Menu
                 anchorEl={anchorEl}
