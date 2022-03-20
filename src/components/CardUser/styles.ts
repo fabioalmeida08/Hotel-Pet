@@ -4,6 +4,8 @@ const Container = styled.div`
   margin-left: 20px;
   margin-right: 20px;
 
+  display: flex;
+
   width: 92%;
   min-width: 385px;
   height: 738px;
