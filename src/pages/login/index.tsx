@@ -9,6 +9,8 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import LoginForm from '../../components/LoginForm'
 import Logo from '../../assets/svg/logo.svg'
 import Cachorro from '../../assets/svg/cachorroLogo.svg'
+import bg_svg from '../../assets/svg/patas_bg.svg'
+import { StyledImg } from './StyledBg'
 const Login = () => {
   const matches = useMediaQuery('(max-width:1110px)')
 
@@ -46,10 +48,11 @@ const Login = () => {
                 bgcolor: '#EFEFEF',
                 borderTopLeftRadius: '20px',
                 borderBottomLeftRadius: '20px',
-                boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.21)'
+                boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.21)',
+                position: "relative"
               }}
             >
-              <Stack sx={{ mt: '2vh' }}>
+              <Stack sx={{ mt: '2vh'}}>
                 <img src={Logo} alt='logo' />
                 <Typography
                   variant='h3'
@@ -58,6 +61,7 @@ const Login = () => {
                 >
                   Login
                 </Typography>
+                <StyledImg src={bg_svg} style={{width: '500px'}}></StyledImg>
                 <LoginForm />
               </Stack>
             </Grid>
@@ -77,6 +81,7 @@ const Login = () => {
               <img
                 src={Cachorro}
                 alt='cachorro segurando uma rosa'
+                style={{height: "100%"}}
               />
             </Grid>
           </Grid>
