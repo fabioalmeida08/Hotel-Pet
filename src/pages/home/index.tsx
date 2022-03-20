@@ -1,14 +1,6 @@
 import HeaderHome from "../../components/HeaderHome"
 import HomeInfo from "../../components/HomeInfo"
 
-interface propType {
-  paragraph: string,
-  label: string,
-  svg: string,
-  background?: boolean
-  invert?: boolean
-}
-
 const Home = () => {
 
 

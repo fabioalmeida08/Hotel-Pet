@@ -8,9 +8,9 @@ import { DivWrapper, DivOrganizer } from "./styles"
 import { useState } from "react"
 
 interface propType {
-    paragraph: string,
-    label: string,
-    svg: string,
+    paragraph: string
+    label: string
+    svg: string
     background?: boolean
     invert?: boolean
 }
@@ -26,7 +26,6 @@ const HomeInfo = ({ svg, label, paragraph, background, invert }: propType) => {
         }
     });
 
-
     const selectBackGround = () => {
 
         switch (svg) {
@@ -34,8 +33,6 @@ const HomeInfo = ({ svg, label, paragraph, background, invert }: propType) => {
             case "Beach": return isMobile ? Beach : BeachDesktop
             case "Healty": return isMobile ? Healty : HealtyDesktop
             default: return ""
-
-
         }
     }
 
@@ -56,7 +53,6 @@ const HomeInfo = ({ svg, label, paragraph, background, invert }: propType) => {
         const transFormInString = separateWords.join(" ")
 
         return transFormInString
-
     }
 
     return (
