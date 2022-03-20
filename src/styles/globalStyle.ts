@@ -1,5 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
+export const styles = {
+  colors: {
+    "primary-color": "#364FD9",
+  }
+}
+
 export const GlobalStyle = createGlobalStyle`
 
 :root{
