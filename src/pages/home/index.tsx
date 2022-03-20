@@ -32,7 +32,7 @@ const Home = () => {
       <>
        <HeaderHome/>
        {
-         Info.map((item)=> (<HomeInfo paragraph={item.paragraph} label={item.label} svg={item.svg} background={item.background} invert={item.invert} />) )
+         Info.map((item,index)=> (<HomeInfo key={index}paragraph={item.paragraph} label={item.label} svg={item.svg} background={item.background} invert={item.invert} />) )
        }
       </>
     )
