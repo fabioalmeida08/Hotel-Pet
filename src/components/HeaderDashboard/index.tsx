@@ -44,6 +44,7 @@ const DasboardHeader = () => {
         display: 'flex',
         alignItems: 'center',
         backgroundColor: 'var(--primary-1)',
+        
       }}
       component='header'
     >
