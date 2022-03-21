@@ -77,8 +77,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         
         if(admin) setAdmin(true)
         
-        
-        navigate('/dashboard')
+        navigate("/dashboard")
+
       })
       .catch((err) => console.log(err))
   }
