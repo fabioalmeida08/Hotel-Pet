@@ -29,7 +29,9 @@ interface IFormData {
   name: string
   email: string
   password: string
-  passwordConfirm: string
+  passwordConfirm?: string
+  adress: string
+  phone: string
 }
 
 const RegisterForm = () => {
@@ -44,6 +46,12 @@ const RegisterForm = () => {
       .string()
       .required('Email obrigatório')
       .email('Email invalido'),
+    adress: yup
+      .string()
+      .required('Campo obrigatório'),
+    phone: yup
+      .string()
+      .required('Campo obrigatório'),
     password: yup
       .string()
       .required('Campo obrigatório')
@@ -82,7 +90,8 @@ const RegisterForm = () => {
   const onSubmit: SubmitHandler<IFormData> = (
     data: IFormData
   ) => {
-    HotelPetApi.post('localhost:3001/register', (data))
+    delete data.passwordConfirm
+    HotelPetApi.post('/register', (data))
       .then(() => {
         navigate('/login')
       })
@@ -129,6 +138,42 @@ const RegisterForm = () => {
               label='Email'
               helperText={errors.email?.message}
               error={!!errors.email?.message}
+            />
+          )}
+        />
+         <Controller
+          name='adress'
+          control={control}
+          defaultValue=''
+          render={({ field }) => (
+            <TextField
+              {...field}
+              required
+              fullWidth
+              margin='normal'
+              id='endereco'
+              label='Endereço'
+              autoFocus
+              helperText={errors.adress?.message}
+              error={!!errors.adress?.message}
+            />
+          )}
+        />
+         <Controller
+          name='phone'
+          control={control}
+          defaultValue=''
+          render={({ field }) => (
+            <TextField
+              {...field}
+              required
+              fullWidth
+              margin='normal'
+              id='telefone'
+              label='Telefone'
+              autoFocus
+              helperText={errors.phone?.message}
+              error={!!errors.phone?.message}
             />
           )}
         />
