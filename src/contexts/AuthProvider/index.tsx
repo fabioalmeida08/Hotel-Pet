@@ -52,16 +52,15 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     hotelPetApi
       .post('/login', userData)
       .then((res) => {
-        const admin = res.data.user.admin
-        const name = res.data.user.name
-        const id = res.data.user.id
+       const {id , name , admin} = res.data.user
+       const token = res.data.accessToken
         
         setUserId(id)
         setUserName(name)
         
         localStorage.setItem(
           '@hotelPet:token',
-          JSON.stringify(res.data.accessToken)
+          JSON.stringify(token)
         )
 
         localStorage.setItem(
@@ -74,12 +73,12 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
           JSON.stringify(id)
         )
         
-        setAuthToken(res.data)
+        setAuthToken(token)
         
         if(admin) setAdmin(true)
         
         
-        navigate(`/dashboard/${id}`)
+        navigate('/dashboard')
       })
       .catch((err) => console.log(err))
   }
