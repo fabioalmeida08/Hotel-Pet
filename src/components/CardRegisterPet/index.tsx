@@ -6,8 +6,9 @@ import * as yup from 'yup';
 import { Controller, useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
-
-
+import { AuthContext, useAuth } from '../../contexts/AuthProvider';
+import { useContext } from 'react';
+import { AuthProvider } from '../../contexts/AuthProvider';
 
 const CardRegisterPet = () => {
 
@@ -26,15 +27,20 @@ const CardRegisterPet = () => {
   } = useForm({
     resolver: yupResolver(schema),
   })
-
+  
+  const {authToken} = useAuth()
+  const {userId} = useContext(AuthContext)
   const onSubmit = handleSubmit((data) => {
+    data.hospedado = false
+    data.status = []
+    data.mimos = []
+    data.tutorId = userId
+    axios.post("https://hotelpetapi.herokuapp.com/pets", data , {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
 
-    // axios.post("https://hotelpetapi.herokuapp.com/pets", data, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-
-    // }).then((response) => console.log(response)).catch((err) => console.log(err))
+    }).then((response) => console.log(response)).catch((err) => console.log(err.message))
     
   })
 

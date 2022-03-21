@@ -26,7 +26,7 @@ interface AuthProviderValue {
   userId: string | number
 }
 
-const AuthContext = createContext<AuthProviderValue>(
+export const AuthContext = createContext<AuthProviderValue>(
   {} as AuthProviderValue
 )
 
