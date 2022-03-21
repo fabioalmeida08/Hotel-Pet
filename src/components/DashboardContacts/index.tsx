@@ -19,7 +19,6 @@ const DashboardContacts = () => {
               <p>Av. Parana, do outro lado de lá, nº1</p>
             </ContainerInfo>
             <img src={map} alt="" />
-            
           </ContainerHotel>
           <ContainerChat></ContainerChat>
         </Container>
