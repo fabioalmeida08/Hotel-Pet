@@ -9,13 +9,22 @@ import neneca from '../../assets/svg/status/status neneca.svg'
 import play from '../../assets/svg/status/status play.svg'
 import { toast } from "react-toastify";
 import { GrClose } from 'react-icons/gr';
+import axios from 'axios'
+import { Dispatch, SetStateAction } from 'react'
+import {useAuth} from '../../contexts/AuthProvider'
 
-const ModalPetStatusAdmin = () => {
+
+interface IPropsStatus{
+  idPet:String,
+  setShowModal: Dispatch<SetStateAction<boolean>>
+}
+
+const ModalPetStatusAdmin = ({idPet = '14', setShowModal}: IPropsStatus) => {
+  const {authToken} = useAuth()
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [chosenActivity, setChosenActivity] = useState('')
   const [desc, setDesc] = useState('')
   const [time, setTime] = useState('')
-  const [data, setData] = useState({})
   const onEmojiClick = (event:any, emojiObject:any) => {
     setChosenEmoji(emojiObject.emoji);
   }
@@ -25,19 +34,33 @@ const ModalPetStatusAdmin = () => {
     
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if(chosenEmoji && chosenActivity && desc && time && chosenActivity !== '0'){
-      setData({emoji:chosenEmoji, activity: chosenActivity, description: desc, time})
+      const newData = {emoji:chosenEmoji, activity: chosenActivity, description: desc, time}
       toast.success('Status salvo com sucesso!', {position: toast.POSITION.TOP_CENTER})
-      // Jogar no server aqui
-      // ********************
 
-      //*********************
+      const pets = await axios.get(`https://hotelpetapi.herokuapp.com/pets/${idPet}`)
+      .then(data => data.data)
+      console.log(pets)
+      const status = await [...pets.status, newData]
+      console.log(status)
+      const request = await {...pets, status}
+      console.log(request)
+      const config = {
+        headers: {
+          Authorization: `Bearer ${authToken}`
+        }
+      }
+
+      const resp = await axios.put(`https://hotelpetapi.herokuapp.com/pets/${idPet}`, request, config)
+      console.log(resp)
+
       setChosenEmoji(null)
       setChosenActivity('0')
       setDesc('')
       setTime('')
-      setData({})
+
+      setShowModal(false)
     }else{
       toast.error('Preencha todos os campos', {position: toast.POSITION.TOP_CENTER})
     }
@@ -45,7 +68,7 @@ const ModalPetStatusAdmin = () => {
   return(
     <BackgroundModal>
     <StyledModalPetStatusAdmin>
-      <div className="close-form">
+      <div className="close-form" onClick={() => setShowModal(false)}>
         <GrClose/>
       </div>
         <h2>Controle</h2>
