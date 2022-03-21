@@ -36,7 +36,7 @@ const CardPetsStatus = ({idPet} : IProps) => {
   const [pet, setPet] = useState<IResponse>({} as IResponse)
   useEffect(() => {
     axios
-    .get(`https://hotelpetapi.herokuapp.com/pets/${14}`)
+    .get(`https://hotelpetapi.herokuapp.com/pets/${idPet}`)
       .then(data => setPet(data.data))
   },[])
   return (
