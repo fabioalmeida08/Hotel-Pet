@@ -11,7 +11,7 @@ const Dashboard = () => {
   
   if (!authToken) {
     return <Navigate to='/login' replace />
-    
+  }
     return (
       <Container>
         <DasboardHeader />
