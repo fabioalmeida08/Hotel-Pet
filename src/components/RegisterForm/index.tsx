@@ -9,13 +9,21 @@ import {
   Box,
   TextField,
   Button,
-  IconButton
+  IconButton,
 } from '@mui/material'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import {NavLink} from 'react-router-dom'
-import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
+import {
+  NavLink,
+  Navigate,
+  useNavigate,
+} from 'react-router-dom'
+import {
+  MdVisibility,
+  MdVisibilityOff,
+} from 'react-icons/md'
 import { useState } from 'react'
+import HotelPetApi from '../../services/'
 
 interface IFormData {
   name: string
@@ -48,7 +56,7 @@ const RegisterForm = () => {
       .oneOf([yup.ref('password')], 'Senhas diferentes')
       .required('Campo obrigatório'),
   })
-  
+
   const {
     handleSubmit,
     control,
@@ -58,8 +66,9 @@ const RegisterForm = () => {
   })
 
   const [hide, setHide] = useState(false)
-  const [hideConfirmPassword , setHideConfirmPassword] = useState(false)
-  
+  const [hideConfirmPassword, setHideConfirmPassword] =
+    useState(false)
+
   const handlePasswordVisibility = () => {
     setHide(!hide)
   }
@@ -67,11 +76,17 @@ const RegisterForm = () => {
   const handleConfirmPasswordVisibility = () => {
     setHideConfirmPassword(!hideConfirmPassword)
   }
-  
+
+  const navigate = useNavigate()
+
   const onSubmit: SubmitHandler<IFormData> = (
     data: IFormData
   ) => {
-    console.log(data)
+    HotelPetApi.post('localhost:3001/register', (data))
+      .then(() => {
+        navigate('/login')
+      })
+      .catch((err) => console.log(err))
   }
 
   return (
@@ -161,14 +176,18 @@ const RegisterForm = () => {
               margin='normal'
               id='passwordConfirm'
               label='Confirmar Senha'
-              type={!hideConfirmPassword ? 'password' : 'text'}
+              type={
+                !hideConfirmPassword ? 'password' : 'text'
+              }
               helperText={errors.passwordConfirm?.message}
               error={!!errors.passwordConfirm?.message}
               InputProps={{
                 endAdornment: (
                   <IconButton
                     aria-label='toggle password visibility'
-                    onClick={handleConfirmPasswordVisibility}
+                    onClick={
+                      handleConfirmPasswordVisibility
+                    }
                   >
                     {hideConfirmPassword ? (
                       <MdVisibilityOff />
@@ -181,7 +200,7 @@ const RegisterForm = () => {
             />
           )}
         />
-        <Grid container spacing={2} sx={{mt:2,mb:5}}>
+        <Grid container spacing={2} sx={{ mt: 2, mb: 5 }}>
           <Grid item xs={12} sm={6}>
             <Button
               fullWidth
@@ -191,7 +210,7 @@ const RegisterForm = () => {
               Cadastrar
             </Button>
           </Grid>
-          <Grid item xs={12} sm={6} >
+          <Grid item xs={12} sm={6}>
             <Button fullWidth variant='contained'>
               Voltar
             </Button>
