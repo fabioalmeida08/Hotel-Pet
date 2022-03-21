@@ -5,10 +5,10 @@ import { useAuth } from "../../contexts/AuthProvider"
 const UserNav = () => {
 
     const infoButton = [
-        { children: "Meus Pets", navi: "/dashboard/:id/pets" },
-        { children: "Mimos", navi: "/dashboard/:id/mime"},
-        { children: "Contatos", navi: "/dashboard/:id/contact"},
-        { children: "Configurações", navi: "/dashboard/:id/config"},
+        { children: "Meus Pets", navi: "pets" },
+        { children: "Mimos", navi: "mime"},
+        { children: "Contatos", navi: "contact"},
+        { children: "Configurações", navi: "config"},
         { children: "Sair", navi: "/"}
     ]
 
@@ -23,7 +23,7 @@ const UserNav = () => {
                 logOut()
             }
             else {
-                navigate(parm)
+                navigate(`/dashboard/${parm}`)
             }
         }
 

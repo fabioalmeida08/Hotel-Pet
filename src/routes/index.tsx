@@ -13,16 +13,21 @@ const Router = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
-        <Route path='login' element={<Login />} />
-        <Route path='signup' element={<Signup />} />
-        <Route path='dashboard/:id' element={<PagPets />} >
-          <Route path='pets' element={<PagPets />} />
-          <Route path='mime' element={<PagMine />} />
-          <Route path='contact' element={<PagContacts />} />
-          <Route path='config' element={<PagConfig />} />
-          <Route path='lodge' element={<PagLodge />} />
-        </Route>
-      
+      <Route path='login' element={<Login />} />
+      <Route path='signup' element={<Signup />} />
+      <Route path='dashboard' element={<Dashboard />} />
+      <Route path='dashboard/pets' element={<PagPets />} />
+      <Route path='dashboard/mime' element={<PagMine />} />
+      <Route path='dashboard/contact' element={<PagContacts />} />
+      <Route path='dashboard/config' element={<PagConfig />} />
+      <Route path='dashboard/lodge' element={<PagLodge />} />
+      {/*   <Route path='pets' element={<PagPets />} />
+        <Route path='mime' element={<PagMine />} />
+        <Route path='contact' element={<PagContacts />} />
+        <Route path='config' element={<PagConfig />} />
+        <Route path='lodge' element={<PagLodge />} />
+      </Route> */}
+        
     </Routes>
   )
 }

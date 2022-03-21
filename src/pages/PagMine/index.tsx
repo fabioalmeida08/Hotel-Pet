@@ -3,7 +3,7 @@ import DasboardHeader from "../../components/HeaderDashboard"
 import UserNav from "../../components/UserNav"
 import { Container, CardUser } from "./styles"
 
-const Dashboard = () => {
+const PagMine = () => {
     return (
       <Container>
         <DasboardHeader />
@@ -15,4 +15,4 @@ const Dashboard = () => {
     )   
   }
   
-  export default Dashboard
+  export default PagMine
