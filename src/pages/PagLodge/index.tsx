@@ -1,18 +1,18 @@
-import DashboardPets from "../../components/DashboardPets"
+import DashboardLodge from "../../components/DashboardLodge"
 import DasboardHeader from "../../components/HeaderDashboard"
 import UserNav from "../../components/UserNav"
 import { Container, CardUser } from "./styles"
 
-const Dashboard = () => {
+const PagLodge = () => {
     return (
       <Container>
         <DasboardHeader />
         <CardUser>
           <UserNav />
-          <DashboardPets />
+          <DashboardLodge />
         </CardUser>
       </Container>
     )   
   }
   
-  export default Dashboard
+  export default PagLodge

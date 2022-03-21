@@ -1,18 +1,18 @@
-import DashboardPets from "../../components/DashboardPets"
+import DashboardContacts from "../../components/DashboardContacts"
 import DasboardHeader from "../../components/HeaderDashboard"
 import UserNav from "../../components/UserNav"
 import { Container, CardUser } from "./styles"
 
-const Dashboard = () => {
+const PagContacts = () => {
     return (
       <Container>
         <DasboardHeader />
         <CardUser>
           <UserNav />
-          <DashboardPets />
+          <DashboardContacts />
         </CardUser>
       </Container>
     )   
   }
   
-  export default Dashboard
+  export default PagContacts
