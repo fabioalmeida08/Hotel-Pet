@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { StyledDivMimos, CardBuyMime } from "./style"
-import Cat from "../../assets/img/CatMime.png"
+import SquareCat from "../../assets/img/SquareCat.png"
 import { Controller } from "react-hook-form"
 import { MenuItem, TextField } from "@mui/material"
 import * as yup from 'yup';
@@ -23,17 +23,17 @@ interface PetsType {
   size: string
   specie: string
   status: Array<object>
-  tutorId: number
+  userId: number
 }
 const CardMimos = ({ img, title, description }: CardTypes) => {
   const [isBuying, setIsBuying] = useState(false)
   // const [userPets, setUserPets] = useState<PetsType[]>([])
-  // const [filteredPets, setFilteredPets] = useState<PetsType[]>([])
-  
-  const { userPets } = useAuth()
-  
-  console.log(userPets)
+  const [filteredPets, setFilteredPets] = useState<PetsType[]>([])
 
+  const { userPets } = useAuth()
+ 
+  console.log(userPets)
+  
   const schema = yup.object().shape({
     petBuyMime: yup.string().required(),
   })
@@ -46,37 +46,37 @@ const CardMimos = ({ img, title, description }: CardTypes) => {
     resolver: yupResolver(schema),
   })
   const onSubmit = handleSubmit((data) => {
-    
+
   })
 
   return (
     <>
       {isBuying === true ? <CardBuyMime>
-        <img src={Cat} alt="CatImage"></img>
+        <img src={SquareCat} alt="CatImage"></img>
         <div className="CardContainer">
           <h2>Comprar o {title}</h2>
           <Controller
-          name='petBuyMime'
-          control={control}
-          defaultValue=''
-          render={({ field }) => (
-            <TextField
-              label="Nome do Pet"
-              select
-              margin="normal"
-              required
-              size="small"
-              defaultValue=""
-              {...field}
-              helperText={errors.petBuyMime?.message}
-              error={!!errors.petBuyMime?.message}
-              sx={{ textOverflow: 'ellipsis', width: '100%' }}
-            >
-              {/* {userPets.map((pet: { name: string}) => {return <MenuItem value={pet.name}>
+            name='petBuyMime'
+            control={control}
+            defaultValue=''
+            render={({ field }) => (
+              <TextField
+                label="Nome do Pet"
+                select
+                margin="normal"
+                required
+                size="small"
+                defaultValue=""
+                {...field}
+                helperText={errors.petBuyMime?.message}
+                error={!!errors.petBuyMime?.message}
+                sx={{ textOverflow: 'ellipsis', width: '100%' }}
+              >
+                {/* {userPets.map((pet) => {return <MenuItem value={pet.name}>
               {pet.name}
               </MenuItem>})} */}
-            </TextField>
-          )} />
+              </TextField>
+            )} />
           <p>Confirmar compra do produto</p>
         </div>
         <button onClick={() => setIsBuying(!isBuying)}>
@@ -94,7 +94,7 @@ const CardMimos = ({ img, title, description }: CardTypes) => {
           <button onClick={() => {
 
             setIsBuying(!isBuying)
-            }}>
+          }}>
             Comprar
           </button>
         </div>
