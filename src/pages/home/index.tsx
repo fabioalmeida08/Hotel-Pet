@@ -1,6 +1,7 @@
 import HeaderHome from '../../components/HeaderHome'
 import HomeInfo from '../../components/HomeInfo'
 import CardEditPet from '../../components/CardEditPet'
+import CardTutor from '../../components/CardTutor'
 const Home = () => {
   const Info = [
     {
@@ -31,6 +32,7 @@ const Home = () => {
 
   return (
     <>
+    <CardTutor />
       <HeaderHome />
       {Info.map((item, index) => (
         <HomeInfo
