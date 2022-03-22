@@ -38,7 +38,7 @@ const CardRegisterPet = ({isOpenModal, setIsOpenModal}:Modal) => {
     data.hospedado = false
     data.status = []
     data.mimos = []
-    data.tutorId = userId
+    data.userId = userId
     axios.post("https://hotelpetapi.herokuapp.com/pets", data , {
       headers: {
         Authorization: `Bearer ${authToken}`,

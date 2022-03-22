@@ -1,6 +1,6 @@
 import HeaderHome from '../../components/HeaderHome'
 import HomeInfo from '../../components/HomeInfo'
-import CardEditPet from '../../components/CardEditPet'
+
 const Home = () => {
   const Info = [
     {
@@ -29,6 +29,7 @@ const Home = () => {
     },
   ]
 
+  
   return (
     <>
       <HeaderHome />
