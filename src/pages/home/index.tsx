@@ -30,9 +30,9 @@ const Home = () => {
     },
   ]
 
+  
   return (
     <>
-    <CardTutor />
       <HeaderHome />
       {Info.map((item, index) => (
         <HomeInfo

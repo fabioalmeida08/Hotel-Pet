@@ -89,5 +89,22 @@ const StyledCardTutor = styled.div`
   @media (min-width: 600px) {
   }
 `
+export const StyledViewButton = styled.div`
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background: #3A2c60;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 8px;
+}
+`
 
 export default StyledCardTutor
