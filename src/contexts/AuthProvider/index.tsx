@@ -107,6 +107,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       })
       .then((res) => {
         setUserPets(res.data.pets)
+        console.log(res.data.pets)
       })
     
     hotelPetApi

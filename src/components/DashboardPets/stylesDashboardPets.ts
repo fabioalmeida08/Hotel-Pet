@@ -4,6 +4,12 @@ const Container = styled.div`
   width: 100%;
   padding: 10px;
 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: scroll;
+  gap: 10px;
+
   background-color: #FFF;
 
   .button {

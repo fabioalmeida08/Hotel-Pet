@@ -16,15 +16,14 @@ const Container = styled.div`
     min-width: 200px;
     height: 100%;
 
-    hr {
-        height: 2px;
-        background: var(--white);
-        border: 0;
+    div {
+        border-bottom: 1px solid var(--white);
     }
 
     h4 {
         margin-top: 30px;
-        font-size: var(--paragraph-1);
+        font-size: var(--info);
+        font-family: var(--font-family-2);
     }
 
     button{

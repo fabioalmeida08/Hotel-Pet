@@ -18,53 +18,73 @@ interface typedPets {
   tutorId: number;
 }
 
-const DashboardPets = () => {
-  const [petsArr, setPetsArr] = useState<typedPets[]>([])
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [filteredPetsState, setFilteredPetsState] = useState([])
-
-  // Se não tiver pets, a pagina será diferente
-
-  const handleClick = () => {
-    <CardRegisterPet />;
-  };
-
-  const { userId, authToken } = useAuth();
-
-  useEffect(() => {
-    axios
-      .get(`https://hotelpetapi.herokuapp.com/pets`)
-      .then((response) => {
-        setIsAuthenticated(true);
-        setPetsArr(response.data);
-        toast.success("Opa, deu certo!");
-      })
-      .catch((err) => {
-        setIsAuthenticated(false);
-        toast.error("Erro");
-      });
-  }, []);
-
-  const filteredPets = petsArr.filter((pet) => {
-    setFilteredPetsState(filteredPets)
-    console.log(pet.tutorId)
-    console.log(userId)
-    return pet.tutorId === userId;
-  });
-  console.log(filteredPets)
-
+const DashboardPets = () => { 
+  const { userPets } = useAuth();
+  console.log(userPets)
+  
   return (
-    <Container>
-      {
-      filteredPets.map(() => {
-         return <CardPet/>
-      })
-      }
+  <Container>
+    <CardPet/>
+    <CardPet/>
+    <CardPet/>
+    <CardPet/>
+    <CardPet/>
+    <CardPet/>
+    <CardPet/>
+    <CardPet/>
+    <CardPet/>
+    <CardPet/>
+    <CardPet/>
+    <CardPet/>
+  </Container>
+)
+}
 
-      {/* <CardPet />
-          <button className="button" onClick={() => handleClick()}>+</button> */}
-    </Container>
-  );
-};
+export default DashboardPets
+//   const [petsArr, setPetsArr] = useState<typedPets[]>([])
+//   const [isAuthenticated, setIsAuthenticated] = useState(false);
+//   const [filteredPetsState, setFilteredPetsState] = useState([])
 
-export default DashboardPets;
+//   // Se não tiver pets, a pagina será diferente
+
+//   const handleClick = () => {
+//     <CardRegisterPet />;
+//   };
+
+//   useEffect(() => {
+//     axios
+//       .get(`https://hotelpetapi.herokuapp.com/pets`)
+//       .then((response) => {
+//         setIsAuthenticated(true);
+//         setPetsArr(response.data);
+//         toast.success("Opa, deu certo!");
+//       })
+//       .catch((err) => {
+//         setIsAuthenticated(false);
+//         toast.error("Erro");
+//       });
+//   }, []);
+
+//   const filteredPets = petsArr.filter((pet) => {
+//     setFilteredPetsState(filteredPets)
+//     console.log(pet.tutorId)
+//     console.log(userId)
+//     return pet.tutorId === userId;
+//   });
+//   console.log(filteredPets)
+
+//   return (
+//     <Container>
+//       {
+//       filteredPets.map(() => {
+//          return <CardPet/>
+//       })
+//       }
+
+//       {/* <CardPet />
+//           <button className="button" onClick={() => handleClick()}>+</button> */}
+//     </Container>
+//   );
+// };
+
+// export default DashboardPets;

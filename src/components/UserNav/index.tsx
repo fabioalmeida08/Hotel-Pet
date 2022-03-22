@@ -32,13 +32,10 @@ const UserNav = () => {
       return (
         <Container>
          <h4>Dashboard</h4>
-         <hr />
-
          { infoButton.map((item, index) => 
-             (<>
+             (<div>
                 <button key={index} onClick={() => handleClick(item.navi)} > {item.children}</button>
-                <hr />
-             </>)
+             </div>)
          )}
 
         </Container>
