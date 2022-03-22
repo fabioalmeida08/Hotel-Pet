@@ -33,7 +33,9 @@ const DashboardPets = () => {
   return (
     <Container>
       <Content>
+       {isOpenModal === false && 
         <CardPet/>
+       }
       </Content>
       <Footer>
         <button onClick={handleOpen}>
@@ -41,7 +43,7 @@ const DashboardPets = () => {
         </button>
       </Footer>
       {
-        !!isOpenModal && <CardRegisterPet/>
+        !!isOpenModal && <CardRegisterPet isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>
       }
     </Container>
   );

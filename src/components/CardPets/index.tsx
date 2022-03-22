@@ -6,7 +6,7 @@ import paw from '../../assets/svg/paw.svg'
 const CardPet = () => {
   return(
     <StyledCardPet>
-      <img className="FotoPet" src="https://i0.wp.com/www.portaldodog.com.br/cachorros/wp-content/uploads/2021/03/visa%CC%83o-do-cachorro-2.jpeg?resize=626%2C626&ssl=1"></img>
+      <img className="FotoPet" src="https://i0.wp.com/www.portaldodog.com.br/cachorros/wp-content/uploads/2021/03/visa%CC%83o-do-cachorro-2.jpeg?resize=626%2C626&ssl=1" alt="petImagem"></img>
       <div className="CardContainer">
         <div className="CardHeader">
           <h2>Péricles</h2>
