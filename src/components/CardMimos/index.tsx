@@ -27,9 +27,12 @@ interface PetsType {
 }
 const CardMimos = ({ img, title, description }: CardTypes) => {
   const [isBuying, setIsBuying] = useState(false)
-  const [userPets, setUserPets] = useState<PetsType[]>([])
-  const [filteredPets, setFilteredPets] = useState<PetsType[]>([])
-  const { userId } = useAuth()
+  // const [userPets, setUserPets] = useState<PetsType[]>([])
+  // const [filteredPets, setFilteredPets] = useState<PetsType[]>([])
+  
+  const { userPets } = useAuth()
+  
+  console.log(userPets)
 
   const schema = yup.object().shape({
     petBuyMime: yup.string().required(),
@@ -69,9 +72,9 @@ const CardMimos = ({ img, title, description }: CardTypes) => {
               error={!!errors.petBuyMime?.message}
               sx={{ textOverflow: 'ellipsis', width: '100%' }}
             >
-              {filteredPets.map((pet) => {return <MenuItem value={pet.name}>
+              {/* {userPets.map((pet: { name: string}) => {return <MenuItem value={pet.name}>
               {pet.name}
-              </MenuItem>})}
+              </MenuItem>})} */}
             </TextField>
           )} />
           <p>Confirmar compra do produto</p>

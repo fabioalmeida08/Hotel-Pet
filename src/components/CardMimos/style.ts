@@ -97,6 +97,11 @@ const CardBuyMime = styled.div`
     height: 200px;
     margin-top: 0px;
   }
+  @media (min-width: 768px) {
+    flex-direction: row;
+    width: 250px;
+  height: 200px;
+  }
 `;
 
 export { StyledDivMimos, CardBuyMime };
