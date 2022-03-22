@@ -52,6 +52,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const [admin, setAdmin] = useState(false)
 
   const [userPets, setUserPets] = useState<typedPets[]>([])
+  console.log(userPets)
 
   const [allUsers, setAllUsers] = useState<[]>([])
 
