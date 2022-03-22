@@ -42,6 +42,7 @@ const DasboardHeader = () => {
         marginBottom: '30px',
         height: '100px',
         display: 'flex',
+        borderRadius: 0,
         alignItems: 'center',
         backgroundColor: 'var(--primary-1)',
         
