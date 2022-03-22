@@ -100,3 +100,4 @@ const CardMimos = ({ img, title, description }: CardTypes) => {
   )
 }
 export default CardMimos
+
