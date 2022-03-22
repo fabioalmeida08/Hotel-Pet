@@ -35,7 +35,8 @@ const Container = styled.div`
         padding-top: 10px;
         padding-bottom: 10px;
 
-        font-size: var(--paragraph-2);
+        font-size: var( --info);
+        font-family: var(--font-family-1);
 
         &:hover {
             background: var(--secundary-1);
