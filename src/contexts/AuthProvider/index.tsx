@@ -3,7 +3,6 @@ import {
   ReactNode,
   useContext,
   useState,
-  useEffect,
 } from 'react'
 import { useNavigate } from 'react-router-dom'
 import hotelPetApi from '../../services/index'
@@ -24,7 +23,7 @@ interface AuthProviderValue {
   admin: boolean
   userName: string
   userId: string | number
-  userPets: [] | typedPets
+  userPets: [] | typedPets[]
   allUsers: []
 }
 
@@ -38,7 +37,7 @@ interface typedPets {
   size: string
   specie: string
   status: Array<object>
-  tutorId: number
+  userId: number
 }
 
 export const AuthContext = createContext<AuthProviderValue>(
@@ -52,7 +51,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const [admin, setAdmin] = useState(false)
 
-  const [userPets, setUserPets] = useState<[]>([])
+  const [userPets, setUserPets] = useState<typedPets[]>([])
 
   const [allUsers, setAllUsers] = useState<[]>([])
 
