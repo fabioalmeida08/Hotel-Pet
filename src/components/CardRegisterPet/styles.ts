@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(1, 1, 1, 0.6);
+  top: 10px;
+`
+
 const DivWrapper = styled.div`
   box-shadow: 1px 1px 1px 1px gray;
   display: flex;

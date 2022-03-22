@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-const Container = styled.div`
+export const Container = styled.div`
     display: none;
     justify-content: flex-start;
     flex-direction: column;
@@ -34,12 +34,13 @@ const Container = styled.div`
         padding-top: 10px;
         padding-bottom: 10px;
 
+        width: 100%;
+
         font-size: var( --info);
         font-family: var(--font-family-1);
 
-        &:hover {
+        :hover {
             background: var(--secundary-1);
-        color: var(--white);
         }
     }
 
@@ -51,6 +52,16 @@ const Container = styled.div`
         width: 300px;
     }
 
-    `;
+    `
 
-export default Container
+    export const Title = styled.div`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding-bottom: 10px;
+
+        svg {
+            margin-top: 30px;
+        }
+    `

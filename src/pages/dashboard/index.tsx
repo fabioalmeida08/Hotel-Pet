@@ -17,7 +17,7 @@ const Dashboard = () => {
         <DasboardHeader />
         <CardUser>
           <UserNav />
-          <DashboardPets />
+          {/* <DashboardPets /> */}
         </CardUser>
       </Container>
     )   

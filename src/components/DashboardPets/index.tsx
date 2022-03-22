@@ -1,10 +1,11 @@
-import Container from "./stylesDashboardPets";
+import { Container, Footer, Content} from "./stylesDashboardPets";
 import CardPet from "../CardPets";
 import CardRegisterPet from "../CardRegisterPet";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthProvider/index";
 import { toast } from "react-toastify";
+import buttonDashboardPets from '../../assets/svg/buttonDashboardPets.svg'
 interface typedPets {
   age: number;
   hospedado: boolean;
@@ -18,38 +19,42 @@ interface typedPets {
   tutorId: number;
 }
 
-const DashboardPets = () => { 
-  const { userPets } = useAuth();
-  console.log(userPets)
-  
-  return (
-  <Container>
-    <CardPet/>
-    <CardPet/>
-    <CardPet/>
-    <CardPet/>
-    <CardPet/>
-    <CardPet/>
-    <CardPet/>
-    <CardPet/>
-    <CardPet/>
-    <CardPet/>
-    <CardPet/>
-    <CardPet/>
-  </Container>
-)
-}
+const DashboardPets = () => {
 
-export default DashboardPets
+  const [isOpenModal, setIsOpenModal] = useState(false)
+
+  const { userPets } = useAuth();
+  console.log(userPets);
+
+  const handleOpen = () => {
+    setIsOpenModal(!isOpenModal);
+  };
+
+  return (
+    <Container>
+      <Content>
+        <CardPet/>
+      </Content>
+      <Footer>
+        <button onClick={handleOpen}>
+          <img src={buttonDashboardPets} alt="button"/>
+        </button>
+      </Footer>
+      {
+        !!isOpenModal && <CardRegisterPet/>
+      }
+    </Container>
+  );
+};
+
+export default DashboardPets;
 //   const [petsArr, setPetsArr] = useState<typedPets[]>([])
 //   const [isAuthenticated, setIsAuthenticated] = useState(false);
 //   const [filteredPetsState, setFilteredPetsState] = useState([])
 
 //   // Se não tiver pets, a pagina será diferente
 
-//   const handleClick = () => {
-//     <CardRegisterPet />;
-//   };
+//   
 
 //   useEffect(() => {
 //     axios
