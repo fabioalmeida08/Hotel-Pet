@@ -106,9 +106,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         headers: { Authorization: `Bearer ${authToken}` },
       })
       .then((res) => {
-        const pets = res.data.pets
-        setUserPets(pets)
-        console.log(userPets)
+        setUserPets(res.data.pets)
       })
     
     hotelPetApi
