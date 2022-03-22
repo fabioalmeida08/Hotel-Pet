@@ -54,7 +54,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const [userPets, setUserPets] = useState<[]>([])
 
-  const [allUsers , setAllUsers] = useState<[]>([])
+  const [allUsers, setAllUsers] = useState<[]>([])
 
   const [authToken, setAuthToken] = useState(
     () => localStorage.getItem('@hotelPet:token') || ''
@@ -68,54 +68,59 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     () => localStorage.getItem('@hotelPet:userId') || ''
   )
 
-  const signIn = (userData: IFormData) => {
-    hotelPetApi
-      .post('/login', userData)
-      .then((res) => {
-        const { id, name, admin } = res.data.user
-        const token = res.data.accessToken
+  const signIn = async (userData: IFormData) => {
+    const { data } = await hotelPetApi.post(
+      '/login',
+      userData
+    )
 
-        setUserId(id)
-        setUserName(name)
+    const login = () => {
+      const { id, name, admin } = data.user
+      const token = data.accessToken
+      console.log(id)
 
-        localStorage.setItem(
-          '@hotelPet:token',
-          JSON.stringify(token)
-        )
+      setUserId(id)
+      setUserName(name)
 
-        localStorage.setItem(
-          '@hotelPet:userName',
-          JSON.stringify(name)
-        )
+      localStorage.setItem(
+        '@hotelPet:token',
+        JSON.stringify(token)
+      )
 
-        localStorage.setItem(
-          '@hotelPet:userId',
-          JSON.stringify(id)
-        )
+      localStorage.setItem(
+        '@hotelPet:userName',
+        JSON.stringify(name)
+      )
 
-        setAuthToken(token)
+      localStorage.setItem(
+        '@hotelPet:userId',
+        JSON.stringify(id)
+      )
 
-        if (admin) setAdmin(true)
+      setAuthToken(token)
 
-        navigate('/dashboard')
-      })
-      .catch((err) => console.log(err))
+      if (admin) setAdmin(true)
+    }
 
-    hotelPetApi
-      .get(`/users/${userId}?_embed=pets`, {
+    login()
+
+    const { data: data2 } = await hotelPetApi.get(
+      `/users/${userId}?_embed=pets`,
+      {
         headers: { Authorization: `Bearer ${authToken}` },
-      })
-      .then((res) => {
-        setUserPets(res.data.pets)
-      })
-    
-    hotelPetApi
-       .get(`/users`, {
+      }
+    )
+
+    setUserPets(data2.pets)
+
+    const { data: data3 } = await hotelPetApi.get(
+      `/users`,
+      {
         headers: { Authorization: `Bearer ${authToken}` },
-      })
-      .then(res => {
-        setAllUsers(res.data)
-      })
+      }
+    )
+    setAllUsers(data3)
+    navigate('/dashboard/pets')
   }
 
   const logOut = () => {
@@ -136,7 +141,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         userId,
         userName,
         userPets,
-        allUsers
+        allUsers,
       }}
     >
       {children}
