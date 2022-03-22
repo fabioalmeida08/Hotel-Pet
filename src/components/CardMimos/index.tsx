@@ -13,26 +13,10 @@ interface CardTypes {
   title: string,
   description: string
 }
-interface PetsType {
-  age: number
-  hospedado: boolean
-  id: number
-  mimos: Array<object>
-  name: string
-  race: string
-  size: string
-  specie: string
-  status: Array<object>
-  userId: number
-}
 const CardMimos = ({ img, title, description }: CardTypes) => {
   const [isBuying, setIsBuying] = useState(false)
-  // const [userPets, setUserPets] = useState<PetsType[]>([])
-  const [filteredPets, setFilteredPets] = useState<PetsType[]>([])
-
-  const { userPets } = useAuth()
- 
-  console.log(userPets)
+  const { userPets, authToken } = useAuth()
+    
   
   const schema = yup.object().shape({
     petBuyMime: yup.string().required(),
@@ -46,14 +30,21 @@ const CardMimos = ({ img, title, description }: CardTypes) => {
     resolver: yupResolver(schema),
   })
   const onSubmit = handleSubmit((data) => {
+    console.log(data)
+    // axios.put(`https://hotelpetapi.herokuapp.com/pets/${petId}`, data , {
+    //   headers: {
+    //     Authorization: `Bearer ${authToken}`,
+    //   },
 
+    // }).then((response) => console.log(response)).catch((err) => console.log(err.message))
+    
   })
 
   return (
     <>
       {isBuying === true ? <CardBuyMime>
         <img src={SquareCat} alt="CatImage"></img>
-        <div className="CardContainer">
+        <div className="DivCard">
           <h2>Comprar o {title}</h2>
           <Controller
             name='petBuyMime'
@@ -79,7 +70,8 @@ const CardMimos = ({ img, title, description }: CardTypes) => {
             )} />
           <p>Confirmar compra do produto</p>
         </div>
-        <button onClick={() => setIsBuying(!isBuying)}>
+        <button onClick={() => {setIsBuying(!isBuying)
+        onSubmit()}}>
           Comprar
         </button>
 
