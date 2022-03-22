@@ -33,7 +33,8 @@ const CardMimos = ({ img, title, description }: CardTypes) => {
     resolver: yupResolver(schema),
   })
   const onSubmit = handleSubmit((data) => {
-    data.type = title
+    data.service = title
+    data.done = false
     const petMime = userPets.filter((pet) => pet.name === data.pet)
     const petId = petMime[0].id
     const petToUse = petMime[0]
