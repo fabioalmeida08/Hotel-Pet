@@ -1,9 +1,9 @@
-
 import {
   createContext,
   ReactNode,
   useContext,
   useState,
+  useEffect,
 } from 'react'
 import { useNavigate } from 'react-router-dom'
 import hotelPetApi from '../../services/index'
@@ -24,6 +24,21 @@ interface AuthProviderValue {
   admin: boolean
   userName: string
   userId: string | number
+  userPets: [] | typedPets
+  allUsers: []
+}
+
+interface typedPets {
+  age: number
+  hospedado: boolean
+  id: number
+  mimos: Array<object>
+  name: string
+  race: string
+  size: string
+  specie: string
+  status: Array<object>
+  tutorId: number
 }
 
 export const AuthContext = createContext<AuthProviderValue>(
@@ -36,15 +51,20 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const navigate = useNavigate()
 
   const [admin, setAdmin] = useState(false)
- 
+
+  const [userPets, setUserPets] = useState<[]>([])
+
+  const [allUsers , setAllUsers] = useState<[]>([])
+
   const [authToken, setAuthToken] = useState(
     () => localStorage.getItem('@hotelPet:token') || ''
   )
-  const [userName , setUserName] = useState(
+
+  const [userName, setUserName] = useState(
     () => localStorage.getItem('@hotelPet:userName') || ''
   )
-  
-  const [userId , setUserId] = useState<number | string>(
+
+  const [userId, setUserId] = useState<number | string>(
     () => localStorage.getItem('@hotelPet:userId') || ''
   )
 
@@ -52,12 +72,12 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     hotelPetApi
       .post('/login', userData)
       .then((res) => {
-       const {id , name , admin} = res.data.user
-       const token = res.data.accessToken
-        
+        const { id, name, admin } = res.data.user
+        const token = res.data.accessToken
+
         setUserId(id)
         setUserName(name)
-        
+
         localStorage.setItem(
           '@hotelPet:token',
           JSON.stringify(token)
@@ -72,15 +92,32 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
           '@hotelPet:userId',
           JSON.stringify(id)
         )
-        
-        setAuthToken(token)
-        
-        if(admin) setAdmin(true)
-        
-        navigate("/dashboard")
 
+        setAuthToken(token)
+
+        if (admin) setAdmin(true)
+
+        navigate('/dashboard')
       })
       .catch((err) => console.log(err))
+
+    hotelPetApi
+      .get(`/users/${userId}?_embed=pets`, {
+        headers: { Authorization: `Bearer ${authToken}` },
+      })
+      .then((res) => {
+        const pets = res.data.pets
+        setUserPets(pets)
+        console.log(userPets)
+      })
+    
+    hotelPetApi
+       .get(`/users`, {
+        headers: { Authorization: `Bearer ${authToken}` },
+      })
+      .then(res => {
+        setAllUsers(res.data)
+      })
   }
 
   const logOut = () => {
@@ -93,7 +130,16 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ signIn, authToken, logOut ,admin , userId , userName}}
+      value={{
+        signIn,
+        authToken,
+        logOut,
+        admin,
+        userId,
+        userName,
+        userPets,
+        allUsers
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -10,8 +10,8 @@ const Dashboard = () => {
   const {authToken} = useAuth()
   
   if (!authToken) {
-    return <Navigate to='/login' replace />}
-    
+    return <Navigate to='/login' replace />
+  }
     return (
       <Container>
         <DasboardHeader />
