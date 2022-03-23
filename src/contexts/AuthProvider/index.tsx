@@ -100,13 +100,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   }
 
   const signIn = async (userData: IFormData) => {
-    const { data } = await hotelPetApi.post(
-      '/login',
-      userData
-    )
+    try{
 
-    await login(data)
-
+      const { data } = await hotelPetApi.post(
+        '/login',
+        userData
+        )
+        
+        await login(data)
     const { data: data2 } = await hotelPetApi.get(
       `/users/${localStorage.getItem(
         '@hotelPet:userId'
@@ -139,6 +140,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     )
     setAllUsers(data3)
     navigate('/dashboard/pets')
+  }catch(err){
+    return null
+  }
+
   }
 
   const logOut = () => {
