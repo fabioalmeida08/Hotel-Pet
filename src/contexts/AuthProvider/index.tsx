@@ -68,48 +68,81 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     () => localStorage.getItem('@hotelPet:userId') || ''
   )
 
+  const login = (data: any) => {
+    const { id, name, admin } = data.user
+    const token = data.accessToken
+
+    setUserId(id)
+    setUserName(name)
+
+    localStorage.setItem(
+      '@hotelPet:token',
+      JSON.stringify(token)
+    )
+
+    localStorage.setItem(
+      '@hotelPet:userName',
+      JSON.stringify(name)
+    )
+
+    localStorage.setItem(
+      '@hotelPet:userId',
+      JSON.stringify(id)
+    )
+
+    setAuthToken(token)
+
+    if (admin) setAdmin(true)
+    console.log(1)
+  }
+
   const signIn = async (userData: IFormData) => {
     const { data } = await hotelPetApi.post(
       '/login',
       userData
     )
 
-    const login = () => {
-      const { id, name, admin } = data.user
-      const token = data.accessToken
-      console.log(id)
+    // const login = () => {
+    //   const { id, name, admin } = data.user
+    //   const token = data.accessToken
+    //   console.log(id)
 
-      setUserId(id)
-      setUserName(name)
+    //   setUserId(id)
+    //   setUserName(name)
 
-      localStorage.setItem(
-        '@hotelPet:token',
-        JSON.stringify(token)
-      )
+    //   localStorage.setItem(
+    //     '@hotelPet:token',
+    //     JSON.stringify(token)
+    //   )
 
-      localStorage.setItem(
-        '@hotelPet:userName',
-        JSON.stringify(name)
-      )
+    //   localStorage.setItem(
+    //     '@hotelPet:userName',
+    //     JSON.stringify(name)
+    //   )
 
-      localStorage.setItem(
-        '@hotelPet:userId',
-        JSON.stringify(id)
-      )
+    //   localStorage.setItem(
+    //     '@hotelPet:userId',
+    //     JSON.stringify(id)
+    //   )
 
-      setAuthToken(token)
+    //   setAuthToken(token)
 
-      if (admin) setAdmin(true)
-      console.log(1)
-    }
+    //   if (admin) setAdmin(true)
+    //   console.log(1)
+    // }
 
-
-    login()
+    await login(data)
 
     const { data: data2 } = await hotelPetApi.get(
-      `/users/${userId}?_embed=pets`,
+      `/users/${localStorage.getItem(
+        '@hotelPet:userId'
+      )}?_embed=pets`,
       {
-        headers: { Authorization: `Bearer ${authToken}` },
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem('@hotelPet:token') || ''
+          )}`,
+        },
       }
     )
 
@@ -119,7 +152,11 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     const { data: data3 } = await hotelPetApi.get(
       `/users`,
       {
-        headers: { Authorization: `Bearer ${authToken}` },
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem('@hotelPet:token') || ''
+          )}`,
+        },
       }
     )
     setAllUsers(data3)
