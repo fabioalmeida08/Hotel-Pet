@@ -25,6 +25,7 @@ interface AuthProviderValue {
   userId: string | number
   userPets: [] | typedPets[]
   allUsers: []
+
 }
 
 interface typedPets {
@@ -51,8 +52,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const [admin, setAdmin] = useState(false)
 
-  const [userPets, setUserPets] = useState<typedPets[]>([])
-  console.log(userPets)
+  const [userPets, setUserPets] = useState<typedPets[]>(
+    () => JSON.parse(localStorage.getItem('@hotelPet:userPets') || '[]')
+  )
+  
 
   const [allUsers, setAllUsers] = useState<[]>([])
 
@@ -68,13 +71,16 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     () => localStorage.getItem('@hotelPet:userId') || ''
   )
 
+  // console.log(JSON.parse(localStorage.getItem('@hotelPet:userName') || ''))
+  
   const login = (data: any) => {
     const { id, name, admin } = data.user
     const token = data.accessToken
 
     setUserId(id)
     setUserName(name)
-
+    setAuthToken(token)
+    
     localStorage.setItem(
       '@hotelPet:token',
       JSON.stringify(token)
@@ -82,15 +88,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
     localStorage.setItem(
       '@hotelPet:userName',
-      JSON.stringify(name)
+      (name)
     )
-
+    
     localStorage.setItem(
       '@hotelPet:userId',
       JSON.stringify(id)
-    )
-
-    setAuthToken(token)
+      )
+      
 
     if (admin) setAdmin(true)
     console.log(1)
@@ -147,6 +152,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     )
 
     setUserPets(data2.pets)
+    localStorage.setItem(
+      '@hotelPet:userPets',
+      JSON.stringify(data2.pets)
+    )
     console.log(2)
 
     const { data: data3 } = await hotelPetApi.get(

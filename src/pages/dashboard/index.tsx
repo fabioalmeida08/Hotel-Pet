@@ -9,9 +9,9 @@ import { Navigate } from 'react-router-dom'
 const Dashboard = () => {
   const {authToken} = useAuth()
   
-  if (!authToken) {
-    return <Navigate to='/login' replace />
-  }
+  // if (!authToken) {
+  //   return <Navigate to='/login' replace />
+  // }
     return (
       <Container>
         <DasboardHeader />

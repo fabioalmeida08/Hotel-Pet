@@ -12,6 +12,7 @@ import { useAuth } from "../../contexts/AuthProvider/index";
 import buttonDashboardPets from "../../assets/svg/buttonDashboardPets.svg";
 import dashcat from "../../assets/svg/dashboard/dashcat.svg";
 import NoPets from "../NoPets";
+
 interface typedPets {
   age: number;
   hospedado: boolean;
@@ -28,6 +29,7 @@ interface typedPets {
 const DashboardPets = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
+ 
   const { userPets } = useAuth();
   console.log(userPets);
 
