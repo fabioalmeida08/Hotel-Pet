@@ -24,7 +24,7 @@ interface AuthProviderValue {
   userName: string
   userId: string | number
   userPets: [] | typedPets[]
-  allUsers: []
+  allUsers: [] | typedUsers[]
   setUserPets: any
 }
 
@@ -39,6 +39,15 @@ interface typedPets {
   specie: string
   status: Array<object>
   userId: number
+}
+
+interface typedUsers {
+  email: string
+		password: string
+		name: string
+		phone: string
+		address: string
+		id: number
 }
 
 export const AuthContext = createContext<AuthProviderValue>(
@@ -56,7 +65,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     () => JSON.parse(localStorage.getItem('@hotelPet:userPets') || '[]')
   )
   
-  const [allUsers, setAllUsers] = useState<[]>([])
+  const [allUsers, setAllUsers] = useState<typedUsers[]>(
+    () => JSON.parse(localStorage.getItem('@hotelPet:allUsers') || '[]')
+  )
 
   const [authToken, setAuthToken] = useState(
     () => localStorage.getItem('@hotelPet:token') || ''
@@ -137,7 +148,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         },
       }
     )
+    console.log(data3)
     setAllUsers(data3)
+    localStorage.setItem(
+      '@hotelPet:allUsers',
+      JSON.stringify(data3)
+    )
+    
+    
     navigate('/dashboard/pets')
   }
 
