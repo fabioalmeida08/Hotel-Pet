@@ -12,13 +12,11 @@ import backgroundCat from '../../assets/img/backgroundRegisterCat.png'
 import * as yup from 'yup'
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import axios from 'axios'
 import {
   AuthContext,
   useAuth,
 } from '../../contexts/AuthProvider'
 import { useContext } from 'react'
-import { AuthProvider } from '../../contexts/AuthProvider'
 import hotelPetApi from '../../services/index'
 
 interface Modal {
@@ -46,7 +44,7 @@ const CardRegisterPet = ({
     resolver: yupResolver(schema),
   })
 
-  const { authToken, setUserPets, userPets } = useAuth()
+  const { setUserPets, userPets } = useAuth()
   const { userId } = useContext(AuthContext)
   const onSubmit = handleSubmit((data) => {
     data.hospedado = false

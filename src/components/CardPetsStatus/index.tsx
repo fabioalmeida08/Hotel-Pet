@@ -4,7 +4,7 @@ import Timeline from "@mui/lab/Timeline";
 import { Scrollbar } from "./Scrollbar";
 import svg from "../../assets/svg/Group.svg";
 import arrow from "../../assets/svg/arrow_down.svg";
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 const CardPetsStatus = () => {
   const [arrowTop, setArrowTop] = useState(false)
@@ -34,7 +34,7 @@ const CardPetsStatus = () => {
         }
         ></img>}
           
-          <img src={svg} className="background-svg"></img>
+          <img src={svg} alt="" className="background-svg"></img>
           <Scrollbar className="scroll"
           onScroll={() => {
             const scroll = document.querySelector('.scroll')
@@ -66,11 +66,8 @@ const CardPetsStatus = () => {
             }
             if(Number(scroll?.scrollTop) + Number(scroll?.clientHeight) >= Number(scroll?.scrollHeight)){
               setArrowTop(!arrow)
-              scroll?.scrollTo({top: 0, behavior: "smooth"})
-              
+              scroll?.scrollTo({top: 0, behavior: "smooth"}) 
             }
-            
-            
           }
         }
         ></img>

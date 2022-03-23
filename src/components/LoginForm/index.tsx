@@ -23,7 +23,7 @@ interface IFormData {
 }
 
 const LoginForm = () => {
-  const { signIn, logOut } = useAuth()
+  const { signIn } = useAuth()
 
   const [hide, setHide] = useState(false)
   const handlePasswordVisibility = () => {

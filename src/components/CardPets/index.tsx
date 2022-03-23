@@ -1,8 +1,7 @@
 import {StyledCardPet, ButtonDiv} from "./StyledCardPet";
 import arrow from "../../assets/svg/Polygon 6.svg";
 import editSvg from "../../assets/svg/editar icon.svg";
-import paw from "../../assets/svg/paw.svg";
-interface typedPets {
+/* interface typedPets {
   age: number;
   hospedado: boolean;
   id: number;
@@ -14,7 +13,7 @@ interface typedPets {
   status: Array<object>;
   tutorId: number;
   //pet: object,
-}
+} */
 interface petInfo {
   name: string;
   age: number;
