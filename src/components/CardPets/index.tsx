@@ -59,7 +59,6 @@ const CardPet = ({pet, admin}:petInfo) => {
           <h2>{pet.name}</h2>
 
           <img className="status" onClick={() => handleOpenStatus()} src={arrow} alt="a"></img>
-
         </div>
       <section>
         <div>
