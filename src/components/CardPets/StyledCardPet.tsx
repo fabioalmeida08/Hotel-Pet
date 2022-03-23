@@ -2,22 +2,28 @@ import styled from 'styled-components'
 
 const StyledCardPet = styled.div`
   width: 350px;
-  height: 200px;
+  height: 230px;
   display: flex;
   align-items: flex-start;
   border-radius: 20px;
   background-color: #FFFFFF;
   color: #333333;
-  //position: relative;
+  position: relative;
   cursor: pointer;
   box-shadow: 9px 4px 15px 0px rgba(0,0,0,0.3);
 
-  
+  .div-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+  }
 
   .paw{
-    //position: absolute;
-    bottom: 4px;
-    right: 4px;
+    position: absolute;
+    width: 200px;
+    bottom: 10%;
+    right: 5%;
     z-index: 0;
 
   }
@@ -33,7 +39,8 @@ const StyledCardPet = styled.div`
   }
 
   .CardContainer{
-    padding: 20px;
+    width: 100%;
+    padding: 12px;
     flex: 2;
     //position: relative;
     z-index: 1;
@@ -73,7 +80,7 @@ button{
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(244, 169, 25, 0.52) 0%, #F4A919 100%);
   color: #FFFFFF;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   font-family: 'Roboto';
   display: flex;
@@ -88,7 +95,7 @@ button{
   }
 
   img{
-    width: 20px;
+    width: 16px;
   }
 }
 
