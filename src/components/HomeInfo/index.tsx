@@ -15,7 +15,7 @@ interface propType {
     invert?: boolean
 }
 const HomeInfo = ({ svg, label, paragraph, background, invert }: propType) => {
-    const [isMobile, setMobile] = useState(true)
+    const [isMobile, setMobile] = useState(false)
 
     window.addEventListener('resize', function () {
         if (window.innerWidth >= 768) {
