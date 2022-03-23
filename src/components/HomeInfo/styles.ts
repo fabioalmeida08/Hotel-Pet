@@ -10,12 +10,16 @@ const DivWrapper = styled.div<backGroundType>`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0px calc((100vw - 1200px) / 2);
   background-color: ${(prop) =>
     prop.background !== true ? "var(--secundary-1)" : "var(--primary-1)"};
   span {
     height: 0px;
     width: 1px;
   }
+
   div {
     display: flex;
     position: absolute;
@@ -31,6 +35,10 @@ const DivWrapper = styled.div<backGroundType>`
       color: ${(prop) =>
         prop.background !== true ? "var(--primary-1)" : "var(--secundary-1)"};
     }
+  }
+
+  p{
+    color: white;
   }
   @media (min-width: 768px) {
     flex-direction: ${(prop)=> prop.invert === true ? "row": "row-reverse"};
@@ -77,18 +85,20 @@ const DivOrganizer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  text-align: center;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  img{
+    width: 500px;
+  }
   p{
     max-width: 30ch;
-    font-size: var(--info);
-    color: var( --white);
+    font-size: var(--paragraph-2);
   }
-  @media(min-width: 768px){
-    p{
-      color:var( --grey-2) ;
-      font-size: var(  --paragraph-2);
 
+  @media (min-width: 766px){
+    p{
+      color: var(--gray-2)
     }
   }
 `;
