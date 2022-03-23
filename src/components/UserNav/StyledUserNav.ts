@@ -49,7 +49,7 @@ export const Container = styled.div`
         }
     }
 
-    @media(min-width: 580px ) {
+    @media(min-width: 650px ) {
         display: flex;
     }
 
