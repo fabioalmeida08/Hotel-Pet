@@ -2,7 +2,6 @@ import AdmPets from "../../components/AdmPets"
 import DashboardPets from "../../components/DashboardPets"
 import DasboardHeader from "../../components/HeaderDashboard"
 import UserNav from "../../components/UserNav"
-import { useAuth } from "../../contexts/AuthProvider"
 import { Container, CardUser } from "./styles"
 import { useAuth } from '../../contexts/AuthProvider'
 import { Navigate } from "react-router-dom"
