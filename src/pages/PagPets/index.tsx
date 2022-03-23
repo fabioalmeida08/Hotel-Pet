@@ -13,7 +13,6 @@ const PagPets = () => {
         <CardUser>
           <UserNav />
           {admin ? <AdmPets/>: <DashboardPets />}
-          
         </CardUser>
       </Container>
     )   
