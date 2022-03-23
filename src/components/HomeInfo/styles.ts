@@ -30,6 +30,7 @@ const DivWrapper = styled.div<backGroundType>`
   }
   h1 {
     color: var(--white);
+    font-size: var(--subtitle);
     strong {
       color: ${(prop) =>
         prop.background !== true ? "var(--primary-1)" : "var(--secundary-1)"};
@@ -67,10 +68,18 @@ const DivWrapper = styled.div<backGroundType>`
 
     }
   }
+  p{
+    max-width: 30ch;
+    font-size: var(--info);
+    color:  ${(prop) =>
+      prop.background === true ? " var(--grey-2)" : "var(--grey-3)"};;
+  }
   @media (min-width: 1024px) {
     flex-direction: ${(prop)=> prop.invert === true ? "row": "row-reverse"};
     justify-content: center;
-    height: 620px;}
+    height: 620px;
+    font-size: var(--paragraph-2);
+    }
 `;
 const DivOrganizer = styled.div`
   display: flex;

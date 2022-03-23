@@ -6,11 +6,11 @@ import * as yup from 'yup';
 import { Controller, useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
-
-
+import { AuthContext, useAuth } from '../../contexts/AuthProvider';
+import { useContext, useState } from 'react';
 
 const CardRegisterPet = () => {
-
+  const [modalDisplay,setmodalDisplay] = useState(true)
   const schema = yup.object().shape({
     name: yup.string().required(),
     specie: yup.string().required(),
@@ -26,20 +26,26 @@ const CardRegisterPet = () => {
   } = useForm({
     resolver: yupResolver(schema),
   })
-
+  
+  const {authToken} = useAuth()
+  const {userId} = useContext(AuthContext)
   const onSubmit = handleSubmit((data) => {
+    data.hospedado = false
+    data.status = []
+    data.mimos = []
+    data.userId = userId
+    axios.post("https://hotelpetapi.herokuapp.com/pets", data , {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
 
-    // axios.post("https://hotelpetapi.herokuapp.com/pets", data, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-
-    // }).then((response) => console.log(response)).catch((err) => console.log(err))
+    }).then((response) => console.log(response)).catch((err) => console.log(err.message))
     
   })
 
   return (
-    <DivWrapper>
+    <>
+    {modalDisplay ? <DivWrapper>
 
       <DivImgDesktop>
         <img src={backgroundCat} alt="backgroundCat"></img>
@@ -180,11 +186,12 @@ const CardRegisterPet = () => {
         <DivButtons>
 
           <button type="submit">Cadastrar</button>
-          <button className='backButton' type="submit">Voltar</button>
+
+          <button className='backButton' onClick={() => setmodalDisplay(false)}>Voltar</button>
         </DivButtons>
 
       </StyledForm>
-    </DivWrapper>
+    </DivWrapper> :  <></> }</>
   )
 }
 export default CardRegisterPet

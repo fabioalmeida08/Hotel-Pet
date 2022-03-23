@@ -1,8 +1,16 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+
+  min-width: 580px;
+
+`;
+
+const CardUser = styled.div`
   margin-left: 20px;
   margin-right: 20px;
+
+  display: flex;
 
   width: 92%;
   min-width: 385px;
@@ -21,4 +29,5 @@ const Container = styled.div`
     width: 1200px;
   }
 `;
-export { Container };
+
+export { Container, CardUser};
