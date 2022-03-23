@@ -7,6 +7,7 @@ import StyledHomeIntro from "./StyledHomeIntro";
 import {useNavigate} from 'react-router-dom'
 import LoadingScreen from "../../components/LoadingScreen"
 import { useEffect, useState } from "react";
+import HomeContacts from "../../components/HomeContacts";
 
 
 const Home = () => {
@@ -55,8 +56,8 @@ const navigate = useNavigate()
       <>
       <HeaderHome/>
       <StyledHomeIntro>
-          <img src={home_dog} className={'dog-home'}></img>
-          <img src={bg_home} className={'bg-home'}></img>
+          <img src={home_dog} className={'dog-home'} alt="home dog"></img>
+          <img src={bg_home} className={'bg-home'} alt="bg home"></img>
             <div className='info-container'>
               <div>
           <h2>Vai viajar<span>?</span></h2>
@@ -73,8 +74,7 @@ const navigate = useNavigate()
           Info.map((item,index)=> (<HomeInfo key={index}paragraph={item.paragraph} label={item.label} svg={item.svg} background={item.background} invert={item.invert} />) )
         }
         </>}
-
-      
+        <HomeContacts/>
       </>
     )
   }
