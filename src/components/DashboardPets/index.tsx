@@ -7,7 +7,7 @@ import {
 } from './stylesDashboardPets'
 import CardPet from '../CardPets'
 import CardRegisterPet from '../CardRegisterPet'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/AuthProvider/index'
 import buttonDashboardPets from '../../assets/svg/buttonDashboardPets.svg'
 import dashcat from '../../assets/svg/dashboard/dashcat.svg'
@@ -15,7 +15,7 @@ import NoPets from '../NoPets'
 
 interface typedPets {
   age: number
-  hospedado: boolean
+  hospedado?: boolean
   id: number
   mimos: Array<object>
   name: string
@@ -28,6 +28,7 @@ interface typedPets {
 
 const DashboardPets = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
+
 
   const { userPets } = useAuth()
 
@@ -68,11 +69,7 @@ const DashboardPets = () => {
           {userPets.map((pet, index) => {
             return (
               <CardPet
-                name={pet.name}
-                size={pet.size}
-                age={pet.age}
-                race={pet.race}
-                specie={pet.specie}
+                pet={pet}
                 key={index}
               />
             )

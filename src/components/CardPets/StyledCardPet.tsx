@@ -1,5 +1,43 @@
 import styled from "styled-components";
 
+
+export const StyledCardPet = styled.div`
+  width: 350px;
+  height: 230px;
+  display: flex;
+  align-items: flex-start;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  color: #333333;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 9px 4px 15px 0px rgba(0,0,0,0.3);
+
+  .div-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .paw{
+    position: absolute;
+    width: 200px;
+    bottom: 10%;
+    right: 5%;
+    z-index: 0;`
+
+export const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'translate',
+  border: '0',
+  p: 4,
+}
+
 export const StyledCardPet = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,12 +54,12 @@ export const StyledCardPet = styled.div`
     background-color: #ffffff;
     color: #333333;
     //position: relative;
-    cursor: pointer;
     box-shadow: 9px 4px 15px 0px rgba(0, 0, 0, 0.3);
   }
 
   .paw {
     display: none;
+
 
     @media screen and (min-width: 500px) {
       display: block;
@@ -49,8 +87,11 @@ export const StyledCardPet = styled.div`
     }
   }
 
-  .CardContainer {
-    padding: 10px 20px 10px 20px;
+
+  .CardContainer{
+    width: 100%;
+    padding: 12px;
+
     flex: 2;
     //position: relative;
     z-index: 1;
@@ -84,33 +125,36 @@ export const StyledCardPet = styled.div`
       font-weight: 500;
     }
   }
-  button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    background: linear-gradient(
-      180deg,
-      rgba(244, 169, 25, 0.52) 0%,
-      #f4a919 100%
-    );
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: "Roboto";
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    //margin-top: 8px;
-    cursor: pointer;
+
+button{
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(244, 169, 25, 0.52) 0%, #F4A919 100%);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+  cursor: pointer;
+
 
     :hover {
       background-color: var(--primary-1);
     }
 
-    img {
-      width: 20px;
-    }
+
+  img{
+    width: 16px;
+
+  }
+
+  .status {
+    cursor: pointer;
   }
 `;
 
@@ -118,6 +162,4 @@ export const ButtonDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  
 `

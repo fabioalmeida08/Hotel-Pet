@@ -9,8 +9,9 @@ import dashsair from '../../assets/svg/dashboard/dashsair.svg'
 import dashdog from '../../assets/svg/dashboard/dashdog.svg'
 
 const UserNav = () => {
+  const { logOut, admin } = useAuth();
   const infoButton = [
-    { children: "Meus Pets", navi: "pets", icon:`${dashdog}`},
+    { children: admin ? 'Todos os pets' : 'Meus pets', navi: "pets", icon:`${dashdog}`},
     { children: "Mimos", navi: "mime", icon:`${dashmimos}`},
     { children: "Contatos", navi: "contact", icon: `${dashcontato}` },
     { children: "Configurações", navi: "config", icon:`${dashconfig}` },
@@ -19,7 +20,6 @@ const UserNav = () => {
 
   let navigate = useNavigate();
 
-  const { logOut } = useAuth();
 
   const handleClick = (parm: string) => {
     if (parm !== "") {

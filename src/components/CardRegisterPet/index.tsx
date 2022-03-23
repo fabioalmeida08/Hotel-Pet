@@ -18,6 +18,7 @@ import {
 } from '../../contexts/AuthProvider'
 import { useContext } from 'react'
 import hotelPetApi from '../../services/index'
+import Draggable from 'react-draggable'
 
 interface Modal {
   isOpenModal: boolean
@@ -76,6 +77,7 @@ const CardRegisterPet = ({
 
   return (
     <Container2>
+      <Draggable>
       <DivWrapper>
         <DivImgDesktop>
           <img
@@ -222,6 +224,7 @@ const CardRegisterPet = ({
           </DivButtons>
         </StyledForm>
       </DivWrapper>
+    </Draggable>
     </Container2>
   )
 }
