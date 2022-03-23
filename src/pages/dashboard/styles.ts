@@ -1,28 +1,24 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-
-  min-width: 580px;
-
+  max-width: 320px;
 `;
 
 const CardUser = styled.div`
-  margin-left: 20px;
-  margin-right: 20px;
 
   display: flex;
 
-  width: 92%;
-  min-width: 385px;
+  width: 90%;
+  max-width: 500px; 
+  min-width: 320px;
   height: 738px;
-  background: #FFFFFF;
+  background: var(--white);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   border-radius: 49px;
 
-  @media (min-width: 580px){
-    margin-left: auto;
-    margin-right: auto;
+  @media (min-width: 650px){
     width: 90%;
+    max-width: 500px;
   }
 
   @media (min-width: 1260px){
