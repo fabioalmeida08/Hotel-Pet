@@ -19,6 +19,11 @@ import Logo from '../../assets/svg/dashboardLogo.svg'
 import { IoPaw } from "react-icons/io5";
 import { useAuth } from '../../contexts/AuthProvider'
 import { useNavigate } from "react-router-dom"
+import dashmimos from '../../assets/svg/dashboard/dashmimos.svg'
+import dashconfig from '../../assets/svg/dashboard/dashconfig.svg'
+import dashcontato from '../../assets/svg/dashboard/dashcontato.svg'
+import dashsair from '../../assets/svg/dashboard/dashsair.svg'
+import dashdog from '../../assets/svg/dashboard/dashdog.svg'
 
 const DasboardHeader = () => {
   const { userName, logOut } = useAuth()
@@ -38,6 +43,24 @@ const DasboardHeader = () => {
   }
 
   let navigate = useNavigate()
+
+  const infoButton = [
+    { children: "Meus Pets", navi: "pets", icon:`${dashdog}`},
+    { children: "Mimos", navi: "mime", icon:`${dashmimos}`},
+    { children: "Contatos", navi: "contact", icon: `${dashcontato}` },
+    { children: "Configurações", navi: "config", icon:`${dashconfig}` },
+    { children: "Sair", navi: "/" , icon:`${dashsair}`},
+  ];
+
+  const handleClickNav = (parm: string) =>{
+    if (parm !== "") {
+      if (parm === "/") {
+        logOut();
+      } else {
+        navigate(`/dashboard/${parm}`);
+      }
+    }
+  };
 
   const matches = useMediaQuery('(max-width:580px)')
   return (
@@ -114,54 +137,22 @@ const DasboardHeader = () => {
                 onClose={handleClose}
                 
               >
-                <MenuItem sx={{
-                  color: 'var(--white)',
-                  backgroundColor: 'var(--primary-1)',
-                  display: 'flex',
-                  gap: '5px',
-                  alignItems: 'center',
-                }}
-                onClick={() => navigate('/dashboard/pets')}
-                >
-                  <IoPaw />
-                  Pets
-                </MenuItem>
-                <MenuItem sx={{
-                  color: 'var(--white)',
-                  backgroundColor: 'var(--primary-1)',
-                  display: 'flex',
-                  gap: '5px',
-                  alignItems: 'center',
-                }}
-                onClick={() => navigate('/dashboard/mine')}
-                >
-                  <IoPaw />
-                  Mine
-                </MenuItem>
-                <MenuItem sx={{
-                  color: 'var(--white)',
-                  backgroundColor: 'var(--primary-1)',
-                  display: 'flex',
-                  gap: '5px',
-                  alignItems: 'center',
-                }}
-                onClick={() => navigate('/dashboard/contact')}
-                >
-                  <IoPaw />
-                  Contact
-                </MenuItem>
-                <MenuItem sx={{
-                  color: 'var(--white)',
-                  backgroundColor: 'var(--primary-1)',
-                  display: 'flex',
-                  gap: '5px',
-                  alignItems: 'center',
-                }}
-                onClick={() => navigate('/dashboard/config')}
-                >
-                  <IoPaw />
-                  Config
-                </MenuItem>
+                {infoButton.map((item, index) => (
+                  <>
+                    <MenuItem sx={{
+                      color: 'var(--white)',
+                      backgroundColor: 'var(--primary-1)',
+                      display: 'flex',
+                      gap: '5px',
+                      alignItems: 'center',
+                    }}
+                    onClick={() => handleClickNav(item.navi)}
+                    >
+                      <img src={item.icon} alt={item.children}/>
+                      {item.children}
+                    </MenuItem>
+                  </>
+                ))}
               </Menu>
             </Grid>
           )}

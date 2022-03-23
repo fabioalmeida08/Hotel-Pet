@@ -25,6 +25,7 @@ interface AuthProviderValue {
   userId: string | number
   userPets: [] | typedPets[]
   allUsers: []
+  setUserPets: any
 }
 
 interface typedPets {
@@ -51,9 +52,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const [admin, setAdmin] = useState(false)
 
-  const [userPets, setUserPets] = useState<typedPets[]>([])
-  console.log(userPets)
-
+  const [userPets, setUserPets] = useState<typedPets[]>(
+    () => JSON.parse(localStorage.getItem('@hotelPet:userPets') || '[]')
+  )
+  
   const [allUsers, setAllUsers] = useState<[]>([])
 
   const [authToken, setAuthToken] = useState(
@@ -68,62 +70,74 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     () => localStorage.getItem('@hotelPet:userId') || ''
   )
 
+
+  
+  const login = (data: any) => {
+    const { id, name, admin } = data.user
+    const token = data.accessToken
+
+    setUserId(id)
+    setUserName(name)
+    setAuthToken(token)
+    
+    localStorage.setItem(
+      '@hotelPet:token',
+      JSON.stringify(token)
+    )
+
+    localStorage.setItem(
+      '@hotelPet:userName',
+      (name)
+    )
+    
+    localStorage.setItem(
+      '@hotelPet:userId',
+      JSON.stringify(id)
+      )
+      
+
+    if (admin) setAdmin(true)
+  }
+
   const signIn = async (userData: IFormData) => {
     const { data } = await hotelPetApi.post(
       '/login',
       userData
     )
 
-    const login = () => {
-      const { id, name, admin } = data.user
-      const token = data.accessToken
-      console.log(id)
-
-      setUserId(id)
-      setUserName(name)
-
-      localStorage.setItem(
-        '@hotelPet:token',
-        JSON.stringify(token)
-      )
-
-      localStorage.setItem(
-        '@hotelPet:userName',
-        JSON.stringify(name)
-      )
-
-      localStorage.setItem(
-        '@hotelPet:userId',
-        JSON.stringify(id)
-      )
-
-      setAuthToken(token)
-
-      if (admin) setAdmin(true)
-      console.log(1)
-    }
-
-
-    login()
+    await login(data)
 
     const { data: data2 } = await hotelPetApi.get(
-      `/users/${userId}?_embed=pets`,
+      `/users/${localStorage.getItem(
+        '@hotelPet:userId'
+      )}?_embed=pets`,
       {
-        headers: { Authorization: `Bearer ${authToken}` },
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem('@hotelPet:token') || ''
+          )}`,
+        },
       }
     )
 
     setUserPets(data2.pets)
-    console.log(2)
+    localStorage.setItem(
+      '@hotelPet:userPets',
+      JSON.stringify(data2.pets)
+    )
+    
 
     const { data: data3 } = await hotelPetApi.get(
       `/users`,
       {
-        headers: { Authorization: `Bearer ${authToken}` },
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem('@hotelPet:token') || ''
+          )}`,
+        },
       }
     )
     setAllUsers(data3)
-    console.log(3)
     navigate('/dashboard/pets')
   }
 
@@ -146,6 +160,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         userName,
         userPets,
         allUsers,
+        setUserPets,
       }}
     >
       {children}
