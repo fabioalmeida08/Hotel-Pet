@@ -39,7 +39,7 @@ const UserNav = () => {
       </Title>
       {infoButton.map((item, index) => (
         <div key={index}>
-          <button  onClick={() => handleClick(item.navi)}>
+          <button onClick={() => handleClick(item.navi)}>
             <img src={item.icon} alt="icon"/>
             {item.children}
           </button>
