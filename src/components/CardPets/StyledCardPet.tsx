@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+export const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'translate',
+  border: '0',
+  p: 4,
+};
+
 export const StyledCardPet = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,7 +27,6 @@ export const StyledCardPet = styled.div`
     background-color: #ffffff;
     color: #333333;
     //position: relative;
-    cursor: pointer;
     box-shadow: 9px 4px 15px 0px rgba(0, 0, 0, 0.3);
   }
 
@@ -112,12 +122,14 @@ export const StyledCardPet = styled.div`
       width: 20px;
     }
   }
+
+  .status {
+    cursor: pointer;
+  }
 `;
 
 export const ButtonDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  
 `

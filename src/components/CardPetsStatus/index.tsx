@@ -67,10 +67,7 @@ const CardPetsStatus = () => {
             if(Number(scroll?.scrollTop) + Number(scroll?.clientHeight) >= Number(scroll?.scrollHeight)){
               setArrowTop(!arrow)
               scroll?.scrollTo({top: 0, behavior: "smooth"})
-              
             }
-            
-            
           }
         }
         ></img>

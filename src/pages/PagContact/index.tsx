@@ -7,6 +7,7 @@ import { Container, CardUser } from "./styles"
 
 const PagContacts = () => {
   const { admin } = useAuth()
+  
     return (
       <Container>
         <DasboardHeader />
