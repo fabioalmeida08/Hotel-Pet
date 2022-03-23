@@ -1,7 +1,18 @@
-import HeaderHome from '../../components/HeaderHome'
-import HomeInfo from '../../components/HomeInfo'
+import HeaderHome from "../../components/HeaderHome"
+import HomeInfo from "../../components/HomeInfo"
+import home_dog from '../../assets/svg/cachorro_Home.svg'
+import bg_home from '../../assets/svg/bg_home.svg'
+import { BsArrowRight } from 'react-icons/bs';
+import StyledHomeIntro from "./StyledHomeIntro";
+import {useNavigate} from 'react-router-dom'
+import LoadingScreen from "../../components/LoadingScreen"
+import { useEffect, useState } from "react";
+
 
 const Home = () => {
+
+const navigate = useNavigate()
+
   const Info = [
     {
       svg: 'Beach',
@@ -29,22 +40,43 @@ const Home = () => {
     },
   ]
 
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setInterval(() => {
+      setCount(prevCount => prevCount + 1);
+    }, 1500);
+  }, []);
+  
   
   return (
     <>
-      <HeaderHome />
-      {Info.map((item, index) => (
-        <HomeInfo
-          key={index}
-          paragraph={item.paragraph}
-          label={item.label}
-          svg={item.svg}
-          background={item.background}
-          invert={item.invert}
-        />
-      ))}
-    </>
-  )
-}
+      {count < 2 ? <LoadingScreen /> : 
+      <>
+      <HeaderHome/>
+      <StyledHomeIntro>
+          <img src={home_dog} className={'dog-home'}></img>
+          <img src={bg_home} className={'bg-home'}></img>
+            <div className='info-container'>
+              <div>
+          <h2>Vai viajar<span>?</span></h2>
+          </div>
+          <div></div>
+          <p>Não deixe seu pet <span>sozinho</span> em casa </p>
+          <div></div>
+          <h3>Cadastre-se agora mesmo <BsArrowRight
+          onClick={() => navigate('/signup')}
+          color="#F4A919" size={'40px'}/></h3>
+          </div>
+        </StyledHomeIntro>
+        {
+          Info.map((item,index)=> (<HomeInfo key={index}paragraph={item.paragraph} label={item.label} svg={item.svg} background={item.background} invert={item.invert} />) )
+        }
+        </>}
 
-export default Home
+      
+      </>
+    )
+  }
+   
+  export default Home

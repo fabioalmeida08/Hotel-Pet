@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 100%;
   padding: 10px;
 
@@ -21,7 +21,92 @@ const Container = styled.div`
         background: var(--primary-1);
     }
   }
-
 `
 
-export default Container
+export const Header = styled.div`
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+  h2 {
+    font-size: var(--paragraph-1);
+    font-weight: normal;
+    font-family: var(--font-family-2);
+  }
+
+  div {
+      position: absolute;
+      background-color: var(--secundary-1);
+      width: 200px;
+      height: 10px;
+      opacity: 0.6;
+      top: 55px;
+    }
+`
+
+export const Footer = styled.div`
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+`
+
+export const Content = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: scroll;
+  gap: 30px;
+  height: 500px;
+
+  ::-webkit-scrollbar{
+    width: 0px;
+  }
+`
+
+export const NoPetsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 70px;
+    width: 200px;
+    border-radius: 16px;
+    border: none;
+    background-color: var(--secundary-1);
+    font-family: var(--font-family-2);
+    font-size: var( --subtitle);
+    color: var(--white);
+    cursor: pointer;
+    box-shadow: 9px 4px 15px 0px rgba(0,0,0,0.3);
+
+    :hover {
+      background-color: var(--primary-2);
+    }
+
+    div {
+      border: 1px solid var(--grey-3);
+      border-radius: 50%;
+      padding: 10px;
+    }
+  }
+`

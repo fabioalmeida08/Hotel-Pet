@@ -8,12 +8,14 @@ const StyledCardPet = styled.div`
   border-radius: 20px;
   background-color: #FFFFFF;
   color: #333333;
-  position: relative;
+  //position: relative;
+  cursor: pointer;
+  box-shadow: 9px 4px 15px 0px rgba(0,0,0,0.3);
 
   
 
   .paw{
-    position: absolute;
+    //position: absolute;
     bottom: 4px;
     right: 4px;
     z-index: 0;
@@ -33,7 +35,7 @@ const StyledCardPet = styled.div`
   .CardContainer{
     padding: 20px;
     flex: 2;
-    position: relative;
+    //position: relative;
     z-index: 1;
   }
 
@@ -79,6 +81,11 @@ button{
   justify-content: center;
   gap: 4px;
   margin-top: 8px;
+  cursor: pointer;
+
+  :hover {
+    background-color: var(--primary-1);
+  }
 
   img{
     width: 20px;

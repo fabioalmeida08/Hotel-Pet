@@ -53,7 +53,8 @@ const HeaderHome = () => {
               </IconButton>
               <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
                   <MenuItem sx={{
-                  color: 'var(--grey-3)',
+                  color: 'var(--white)',
+                  backgroundColor: 'var(--primary-1)',
                   display: 'flex',
                   gap: '5px',
                   alignItems: 'center'
@@ -62,7 +63,8 @@ const HeaderHome = () => {
                     Home
                   </MenuItem>
                 <MenuItem sx={{
-                  color: 'var(--grey-3)',
+                  color: 'var(--white)',
+                  backgroundColor: 'var(--primary-1)',
                   display: 'flex',
                   gap: '5px',
                   alignItems: 'center'
@@ -71,7 +73,8 @@ const HeaderHome = () => {
                   Sobre
                 </MenuItem>
                 <MenuItem sx={{
-                  color: 'var(--grey-3)',
+                  color: 'var(--white)',
+                  backgroundColor: 'var(--primary-1)',
                   display: 'flex',
                   gap: '5px',
                   alignItems: 'center'
@@ -80,7 +83,8 @@ const HeaderHome = () => {
                   Contato
                 </MenuItem>
                 <MenuItem sx={{
-                  color: 'var(--grey-3)',
+                  color: 'var(--white)',
+                  backgroundColor: 'var(--primary-1)',
                   display: 'flex',
                   gap: '5px',
                   alignItems: 'center',

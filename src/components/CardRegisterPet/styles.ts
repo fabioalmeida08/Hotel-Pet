@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const Container2 = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0px;
+  background-color: rgba(1, 1, 1, 0.6);
+  top: 0px;
+`
+
 const DivWrapper = styled.div`
   box-shadow: 1px 1px 1px 1px gray;
   display: flex;
@@ -8,6 +20,7 @@ const DivWrapper = styled.div`
   height: 440px;
   font-family: var(--font-family-3);
   border-radius: 8px;
+  background-color: var(--white);
 
   @media (min-width: 768px) {
     display: flex;
@@ -67,15 +80,16 @@ const DivButtons = styled.div`
     color: var(--white);
     margin-top: 8px;
     background-color: var(--primary-1);
+    cursor: pointer;
   }
   button:hover{
-    background-color:var(--primary-2);
+    background: linear-gradient(180deg, rgba(111, 134, 255, 0.69) 0%, #354FD8 100%);;
   }
   .backButton {
     background-color: var(--secundary-1);
   }
   .backButton:hover{
-    background-color: #F4A919;
+    background: linear-gradient(180deg, rgba(244, 169, 25, 0.6) 0%, #F4A919 100%);
   }
   @media (min-width: 768px) {
     margin-left: 1px;

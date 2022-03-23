@@ -1,5 +1,5 @@
 import { MenuItem, TextField } from '@mui/material';
-import { StyledForm, DivButtons, DivWrapper, DivHeader, DivImgDesktop } from './styles';
+import { StyledForm, DivButtons, DivWrapper, DivHeader, DivImgDesktop, Container2} from './styles';
 import DogPaw from "../../assets/img/pata.png"
 import backgroundCat from "../../assets/img/backgroundRegisterCat.png"
 import * as yup from 'yup';
@@ -7,10 +7,15 @@ import { Controller, useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { AuthContext, useAuth } from '../../contexts/AuthProvider';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
+import { AuthProvider } from '../../contexts/AuthProvider';
+interface Modal {
+  isOpenModal: boolean,
+  setIsOpenModal: Function
+}
 
-const CardRegisterPet = () => {
-  const [modalDisplay,setmodalDisplay] = useState(true)
+const CardRegisterPet = ({isOpenModal, setIsOpenModal}:Modal) => {
+
   const schema = yup.object().shape({
     name: yup.string().required(),
     specie: yup.string().required(),
@@ -41,11 +46,14 @@ const CardRegisterPet = () => {
 
     }).then((response) => console.log(response)).catch((err) => console.log(err.message))
     
+    setIsOpenModal(!isOpenModal)
   })
 
   return (
-    <>
-    {modalDisplay ? <DivWrapper>
+
+  <Container2>
+
+    <DivWrapper>
 
       <DivImgDesktop>
         <img src={backgroundCat} alt="backgroundCat"></img>
@@ -186,12 +194,12 @@ const CardRegisterPet = () => {
         <DivButtons>
 
           <button type="submit">Cadastrar</button>
-
-          <button className='backButton' onClick={() => setmodalDisplay(false)}>Voltar</button>
+          <button className='backButton' onClick={() => setIsOpenModal(!isOpenModal)}>Voltar</button>
         </DivButtons>
 
       </StyledForm>
-    </DivWrapper> :  <></> }</>
+    </DivWrapper>
+  </Container2>    
   )
 }
 export default CardRegisterPet

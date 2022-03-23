@@ -16,7 +16,9 @@ import {
 import { useState } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 import Logo from '../../assets/svg/dashboardLogo.svg'
+import { IoPaw } from "react-icons/io5";
 import { useAuth } from '../../contexts/AuthProvider'
+import { useNavigate } from "react-router-dom"
 
 const DasboardHeader = () => {
   const { userName, logOut } = useAuth()
@@ -34,6 +36,8 @@ const DasboardHeader = () => {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
+  let navigate = useNavigate()
 
   const matches = useMediaQuery('(max-width:580px)')
   return (
@@ -108,9 +112,56 @@ const DasboardHeader = () => {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
+                
               >
-                <MenuItem>Carrinho</MenuItem>
-                <MenuItem>carrinho2</MenuItem>
+                <MenuItem sx={{
+                  color: 'var(--white)',
+                  backgroundColor: 'var(--primary-1)',
+                  display: 'flex',
+                  gap: '5px',
+                  alignItems: 'center',
+                }}
+                onClick={() => navigate('/dashboard/pets')}
+                >
+                  <IoPaw />
+                  Pets
+                </MenuItem>
+                <MenuItem sx={{
+                  color: 'var(--white)',
+                  backgroundColor: 'var(--primary-1)',
+                  display: 'flex',
+                  gap: '5px',
+                  alignItems: 'center',
+                }}
+                onClick={() => navigate('/dashboard/mine')}
+                >
+                  <IoPaw />
+                  Mine
+                </MenuItem>
+                <MenuItem sx={{
+                  color: 'var(--white)',
+                  backgroundColor: 'var(--primary-1)',
+                  display: 'flex',
+                  gap: '5px',
+                  alignItems: 'center',
+                }}
+                onClick={() => navigate('/dashboard/contact')}
+                >
+                  <IoPaw />
+                  Contact
+                </MenuItem>
+                <MenuItem sx={{
+                  color: 'var(--white)',
+                  backgroundColor: 'var(--primary-1)',
+                  display: 'flex',
+                  gap: '5px',
+                  alignItems: 'center',
+                }}
+                onClick={() => navigate('/dashboard/config')}
+                >
+                  <IoPaw />
+                  Config
+                </MenuItem>
               </Menu>
             </Grid>
           )}
