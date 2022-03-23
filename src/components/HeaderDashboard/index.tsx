@@ -62,17 +62,18 @@ const DasboardHeader = () => {
     }
   };
 
-  const matches = useMediaQuery('(max-width:580px)')
+  const matches = useMediaQuery('(max-width:650px)')
   return (
     <Paper
       sx={{
         marginBottom: '30px',
+        marginRight: '0px',
         height: '100px',
         display: 'flex',
         borderRadius: 0,
         alignItems: 'center',
         backgroundColor: 'var(--primary-1)',
-        
+        width: '100vw',
       }}
       component='header'
     >
