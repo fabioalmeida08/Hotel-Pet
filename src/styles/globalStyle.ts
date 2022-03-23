@@ -15,7 +15,8 @@ export const styles = {
   fonts: {
     "font-family-1": 'Inter',
     "font-family-2": 'Poppins',
-    "font-family-3": 'Roboto'
+    "font-family-3": 'Roboto',
+    "font-family-4": 'Fredoka'
   },
 
   sizes: {
@@ -46,6 +47,7 @@ export const GlobalStyle = createGlobalStyle`
     --font-family-1: 'Inter';
     --font-family-2: 'Poppins';
     --font-family-3: 'Roboto';
+    --font-family-4: 'Fredoka';
     
     --title-1-size: 64px;
     --title-2-size: 48px;

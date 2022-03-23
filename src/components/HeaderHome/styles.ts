@@ -8,6 +8,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-around;
   gap: 200px;
+  padding: 0 calc((100vw - 1200px) / 2);
+  margin: 0 auto;
 
   @media screen and (min-width: 905px) {
     gap: 400px;

@@ -12,7 +12,7 @@ import Cachorro from '../../assets/svg/cachorroLogo.svg'
 import bg_svg from '../../assets/svg/patas_bg.svg'
 import { StyledImg } from './StyledBg'
 const Login = () => {
-  const matches = useMediaQuery('(max-width:1110px)')
+  const matches = useMediaQuery('(max-width:1210px)')
 
   return (
     <>
@@ -36,7 +36,7 @@ const Login = () => {
         <Container
           maxWidth='xl'
           sx={{
-            mt: '1vh',
+            mt: '5vh',
             img: { height: 'fitContainer' },
           }}
         >
@@ -49,7 +49,7 @@ const Login = () => {
                 borderTopLeftRadius: '20px',
                 borderBottomLeftRadius: '20px',
                 boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.21)',
-                position: "relative"
+                position: "relative",
               }}
             >
               <Stack sx={{ mt: '2vh'}}>

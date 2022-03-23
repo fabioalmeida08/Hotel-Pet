@@ -1,4 +1,3 @@
-
 import {
   createContext,
   ReactNode,
@@ -24,9 +23,34 @@ interface AuthProviderValue {
   admin: boolean
   userName: string
   userId: string | number
+  userPets: [] | typedPets[]
+  allUsers: [] | typedUsers[]
+  setUserPets: any
 }
 
-const AuthContext = createContext<AuthProviderValue>(
+interface typedPets {
+  age: number
+  hospedado: boolean
+  id: number
+  mimos: Array<object>
+  name: string
+  race: string
+  size: string
+  specie: string
+  status: Array<object>
+  userId: number
+}
+
+interface typedUsers {
+  email: string
+		password: string
+		name: string
+		phone: string
+		address: string
+		id: number
+}
+
+export const AuthContext = createContext<AuthProviderValue>(
   {} as AuthProviderValue
 )
 
@@ -36,52 +60,103 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const navigate = useNavigate()
 
   const [admin, setAdmin] = useState(false)
- 
+
+  const [userPets, setUserPets] = useState<typedPets[]>(
+    () => JSON.parse(localStorage.getItem('@hotelPet:userPets') || '[]')
+  )
+  
+  const [allUsers, setAllUsers] = useState<typedUsers[]>(
+    () => JSON.parse(localStorage.getItem('@hotelPet:allUsers') || '[]')
+  )
+
   const [authToken, setAuthToken] = useState(
     () => localStorage.getItem('@hotelPet:token') || ''
   )
-  const [userName , setUserName] = useState(
+
+  const [userName, setUserName] = useState(
     () => localStorage.getItem('@hotelPet:userName') || ''
   )
-  
-  const [userId , setUserId] = useState<number | string>(
+
+  const [userId, setUserId] = useState<number | string>(
     () => localStorage.getItem('@hotelPet:userId') || ''
   )
 
-  const signIn = (userData: IFormData) => {
-    hotelPetApi
-      .post('/login', userData)
-      .then((res) => {
-        const admin = res.data.user.admin
-        const name = res.data.user.name
-        const id = res.data.user.id
-        
-        setUserId(id)
-        setUserName(name)
-        
-        localStorage.setItem(
-          '@hotelPet:token',
-          JSON.stringify(res.data.accessToken)
-        )
 
-        localStorage.setItem(
-          '@hotelPet:userName',
-          JSON.stringify(name)
-        )
+  
+  const login = (data: any) => {
+    const { id, name, admin } = data.user
+    const token = data.accessToken
 
-        localStorage.setItem(
-          '@hotelPet:userId',
-          JSON.stringify(id)
-        )
-        
-        setAuthToken(res.data)
-        
-        if(admin) setAdmin(true)
-        
-        
-        navigate(`/dashboard/${id}`)
-      })
-      .catch((err) => console.log(err))
+    setUserId(id)
+    setUserName(name)
+    setAuthToken(token)
+    
+    localStorage.setItem(
+      '@hotelPet:token',
+      JSON.stringify(token)
+    )
+
+    localStorage.setItem(
+      '@hotelPet:userName',
+      (name)
+    )
+    
+    localStorage.setItem(
+      '@hotelPet:userId',
+      JSON.stringify(id)
+      )
+      
+
+    if (admin) setAdmin(true)
+  }
+
+  const signIn = async (userData: IFormData) => {
+    const { data } = await hotelPetApi.post(
+      '/login',
+      userData
+    )
+
+    await login(data)
+
+    const { data: data2 } = await hotelPetApi.get(
+      `/users/${localStorage.getItem(
+        '@hotelPet:userId'
+      )}?_embed=pets`,
+      {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem('@hotelPet:token') || ''
+          )}`,
+        },
+      }
+    )
+
+    setUserPets(data2.pets)
+    localStorage.setItem(
+      '@hotelPet:userPets',
+      JSON.stringify(data2.pets)
+    )
+    
+
+    const { data: data3 } = await hotelPetApi.get(
+      `/users`,
+      {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem('@hotelPet:token') || ''
+          )}`,
+        },
+      }
+    )
+    console.log(data3)
+    setAllUsers(data3)
+    localStorage.setItem(
+      '@hotelPet:allUsers',
+      JSON.stringify(data3)
+    )
+    
+    
+    navigate('/dashboard/pets')
   }
 
   const logOut = () => {
@@ -94,7 +169,17 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ signIn, authToken, logOut ,admin , userId , userName}}
+      value={{
+        signIn,
+        authToken,
+        logOut,
+        admin,
+        userId,
+        userName,
+        userPets,
+        allUsers,
+        setUserPets,
+      }}
     >
       {children}
     </AuthContext.Provider>
