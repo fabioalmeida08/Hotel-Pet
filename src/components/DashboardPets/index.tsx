@@ -1,11 +1,17 @@
-import { Container, Footer, Content} from "./stylesDashboardPets";
+import {
+  Container,
+  Footer,
+  Content,
+  NoPetsContainer,
+  Header,
+} from "./stylesDashboardPets";
 import CardPet from "../CardPets";
 import CardRegisterPet from "../CardRegisterPet";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { useAuth } from "../../contexts/AuthProvider/index";
-import { toast } from "react-toastify";
-import buttonDashboardPets from '../../assets/svg/buttonDashboardPets.svg'
+import buttonDashboardPets from "../../assets/svg/buttonDashboardPets.svg";
+import dashcat from "../../assets/svg/dashboard/dashcat.svg";
+import NoPets from "../NoPets";
 interface typedPets {
   age: number;
   hospedado: boolean;
@@ -20,8 +26,7 @@ interface typedPets {
 }
 
 const DashboardPets = () => {
-
-  const [isOpenModal, setIsOpenModal] = useState(false)
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const { userPets } = useAuth();
   console.log(userPets);
@@ -30,68 +35,66 @@ const DashboardPets = () => {
     setIsOpenModal(!isOpenModal);
   };
 
-  return (
-    <Container>
-      <Content>
-       {isOpenModal === false && 
-        <CardPet/>
-       }
-      </Content>
-      <Footer>
+  if (userPets.length === 0) {
+    return (
+      <NoPetsContainer>
+        <Header>
+          <h2>Meus pets</h2>
+          <div></div>
+        </Header>
+        <NoPets />
         <button onClick={handleOpen}>
-          <img src={buttonDashboardPets} alt="button"/>
+          <div>
+            <img src={dashcat} alt="img button" />
+          </div>
+          Adicionar pet
         </button>
-      </Footer>
-      {
-        !!isOpenModal && <CardRegisterPet isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>
-      }
-    </Container>
-  );
+        {!!isOpenModal && (
+          <CardRegisterPet
+            isOpenModal={isOpenModal}
+            setIsOpenModal={setIsOpenModal}
+          />
+        )}
+      </NoPetsContainer>
+    );
+  } else {
+    return (
+      <Container>
+        <Header>
+          <h2>
+            Meus pets
+          </h2>
+            <div></div>
+        </Header>
+        <Content>
+          {userPets.map((pet, index) => {
+            console.log(pet);
+            return (
+              <CardPet
+                name={pet.name}
+                size={pet.size}
+                age={pet.age}
+                race={pet.race}
+                specie={pet.specie}
+                key={index}
+              />
+            );
+          })}
+        </Content>
+        <Footer>
+          <button onClick={handleOpen}>
+            <img src={buttonDashboardPets} alt="button" />
+          </button>
+        </Footer>
+        {!!isOpenModal && (
+          <CardRegisterPet
+            isOpenModal={isOpenModal}
+            setIsOpenModal={setIsOpenModal}
+          />
+        )}
+      </Container>
+    );
+  }
 };
 
 export default DashboardPets;
-//   const [petsArr, setPetsArr] = useState<typedPets[]>([])
-//   const [isAuthenticated, setIsAuthenticated] = useState(false);
-//   const [filteredPetsState, setFilteredPetsState] = useState([])
-
-//   // Se não tiver pets, a pagina será diferente
-
-//   
-
-//   useEffect(() => {
-//     axios
-//       .get(`https://hotelpetapi.herokuapp.com/pets`)
-//       .then((response) => {
-//         setIsAuthenticated(true);
-//         setPetsArr(response.data);
-//         toast.success("Opa, deu certo!");
-//       })
-//       .catch((err) => {
-//         setIsAuthenticated(false);
-//         toast.error("Erro");
-//       });
-//   }, []);
-
-//   const filteredPets = petsArr.filter((pet) => {
-//     setFilteredPetsState(filteredPets)
-//     console.log(pet.tutorId)
-//     console.log(userId)
-//     return pet.tutorId === userId;
-//   });
-//   console.log(filteredPets)
-
-//   return (
-//     <Container>
-//       {
-//       filteredPets.map(() => {
-//          return <CardPet/>
-//       })
-//       }
-
-//       {/* <CardPet />
-//           <button className="button" onClick={() => handleClick()}>+</button> */}
-//     </Container>
-//   );
-// };
-
-// export default DashboardPets;

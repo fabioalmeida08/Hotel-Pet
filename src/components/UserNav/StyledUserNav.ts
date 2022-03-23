@@ -33,9 +33,14 @@ export const Container = styled.div`
 
         padding-top: 10px;
         padding-bottom: 10px;
+        padding-left: 50px;
 
         width: 100%;
 
+        display: flex;
+        gap: 5px;
+
+        text-align: left;
         font-size: var( --info);
         font-family: var(--font-family-1);
 
@@ -57,8 +62,9 @@ export const Container = styled.div`
     export const Title = styled.div`
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
+        padding-left: 50px;
+        gap: 5px;
+        text-align: right;
         padding-bottom: 10px;
 
         svg {

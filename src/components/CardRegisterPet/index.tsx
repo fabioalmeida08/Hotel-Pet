@@ -1,5 +1,5 @@
 import { MenuItem, TextField } from '@mui/material';
-import { StyledForm, DivButtons, DivWrapper, DivHeader, DivImgDesktop, Container} from './styles';
+import { StyledForm, DivButtons, DivWrapper, DivHeader, DivImgDesktop, Container2} from './styles';
 import DogPaw from "../../assets/img/pata.png"
 import backgroundCat from "../../assets/img/backgroundRegisterCat.png"
 import * as yup from 'yup';
@@ -51,7 +51,7 @@ const CardRegisterPet = ({isOpenModal, setIsOpenModal}:Modal) => {
 
   return (
 
-  <Container>
+  <Container2>
 
     <DivWrapper>
 
@@ -199,7 +199,7 @@ const CardRegisterPet = ({isOpenModal, setIsOpenModal}:Modal) => {
 
       </StyledForm>
     </DivWrapper>
-  </Container>    
+  </Container2>    
   )
 }
 export default CardRegisterPet
