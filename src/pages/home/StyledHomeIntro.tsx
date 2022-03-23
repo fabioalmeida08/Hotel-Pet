@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { styles } from '../../styles/globalStyle'
-import ModalUnstyled from '@mui/base/ModalUnstyled';
 
 const StyledHomeIntro = styled.div`
   width: 100%;
@@ -150,36 +149,4 @@ svg{
   }
 `
 
-const StyledModal = styled(ModalUnstyled)`
-  position: fixed;
-  z-index: 1300;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Backdrop = styled('div')`
-  z-index: -1;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  background-color: var(--white);
-  -webkit-tap-highlight-color: transparent;
-`;
-
-const styleBox = {
-  width: "100%",
-  height: 400,
-  bgcolor: 'var(--white)',
-  p: 0,
-  px: 0,
-  pb: 0,
-};
-
-export {StyledHomeIntro, StyledModal, Backdrop, styleBox}
+export default StyledHomeIntro
