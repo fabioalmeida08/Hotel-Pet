@@ -9,10 +9,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import axios from "axios"
 import { useAuth } from "../../contexts/AuthProvider"
 interface CardTypes {
-    setModal: Function
     service: string
+    handle : Function
 }
-const ConfirmBuy = ({ setModal, service }: CardTypes) => {
+const ConfirmBuy = ({service, handle}: CardTypes) => {
 
 
 
@@ -104,8 +104,8 @@ const ConfirmBuy = ({ setModal, service }: CardTypes) => {
             <p>Confirmar compra do produto</p>
         </div>
         <button onClick={() => {
-            setModal(false)
             onSubmit()
+            handle()
         }}>
             Comprar
         </button>
