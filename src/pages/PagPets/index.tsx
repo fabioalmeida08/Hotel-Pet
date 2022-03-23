@@ -7,9 +7,9 @@ import { Navigate } from "react-router-dom"
 const PagPets = () => {
   const {authToken} = useAuth()
 
-  // if(!authToken) {
-  //   return <Navigate to='/login' replace />
-  // }
+  if(!authToken) {
+    return <Navigate to='/login' replace />
+  }
     return (
       <Container>
         <DasboardHeader />

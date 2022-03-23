@@ -19,6 +19,8 @@ import {
 } from '../../contexts/AuthProvider'
 import { useContext } from 'react'
 import { AuthProvider } from '../../contexts/AuthProvider'
+import hotelPetApi from '../../services/index'
+
 interface Modal {
   isOpenModal: boolean
   setIsOpenModal: Function
@@ -44,16 +46,15 @@ const CardRegisterPet = ({
     resolver: yupResolver(schema),
   })
 
-  const { authToken } = useAuth()
+  const { authToken, setUserPets, userPets } = useAuth()
   const { userId } = useContext(AuthContext)
   const onSubmit = handleSubmit((data) => {
     data.hospedado = false
     data.status = []
     data.mimos = []
-    data.userId = userId
-    axios
-      .post(
-        'https://hotelpetapi.herokuapp.com/pets',
+    data.userId = Number(userId)
+      hotelPetApi.post(
+        '/pets',
         data,
         {
           headers: {
@@ -63,7 +64,13 @@ const CardRegisterPet = ({
           },
         }
       )
-      .then((response) => console.log(response))
+      .then((response) => {
+        localStorage.setItem(
+          '@hotelPet:userPets',
+          JSON.stringify([...userPets, response.data])
+        )
+        setUserPets([...userPets, response.data])
+      })
       .catch((err) => console.log(err.message))
 
     setIsOpenModal(!isOpenModal)
