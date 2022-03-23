@@ -100,7 +100,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       setAuthToken(token)
 
       if (admin) setAdmin(true)
+      console.log(1)
     }
+
 
     login()
 
@@ -112,6 +114,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     )
 
     setUserPets(data2.pets)
+    console.log(2)
 
     const { data: data3 } = await hotelPetApi.get(
       `/users`,
@@ -120,6 +123,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       }
     )
     setAllUsers(data3)
+    console.log(3)
     navigate('/dashboard/pets')
   }
 
