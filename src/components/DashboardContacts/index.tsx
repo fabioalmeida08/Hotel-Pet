@@ -1,9 +1,11 @@
-import { Container, ContainerInfo, ContainerHotel, ContainerAll, ContainerChat }  from "./stylesDashboardContacts"
+import { Container, ContainerHeader, ContainerInfo, ContainerHotel, ContainerAll, ContainerChat }  from "./stylesDashboardContacts"
 import map from "../../assets/svg/map.svg"
 const DashboardContacts = () => {
     return ( 
       <ContainerAll>
+        <ContainerHeader>
           <h2>Contatos</h2>
+        </ContainerHeader>  
         <Container>
           <ContainerHotel>
             <ContainerInfo>

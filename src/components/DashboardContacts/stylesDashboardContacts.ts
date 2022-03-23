@@ -17,6 +17,9 @@ const ContainerAll = styled.div`
     display: flex;
   }
 `
+const ContainerHeader = styled.div`
+  text-aligh: center;
+`;
 
 const Container = styled.div`
   background-color: #FFF;
@@ -66,4 +69,4 @@ height: 100%;
 }
 `
 
-export { Container, ContainerInfo, ContainerHotel, ContainerAll, ContainerChat }
+export { Container, ContainerHeader, ContainerInfo, ContainerHotel, ContainerAll, ContainerChat }
