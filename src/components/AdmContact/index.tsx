@@ -14,7 +14,7 @@ const AdmContact = () => {
   return (
     <Container>
       <Header>
-        <h2>Meus pets</h2>
+        <h2>Tutores</h2>
         <div></div>
       </Header>
       <Content>
