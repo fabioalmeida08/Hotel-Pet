@@ -10,7 +10,7 @@ const StyledDivMimos = styled.div`
   color: #333333;
   font-size: 14px;
   justify-content: space-evenly;
-  box-shadow: 1px 1px 1px 1px gray;
+  box-shadow: 0px 4px 15px rgb(0 0 0 / 25%);
   position: relative;
   @media (min-width: 768px) {
     width: 350px;

@@ -7,7 +7,7 @@ const ContainerAll = styled.div`
   height: 100%;
   color: var(--grey-3);
 
-  padding:20px;
+  padding: 20px 10px;
 
   img {
     height: 180px;
@@ -27,15 +27,16 @@ const ContainerHeader = styled.div`
 `;
 
 const Container = styled.div`
-  background-color: #FFF;
+
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 
-  @media (min-width: 890px){
+  */@media (min-width: 890px){
     display: flex;
     flex-direction: row;
-  }
+  } */
   
 `
 const ContainerHotel = styled.div`
@@ -48,9 +49,6 @@ flex-direction: column;
 img{
   width: 250px;
     height: 172px;
-}
-@media (min-width: 580px){
-  padding:10px;
 }
 
 @media (min-width: 890px){

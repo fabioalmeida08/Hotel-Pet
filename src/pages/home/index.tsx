@@ -9,6 +9,7 @@ import LoadingScreen from "../../components/LoadingScreen"
 import { useEffect, useState } from "react";
 import HomeContacts from "../../components/HomeContacts";
 import HotelInfo from "../../components/HotelInfo";
+import UserChat from "../../components/ChatUser";
 
 
 const Home = () => {
@@ -53,7 +54,7 @@ const navigate = useNavigate()
   
   return (
     <>
-      {count < 2 ? <LoadingScreen /> : 
+      {/* {count < 2 ? <LoadingScreen /> : 
       <>
       <HeaderHome/>
       <StyledHomeIntro>
@@ -76,7 +77,8 @@ const navigate = useNavigate()
         }
         <HotelInfo/>
         <HomeContacts/>
-        </>}
+        </>} */}
+        <UserChat/>
       </>
     )
   }

@@ -10,11 +10,14 @@ import { useState } from "react"
 const DashboardMime = () => {
   
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
-    }}>
+    <div style={
+      {
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          padding: '20px 10px',
+      }
+  } >
        <DashHeader paramn="Mimos" />
       <Container>
         <CardMimos title="Sortido" description="Um novo brinquedo aleatorio para o seu pet se divertir e brincar" img={toys} />

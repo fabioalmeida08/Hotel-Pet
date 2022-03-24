@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from "axios"
 import { useAuth } from "../../contexts/AuthProvider"
+import { GrClose } from "react-icons/gr"
 interface CardTypes {
     service: string
     handle : Function
@@ -32,6 +33,7 @@ const ConfirmBuy = ({service, handle}: CardTypes) => {
         const petMime = userPets.filter((pet) => pet.name === data.pet)
         const petId = petMime[0].id
         const petToUse = petMime[0]
+        if(petToUse.hospedado){
         axios.put(`https://hotelpetapi.herokuapp.com/pets/${petId}`, {
 
             "size": petToUse.size,
@@ -41,7 +43,7 @@ const ConfirmBuy = ({service, handle}: CardTypes) => {
             "name": petToUse.name,
             "hospedado": petToUse.hospedado,
             "status": petToUse.status,
-            "mimos": [data],
+            "mimos": [...petToUse.mimos, data],
             "userId": petToUse.userId,
             "id": petToUse.id
         }, {
@@ -51,9 +53,9 @@ const ConfirmBuy = ({service, handle}: CardTypes) => {
 
         }).then((response) => {
             if (response.status === 200) {
-
+                console.log(response)
                 toast.success('Compra realizada com sucesso', {
-                    position: "top-right",
+                    position: "top-center",
                     autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -65,11 +67,19 @@ const ConfirmBuy = ({service, handle}: CardTypes) => {
             }
         })
             .catch((err) => console.log(err.message))
+    }else{
+        toast.warn('Pet não hospedado!', {position: toast.POSITION.TOP_CENTER})
+    }
 
     })
+
+    
     return (
     <DivWrapper>
     <CardBuyMime>
+    <div className="close-form" onClick={() => handle()}>
+        <GrClose/>
+      </div>
         <ToastContainer />
         <img src={SquareCat} alt="CatImage"></img>
         <div className="DivCard">
@@ -92,7 +102,7 @@ const ConfirmBuy = ({service, handle}: CardTypes) => {
                         sx={{ textOverflow: 'ellipsis', width: '100%' }}
                     >
                         {userPets.map((pet) => {
-                            return <MenuItem value={pet.name}>
+                            return <MenuItem value={pet.name} key={pet.id}>
                                 {pet.name}
                             </MenuItem>
                         })}

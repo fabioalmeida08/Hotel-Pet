@@ -10,7 +10,7 @@ interface typedCard {
         id: number
         mimos: [
             {
-                type: string,
+                service: string,
                 done: boolean
             }
         ]
@@ -25,73 +25,64 @@ interface typedCard {
             time: string
         }],
         userId: number
-
     }
+    update : Function
 }
+const CardMimesAdmin = ({ pet,update }: typedCard) => {
 
-const CardMimesAdmin = ({ pet }: typedCard) => {
-
-    const [done, setIsDone] = useState(pet.mimos[0].done)
-
-
+    const [change, setChange] = useState(false)
 
     const data = {
         "age": pet.age,
         "hospedado": pet.hospedado,
         "id": pet.id,
-        "mimos": [
-            {
-                "type": pet.mimos[0].type,
-                "done": true
-            }
-        ],
+        "mimos": pet.mimos,
         "name": pet.name,
         "race": pet.race,
         "size": pet.size,
         "specie": pet.specie,
-        "status": [{
-            "emoji": pet.status[0].emoji,
-            "activity": pet.status[0].activity,
-            "description": pet.status[0].description,
-            "time": pet.status[0].time
-        }],
+        "status": pet.status,
         "userId": pet.userId
 
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async (index: number) => {
 
-        if (done === false) {
-            hotelPetApi.put(`/pets/${pet.id}`, data, {
-                headers: {
-                    Authorization: `Bearer ${JSON.parse(
-                        localStorage.getItem('@hotelPet:token') || ''
-                    )}`,
-                }
-            }).then((response) => {
-                console.log(response)
-            })
-                .catch((err) => console.log(err))
+        data.mimos[index].done = true
+        hotelPetApi.put(`/pets/${pet.id}`, data, {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(
+                    localStorage.getItem('@hotelPet:token') || ''
+                )}`,
+            }
+        }).then((response) => {
+            console.log(response)
+        })
+        .catch((err) => console.log(err))
+        
+       await update(true)
 
-            setIsDone(true)
+       await update(false)
+   
         }
 
-    }
-
-
     return (
-        <DivWrapper key={pet.id + pet.name}>
+        <>
+            {!change && pet.mimos.map((pets, index) => {   
+                return <DivWrapper key={pet.id + pet.name + index}>
 
-            <h4>{pet.name}</h4>
-        
-                {pet.mimos.map((pets) => {
+                    <h4>{pet.name}</h4>
 
-                    return <h4>{pets.type}</h4>
+                    <h4>{pets.service}</h4>
 
-                })}
-        
-            <Button onClick={() => done ? "" : handleSubmit} hoverBackground={done ? "var(--primary-1)" : "#faa200"} background={done ? "var(--primary-1)" : "var(--secundary-1)"} >{done ? "Feito" : "Em espera"}</Button>
-        </DivWrapper>
+                    <Button onClick={() => pets.done === false && handleSubmit(index)} hoverBackground={pets.done ? "var(--primary-1)" : "#faa200"} 
+                    background={pets.done ? "var(--primary-1)" : "var(--secundary-1)"} >
+                        {pets.done ? "Feito" : "Em espera"}</Button>
+
+                </DivWrapper>
+            })}
+
+        </>
     )
 }
 export default CardMimesAdmin

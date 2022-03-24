@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 const Container = styled.header`
   max-width: 865px;
-  width: 83vw;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  padding: 20px 0;
 
   h3{
     color: var(--grey-3);
@@ -75,5 +75,11 @@ const DivOrganizer = styled.div`
     }
   }
 `;
+const DivOver = styled.div`
+overflow-y: scroll;
+::-webkit-scrollbar{
+  display: none;
+}
+`
 
-export { Container, DivOrganizer };
+export { Container, DivOrganizer, DivOver};

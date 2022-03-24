@@ -3,6 +3,7 @@ import UserNav from "../../components/UserNav"
 import { Container, CardUser } from "./styles"
 import { useAuth } from '../../contexts/AuthProvider'
 import { Navigate } from 'react-router-dom'        
+import UserChat from "../../components/ChatUser"
 
 const Dashboard = () => {
   const { authToken } = useAuth()
@@ -12,10 +13,11 @@ const Dashboard = () => {
   }
     return (
       <Container>
-        <DasboardHeader />
+        {/* <DasboardHeader />
         <CardUser>
           <UserNav />
-        </CardUser>
+        </CardUser> */}
+        <UserChat/>
       </Container>
     )   
 }

@@ -14,6 +14,23 @@ const CardBuyMime = styled.div`
   justify-content: space-evenly;
   position: relative;
 
+  .close-form{
+  background: #FF3344;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  transition: .3s;
+
+  :hover{
+    filter: brightness(.7);
+  }
+}
+
   button {
     padding: 8px 16px;
     border: none;

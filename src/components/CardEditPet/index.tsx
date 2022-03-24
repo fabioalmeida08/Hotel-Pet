@@ -7,9 +7,12 @@ import {
 } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Container, Box, Grid, Button } from '@mui/material'
+import { LoadingButton } from '@mui/lab'
 import HotelPetApi from '../../services'
 import { useAuth } from '../../contexts/AuthProvider/'
-
+import { useState } from 'react'
+import { toast } from 'react-toastify'
+import {IoMdSave} from 'react-icons/io'
 interface IFormData {
   name: string
   specie: string
@@ -19,6 +22,12 @@ interface IFormData {
 }
 
 const CardEditPet = ({ pet, handleCloseEdit }: any) => {
+  const [editBtn, setEditBtn] = useState(false)
+
+  const handleBtnState = () => {
+    setEditBtn(!editBtn)
+  }
+
   const { id, name, specie, race, age, size } = pet
   const schema = yup.object().shape({
     name: yup.string().required('Campo obrigatório'),
@@ -41,7 +50,8 @@ const CardEditPet = ({ pet, handleCloseEdit }: any) => {
   const onSubmit: SubmitHandler<IFormData> = async (
     formData: IFormData
   ) => {
-    
+    handleBtnState()
+
     const { data } = await HotelPetApi.get(`/pets/${id}`)
 
     const newData = { ...data, ...formData }
@@ -61,10 +71,14 @@ const CardEditPet = ({ pet, handleCloseEdit }: any) => {
         )
 
         setUserPets([...newPets, editedPet])
+        toast.success('Informações Editadas com sucesso!')
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+        toast.error('Algo deu errado , tente novamente! :(')
+      })
+    handleBtnState()
     await handleCloseEdit()
-    
   }
 
   return (
@@ -194,34 +208,40 @@ const CardEditPet = ({ pet, handleCloseEdit }: any) => {
         />
         <Grid container spacing={2} sx={{ mt: 2, mb: 5 }}>
           <Grid item xs={12} sm={6}>
-            <Button
-              fullWidth
+            <LoadingButton
+              loading={editBtn}
               type='submit'
               variant='contained'
-              sx={{
+              loadingPosition="start"
+              startIcon={<IoMdSave />}
+              fullWidth
+               sx={{
                 bgcolor: 'var(--primary-1)',
                 ':hover': {
                   bgcolor: 'var(--secundary-1)',
                 },
               }}
             >
-              Editar
-            </Button>
+              Salvar
+            </LoadingButton>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Button
-              fullWidth
+            <LoadingButton
+              loading={editBtn}
+              type='submit'
               variant='contained'
-              sx={{
+              loadingPosition="start"
+              fullWidth
+              onClick={() => handleCloseEdit()}
+               sx={{
                 bgcolor: 'var(--primary-1)',
                 ':hover': {
                   bgcolor: 'var(--secundary-1)',
                 },
               }}
-              onClick={() => handleCloseEdit()}
             >
               Voltar
-            </Button>
+            </LoadingButton>
           </Grid>
         </Grid>
       </Box>
