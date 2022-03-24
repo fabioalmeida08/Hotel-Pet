@@ -45,7 +45,7 @@ const navigate = useNavigate()
   useEffect(() => {
     setInterval(() => {
       setCount(prevCount => prevCount + 1);
-    }, 1500);
+    }, 900);
   }, []);
   
   
@@ -55,8 +55,8 @@ const navigate = useNavigate()
       <>
       <HeaderHome/>
       <StyledHomeIntro>
-          <img src={home_dog} className={'dog-home'}></img>
-          <img src={bg_home} className={'bg-home'}></img>
+          <img src={home_dog} alt="" className={'dog-home'}></img>
+          <img src={bg_home} alt="" className={'bg-home'}></img>
             <div className='info-container'>
               <div>
           <h2>Vai viajar<span>?</span></h2>

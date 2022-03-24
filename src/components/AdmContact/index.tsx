@@ -1,10 +1,7 @@
-// import { Container,Stack } from '@mui/material'
 import CardTutor from '../CardTutor'
 import {
   Container,
-  Footer,
   Content,
-  NoPetsContainer,
   Header,
 } from './styles'
 import { useAuth } from '../../contexts/AuthProvider'

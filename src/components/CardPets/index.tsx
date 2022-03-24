@@ -2,26 +2,10 @@ import { StyledCardPet, style } from "./StyledCardPet"
 import arrow from '../../assets/svg/Polygon 6.svg'
 import editSvg from '../../assets/svg/editar icon.svg'
 import paw from '../../assets/svg/paw.svg'
-
-import Button from '../Buttons'
 import { useState } from "react";
 import { Box, Modal } from "@mui/material";
 import CardEditPet from "../CardEditPet"
 import CardPetsStatus from "../CardPetsStatus";
-
-
-interface typedPets {
-  age: number;
-  hospedado: boolean;
-  id: number;
-  mimos: Array<object>;
-  name: string;
-  race: string;
-  size: string;
-  specie: string;
-  status: Array<object>;
-  tutorId: number;
-}
 
 interface petInfo {
   pet:{
