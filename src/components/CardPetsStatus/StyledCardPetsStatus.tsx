@@ -2,9 +2,12 @@ import styled from "styled-components";
 
 export const StyledCardPetsStatus = styled.div`
   position: relative;
-  width: 580px;
+  width: 330px;
+  //left: 12px;
+  
 
   .close-form{
+  z-index: 3;
   background: #FF3344;
   display: flex;
   align-items: center;
@@ -15,6 +18,7 @@ export const StyledCardPetsStatus = styled.div`
   right: -5px;
   top: -5px;
   transition: .3s;
+  cursor: pointer;
 
   :hover{
     filter: brightness(.7);
@@ -43,7 +47,7 @@ export const StyledCardPetsStatus = styled.div`
   .background-svg{
     position: absolute;
     z-index: 0;
-    left: 150px;
+    //left: 150px;
     top: 30px;
   }
 
@@ -97,6 +101,10 @@ export const StyledCardPetsStatus = styled.div`
   }
 
   @media (min-width: 600px){
+    width: 580px;
+    right: 120px;
+    top: 120px;
+
     .status{
       width: 350px;
       animation: info-desktop 1s;

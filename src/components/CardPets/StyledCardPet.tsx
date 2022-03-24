@@ -8,6 +8,9 @@ export const style = {
   bgcolor: 'translate',
   border: '0',
   p: 4,
+  height: '800px',
+
+  
 }
 
 export const StyledCardPet = styled.div`
