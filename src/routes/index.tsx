@@ -8,6 +8,8 @@ import PagMine from '../pages/PagMine'
 import PagContacts from '../pages/PagContact'
 import PagConfig from '../pages/PagConfig'
 import PagLodge from '../pages/PagLodge'
+import Error from '../pages/Error'
+
 
 const Router = () => {
   return (
@@ -21,6 +23,8 @@ const Router = () => {
       <Route path='dashboard/contact' element={<PagContacts />} />
       <Route path='dashboard/config' element={<PagConfig />} />
       <Route path='dashboard/lodge' element={<PagLodge />} />
+      <Route path='*' element={Error}/>
+      
       {/*   <Route path='pets' element={<PagPets />} />
         <Route path='mime' element={<PagMine />} />
         <Route path='contact' element={<PagContacts />} />
