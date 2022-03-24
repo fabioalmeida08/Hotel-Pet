@@ -21,6 +21,7 @@ const Login = () => {
           sx={{
             mt: '15vh',
             img: { width: '80px', alignSelf: 'start' },
+            mb: '30px',
           }}
         >
           <Stack sx={{}}>
@@ -36,7 +37,8 @@ const Login = () => {
           maxWidth='xl'
           sx={{
             mt: '5vh',
-            img: { height: 'fitContainer' },
+            img: { height: 'fitContainer'},
+            mb: '30px',
           }}
         >
           <Grid container justifyContent='center' >

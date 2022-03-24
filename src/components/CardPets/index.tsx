@@ -77,7 +77,7 @@ const CardPet = ({ pet, admin }: petInfo) => {
   }
   
   return (
-    <StyledCardPet >
+    <StyledCardPet>
       <Modal
         open={openEdit}
         aria-labelledby="modal-modal-title"

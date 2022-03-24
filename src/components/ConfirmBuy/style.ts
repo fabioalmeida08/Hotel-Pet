@@ -15,6 +15,7 @@ const CardBuyMime = styled.div`
   position: relative;
 
   .close-form{
+  z-index: 3;
   background: #FF3344;
   display: flex;
   align-items: center;
