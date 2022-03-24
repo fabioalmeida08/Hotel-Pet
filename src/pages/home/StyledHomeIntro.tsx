@@ -10,7 +10,7 @@ const StyledHomeIntro = styled.div`
   align-items: center;
   flex-wrap: wrap;
   position: relative;
-  height: 170px;
+  height: 200px;
   background: ${styles.colors['primary-color']};
   font-family: 'Inter';
   color: ${styles.colors.white};
@@ -32,7 +32,7 @@ const StyledHomeIntro = styled.div`
 
   .bg-home{
     position: absolute;
-    height: 150px;
+    height: 200px;
     z-index: 5;
   }
 

@@ -6,7 +6,7 @@ interface backGroundType {
 }
 const DivWrapper = styled.div<backGroundType>`
   width: 100vw;
-  height: 206px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +38,7 @@ const DivWrapper = styled.div<backGroundType>`
   }
 
   p{
-    color: white;
+    color: var(--white);
   }
   @media (min-width: 768px) {
     flex-direction: ${(prop)=> prop.invert === true ? "row": "row-reverse"};
@@ -71,8 +71,7 @@ const DivWrapper = styled.div<backGroundType>`
   p{
     max-width: 30ch;
     font-size: var(--info);
-    color:  ${(prop) =>
-      prop.background === true ? " var(--grey-2)" : "var(--grey-3)"};;
+    color: var(--white);
   }
   @media (min-width: 1024px) {
     flex-direction: ${(prop)=> prop.invert === true ? "row": "row-reverse"};
@@ -93,7 +92,7 @@ const DivOrganizer = styled.div`
   }
   p{
     max-width: 30ch;
-    font-size: var(--paragraph-2);
+    font-size: 16px;
   }
 
   @media (min-width: 766px){

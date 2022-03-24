@@ -32,72 +32,9 @@ const HeaderHome = () => {
   return (
     <Container>
       <img src={hotelpeticon} alt="IconHotelPet" />
-      <Grid>
-        {matches ? (
           <DivNav>
-            <Home>
-              <IoPaw />
-              <ButtonNav  onClick={() => navigate('/')}>Home</ButtonNav>
-            </Home>
-            <ButtonNav>Sobre</ButtonNav>
-            <ButtonNav>Contato</ButtonNav>
             <ButtonLogin onClick={() => navigate('/login')}>Login</ButtonLogin>
           </DivNav>
-        ) : (
-          <Grid>
-              <IconButton sx={{
-                fontSize: '35px',
-                color: 'var(--secundary-1)'
-              }} aria-label="menu" onClick={(event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => handleClick(event)}>
-                  <AiOutlineMenu/>
-              </IconButton>
-              <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-                  <MenuItem sx={{
-                  color: 'var(--white)',
-                  backgroundColor: 'var(--primary-1)',
-                  display: 'flex',
-                  gap: '5px',
-                  alignItems: 'center'
-                }}>
-                    <IoPaw />
-                    Home
-                  </MenuItem>
-                <MenuItem sx={{
-                  color: 'var(--white)',
-                  backgroundColor: 'var(--primary-1)',
-                  display: 'flex',
-                  gap: '5px',
-                  alignItems: 'center'
-                }}>
-                  <IoPaw />
-                  Sobre
-                </MenuItem>
-                <MenuItem sx={{
-                  color: 'var(--white)',
-                  backgroundColor: 'var(--primary-1)',
-                  display: 'flex',
-                  gap: '5px',
-                  alignItems: 'center'
-                }}>
-                  <IoPaw />
-                  Contato
-                </MenuItem>
-                <MenuItem sx={{
-                  color: 'var(--white)',
-                  backgroundColor: 'var(--primary-1)',
-                  display: 'flex',
-                  gap: '5px',
-                  alignItems: 'center',
-                }}
-                onClick={() => navigate('login')}
-                >
-                  <IoPaw />
-                  Login
-                </MenuItem>
-              </Menu>
-            </Grid>
-        )}
-      </Grid>
     </Container>
   );
 };
