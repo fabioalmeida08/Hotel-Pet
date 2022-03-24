@@ -15,15 +15,18 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useAuth } from '../../contexts/AuthProvider'
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import {toast} from 'react-toastify'
 interface IFormData {
   email: string
   password: string
 }
 
 const LoginForm = () => {
+  const navigate = useNavigate()
   const { signIn, logOut } = useAuth()
+  const [loading, setLoading] = useState(false)
 
   const [hide, setHide] = useState(false)
   const handlePasswordVisibility = () => {
@@ -46,10 +49,20 @@ const LoginForm = () => {
     resolver: yupResolver(schema),
   })
 
-  const onSubmit: SubmitHandler<IFormData> = (
+  const onSubmit: SubmitHandler<IFormData> = async  (
     data: IFormData
   ) => {
-    signIn(data)
+    setLoading(true)
+    await signIn(data)
+    if (localStorage.getItem('@hotelPet:token')) {
+      toast.success('Login feito com sucesso!', {position: toast.POSITION.TOP_CENTER})
+      setTimeout(()=> {
+        navigate('/dashboard')
+      },500)
+    }else{
+      toast.error('Usuário ou senha incorretos.', {position: toast.POSITION.TOP_CENTER})
+    }
+    setLoading(false)
   }
 
   return (
@@ -115,19 +128,23 @@ const LoginForm = () => {
               fullWidth
               type='submit'
               variant='contained'
+              disabled={loading}
+              sx={{':disabled': {background: '#333333', color: 'white'}}}
             >
-              entrar
+             {loading ? 'carregando' : 'entrar'}
             </Button>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Button fullWidth variant='contained'>
+            <Button fullWidth variant='contained'
+            onClick={() => navigate('/')}
+            >
               Voltar
             </Button>
           </Grid>
         </Grid>
         <Grid container justifyContent='flex-end'>
           <Grid item>
-            <NavLink to='/signup'>
+            <NavLink to='/signup' style={{position: 'relative', zIndex: '1000'}}>
               Primeira vez aqui? Cadastre-se
             </NavLink>
           </Grid>
