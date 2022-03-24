@@ -2,7 +2,8 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useAuth } from "../../contexts/AuthProvider"
 import CardPet from "../CardPets"
-import StyledGrid from "./StyledGrid"
+import DashHeader from "../DashHeader"
+import { StyledGrid } from "./StyledGrid"
 
 const AdmPets = () => {
     const {authToken} = useAuth()
@@ -18,9 +19,12 @@ const AdmPets = () => {
         .then(resp => setListPets(resp.data))
     })
     return (
+    <>
+        <DashHeader paramn="Todos os Pets" /> 
         <StyledGrid>
             {listPets.map(pet => <CardPet pet={pet} admin/>)}
         </StyledGrid>
+    </>
     )
 }
 
