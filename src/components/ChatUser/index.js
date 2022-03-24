@@ -1,42 +1,52 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useAuth } from "../../contexts/AuthProvider";
-import { DivWrapper,DivChat } from "./style";
+import { DivWrapper,DivInput, DivChat } from "./style";
 import { socket } from "../../services/chat";
 
 const UserChat = () => {
+  const chat = useRef()
   const io = socket;
   const [message, setMessage] = useState("");
   const { userId } = useAuth();
   const [receivedMessage, setReceivedMessage] = useState([]);
-  const obj  = {
-      from : '1',
-      to : "admin",
-      message : "salve quebrada"
-  }
+  const sendMessage = {
+    from: "1",
+    to: "admin",
+    message: message,
+  };
+  const messages = []
   useEffect(() => {
-    io.emit("join_room", '1');
+    io.emit("join_room", "1");
     io.on("message", (data) => {
-      console.log(data);
+      messages.push(data)
       setReceivedMessage(prev => [...prev, data])
+      console.log(data)
+      const li = document.createElement('li')
+      li.textContent = data.message
+      li.classList.add(data.from === 'admin' ? 'admin' : 'user')
+      chat.current.appendChild(li)
     });
-  }, []);
+  }, [io]);
 
   const handleSubmit = () => {
-    io.emit('message', obj)
+
+    io.emit("message", sendMessage);
+
   };
 
   return (
     <DivWrapper>
+        <div className="superDiv">
+        <h2>Chat</h2>
+        </div>
       <DivChat>
-        <ul>
-          {receivedMessage.map(message => <li>{message.message}</li>)}
-        </ul>
+        <ul ref={chat}>{messages.map((per) => console.log(per))}</ul>
       </DivChat>
 
-      <div>
+      <DivInput>
         <input onChange={(e) => setMessage(e.target.value)} />
         <button onClick={() => handleSubmit()}>Enviar mensagem</button>
-      </div>
+      </DivInput>
     </DivWrapper>
   );
 };
