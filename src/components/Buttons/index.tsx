@@ -8,7 +8,7 @@ interface buttonProps{
   hoverColor?: string,
   hoverBackground?: string,
   onClick: () => void
-
+}
 
 const Button: React.FC<buttonProps> = (props) => {
   return(
