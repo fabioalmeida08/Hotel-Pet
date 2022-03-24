@@ -12,5 +12,8 @@ const StyledGrid = styled.div`
     overflow-y: scroll;
     gap: 12px;
     padding: 20px 0;
+    ::-webkit-scrollbar{
+   width: 0px;
+ }
 `
 export default StyledGrid

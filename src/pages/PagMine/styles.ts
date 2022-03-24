@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
 
-  min-width: 580px;
+min-width : 100vw;
 
 `;
 
@@ -13,7 +13,7 @@ const CardUser = styled.div`
   display: flex;
 
   width: 92%;
-  min-width: 385px;
+  min-width: 280px;
   height: 738px;
   background: #FFFFFF;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledDivMimos = styled.div`
-  width: 290px;
+  width: 280px;
   height: 180px;
   display: flex;
   align-items: flex-start;

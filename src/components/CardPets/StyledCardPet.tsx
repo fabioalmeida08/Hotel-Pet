@@ -11,8 +11,10 @@ export const style = {
 }
 
 export const StyledCardPet = styled.div`
-  width: 350px;
-  height: 230px;
+  width: 80vw;
+  max-width: 350px;
+  height: 32vh;
+  max-height: 230px;
   display: flex;
   align-items: flex-start;
   border-radius: 20px;
@@ -29,7 +31,8 @@ export const StyledCardPet = styled.div`
   }
   .paw{
     position: absolute;
-    width: 200px;
+    width: 15vw;
+    max-width: 200px;
     bottom: 10%;
     right: 5%;
     z-index: 0;

@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 const ContainerAll = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   color: var(--grey-3);
 
@@ -18,12 +20,19 @@ const ContainerAll = styled.div`
   }
 `
 const ContainerHeader = styled.div`
-  text-aligh: center;
+  text-align: center;
+
+  @media(min-width: 890px){
+    text-align: start;
+    margin-left: 15%;
+
+  }
 `;
 
 const Container = styled.div`
   background-color: #FFF;
   display: flex;
+  justify-content: center;
   flex-direction: column;
 
   @media (min-width: 890px){
@@ -38,6 +47,11 @@ height: 100%;
 display: flex;
 flex-direction: column;
 
+
+img{
+  width: 250px;
+    height: 172px;
+}
 @media (min-width: 580px){
   padding:10px;
 }

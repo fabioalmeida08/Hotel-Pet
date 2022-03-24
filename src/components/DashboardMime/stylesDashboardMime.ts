@@ -22,6 +22,7 @@ const Container = styled.div`
   }
   .title{
     font-size: 50px;
+    font-weight: 400;
   }
 `;
 
