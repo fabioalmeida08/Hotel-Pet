@@ -8,6 +8,7 @@ import {useEffect, useState, Dispatch, SetStateAction} from 'react'
 import axios from 'axios'
 import { GrClose } from "react-icons/gr";
 
+
 interface IProps{
   idPet: String,
   setOpenStatus: Function

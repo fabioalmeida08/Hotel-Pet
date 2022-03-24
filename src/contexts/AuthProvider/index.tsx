@@ -155,7 +155,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         },
       }
     )
-    console.log(data3)
     setAllUsers(data3)
     localStorage.setItem(
       '@hotelPet:allUsers',

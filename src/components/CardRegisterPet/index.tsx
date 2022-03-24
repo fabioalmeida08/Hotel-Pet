@@ -23,6 +23,7 @@ import hotelPetApi from '../../services/index'
 import BackgroundModal from '../BackgroundModal'
 import { GrClose } from 'react-icons/gr'
 
+
 interface Modal {
   isOpenModal: boolean
   setIsOpenModal: Function

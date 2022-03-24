@@ -1,47 +1,25 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
 import { useAuth } from "../../contexts/AuthProvider"
 import CardPet from "../CardPets"
 import StyledGrid from "./StyledGrid"
 
 const AdmPets = () => {
-    const {userPets} = useAuth()
+    const {authToken} = useAuth()
+    const [listPets, setListPets] = useState([])
+    useEffect(() => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${authToken}`
+            }
+        }
+        axios
+        .get(`https://hotelpetapi.herokuapp.com/pets`, config)
+        .then(resp => setListPets(resp.data))
+    })
     return (
         <StyledGrid>
-            <CardPet
-             pet={userPets[0]}
-             admin
-             />
-             <CardPet
-             pet={userPets[0]}
-             admin
-             />
-             <CardPet
-             pet={userPets[0]}
-             admin
-             />
-             <CardPet
-             pet={userPets[0]}
-             admin
-             />
-              <CardPet
-             pet={userPets[0]}
-             admin
-             />
-              <CardPet
-             pet={userPets[0]}
-             admin
-             />
-              <CardPet
-             pet={userPets[0]}
-             admin
-             />
-              <CardPet
-             pet={userPets[0]}
-             admin
-             />
-              <CardPet
-             pet={userPets[0]}
-             admin
-             />
+            {listPets.map(pet => <CardPet pet={pet} admin/>)}
         </StyledGrid>
     )
 }
