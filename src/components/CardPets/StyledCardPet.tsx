@@ -12,9 +12,11 @@ export const style = {
 
 export const StyledCardPet = styled.div`
   width: 80vw;
-  max-width: 350px;
+  max-width: 298px;
   height: 32vh;
+  margin-left: 50px;
   max-height: 230px;
+
   display: flex;
   align-items: flex-start;
   border-radius: 20px;
@@ -38,20 +40,32 @@ export const StyledCardPet = styled.div`
     z-index: 0;
   }
   .FotoPet {
-    height: 100%;
-    width: 50%;
-    align-self: center;
-    border-radius: 20px;
-
-    @media screen and (min-width: 400px) {
+    display: none;
+  }
+   @media(min-width: 375px){
+        width: 70vw;
+   }
+  @media(min-width: 768px){
+    .FotoPet {
+      display: block;
       height: 100%;
-      width: 40%;
-      border-radius: 20px 0 0 20px;
-      flex: 1;
-      background-size: cover;
-      background-position: center;
-      object-fit: cover;
+      max-height: 219px;
+      width: 50%;  
+      max-width: 140px ;
+      align-self: center;
+      border-radius: 20px;
+  
+      @media screen and (min-width: 400px) {
+        height: 100%;
+        width: 40%;
+        border-radius: 20px 0 0 20px;
+        flex: 1;
+        background-size: cover;
+        background-position: center;
+        object-fit: cover;
+      }
     }
+
   }
   .CardContainer{
     width: 100%;
@@ -99,6 +113,7 @@ button{
   justify-content: center;
   gap: 4px;
   margin-top: 8px;
+  width: 65px;
   cursor: pointer;
     :hover {
       background-color: var(--primary-1);

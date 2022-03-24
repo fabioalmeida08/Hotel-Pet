@@ -7,7 +7,6 @@ import {
 import { useAuth } from '../../contexts/AuthProvider'
 const AdmContact = () => {
   const { allUsers } = useAuth()
-  console.log(allUsers)
   return (
     <Container>
       <Header>

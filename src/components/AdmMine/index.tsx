@@ -45,6 +45,7 @@ const AdmMine = () => {
         <>
             <Container>
             <DashHeader paramn="Mimos" /> 
+
                <DivOrganizer>
                    <h2>Pet</h2>
                    <h2>Serviço</h2>
