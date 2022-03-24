@@ -8,6 +8,7 @@ const StyledGrid = styled.div`
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
     justify-content: space-around;
+    justify-items: center;
     align-items: center;
     overflow-y: scroll;
     gap: 12px;

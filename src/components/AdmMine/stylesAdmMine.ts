@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 const Container = styled.header`
   max-width: 865px;
-  width: 83vw;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  padding: 20px 0;
 
   h3{
     color: var(--grey-3);

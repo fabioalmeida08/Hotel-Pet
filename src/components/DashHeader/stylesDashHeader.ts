@@ -24,7 +24,7 @@ export const Header = styled.div`
     div {
         position: absolute;
         background-color: var(--secundary-1);
-        width: 200px;
+        width: 100%;
         height: 10px;
         opacity: 0.6;
         top: 55px;
