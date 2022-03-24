@@ -23,8 +23,6 @@ const UserChat = () => {
 
   const handleSubmit = () => {
     io.emit('message', obj)
-
-
   };
 
   return (
