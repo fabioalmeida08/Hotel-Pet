@@ -2,18 +2,17 @@ import { StyledCardPet, style } from "./StyledCardPet"
 import arrow from '../../assets/svg/Polygon 6.svg'
 import editSvg from '../../assets/svg/editar icon.svg'
 import paw from '../../assets/svg/paw.svg'
-
-import Button from '../Buttons'
-import { Dispatch, SetStateAction, useState } from "react";
-
+import hotelPetApi from "../../services"
 import { Box, Modal } from "@mui/material";
 import CardEditPet from "../CardEditPet"
 import CardPetsStatus from "../CardPetsStatus";
 import { useAuth } from "../../contexts/AuthProvider"
 import ModalPetStatusAdmin from '../ModalPetStatusAdmin'
+import { toast } from "react-toastify"
+import { useState } from "react"
 
 interface petInfo {
-  pet:{
+  pet: {
     name: string;
     age: number;
     specie: string;
@@ -25,17 +24,53 @@ interface petInfo {
   admin?: boolean;
 }
 
-const CardPet = ({pet, admin}:petInfo) => {
-
+const CardPet = ({ pet, admin }: petInfo) => {
   const [openEdit, setOpenEdit] = useState(false);
   const [openStatus, setOpenStatus] = useState(false);
-
+  const [ isHosted, setHosted] = useState(pet.hospedado)
+  const { authToken } = useAuth()
   const handleOpenEdit = () => setOpenEdit(true);
   const handleCloseEdit = () => setOpenEdit(false);
   const handleOpenStatus = () => setOpenStatus(true);
   const handleCloseStatus = () => setOpenStatus(false);
 
-  return(
+  const onSubmit = () => {
+    const hosted = {
+      hospedado:true
+    }
+      if(isHosted){
+           hosted.hospedado = false
+      }else{
+        hosted.hospedado = true
+      }
+
+    const newData = { ...pet, ...hosted }
+
+    hotelPetApi.put(`/pets/${pet.id}`, newData, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+
+    }).then((response) => {
+
+      if (response.status === 200) {
+
+        toast.success('Pet Hospedado :)', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+        setHosted(hosted.hospedado)
+      }
+    })
+      .catch((err) => console.log(err.message))
+  }
+  
+  return (
     <StyledCardPet >
       <Modal
         open={openEdit}
@@ -43,26 +78,26 @@ const CardPet = ({pet, admin}:petInfo) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <CardEditPet handleCloseEdit={handleCloseEdit} pet={pet}/>
+          <CardEditPet handleCloseEdit={handleCloseEdit} pet={pet} />
         </Box>
       </Modal>
 
-    {admin && openStatus?
-  <ModalPetStatusAdmin idPet={`${pet.id}`} setShowModal={setOpenStatus}/>
-  :
+      {admin && openStatus ?
+        <ModalPetStatusAdmin idPet={`${pet.id}`} setShowModal={setOpenStatus} />
+        :
 
-<Modal
-        open={openStatus}
-        onClose={handleCloseStatus}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <CardPetsStatus idPet={`${pet.id}`} setOpenStatus={setOpenStatus}/>
-        </Box>
-      </Modal>
-  }
-      
+        <Modal
+          open={openStatus}
+          onClose={handleCloseStatus}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <CardPetsStatus idPet={`${pet.id}`} setOpenStatus={setOpenStatus} />
+          </Box>
+        </Modal>
+      }
+
 
       <img className="FotoPet" src="https://i0.wp.com/www.portaldodog.com.br/cachorros/wp-content/uploads/2021/03/visa%CC%83o-do-cachorro-2.jpeg?resize=626%2C626&ssl=1" alt="petImagem"></img>
       <div className="CardContainer">
@@ -73,45 +108,45 @@ const CardPet = ({pet, admin}:petInfo) => {
           <img className="status" onClick={() => handleOpenStatus()} src={arrow} alt="a"></img>
 
         </div>
-      <section>
-        <div>
-          <p>Espécie:</p>
-          <span> {pet.specie} </span>
-        </div>
-        <div>
-          <p>Raça:</p>
-          <span> {pet.race} </span>
-        </div>
-        <div>
-          <p>Idade:</p>
-          <span> {`${pet.age} aninhos`} </span>
-        </div>
-        <div>
-          <p>Porte:</p>
-          <span> {pet.size} </span>
-        </div>
+        <section>
+          <div>
+            <p>Espécie:</p>
+            <span> {pet.specie} </span>
+          </div>
+          <div>
+            <p>Raça:</p>
+            <span> {pet.race} </span>
+          </div>
+          <div>
+            <p>Idade:</p>
+            <span> {`${pet.age} aninhos`} </span>
+          </div>
+          <div>
+            <p>Porte:</p>
+            <span> {pet.size} </span>
+          </div>
 
-        <div className="div-button">
+          <div className="div-button">
 
-        <button onClick={() => handleOpenEdit()}>
+            <button onClick={() => handleOpenEdit()}>
 
-          <img src={editSvg} alt="edit icon"></img>
-          Editar
-        </button>
-        {admin && 
-        <button
+              <img src={editSvg} alt="edit icon"></img>
+              Editar
+            </button>
+            {admin && 
+        <button onClick={() =>  onSubmit()}  
         style={{background:"linear-gradient(180deg, #6D80DF 0%, #3751D8 100%)",
         color:"#FFFFFF",
-        }}
+      }}
         >
           {
-            pet.hospedado ? 'Checkout' : 'Hospedar'
+            isHosted ? 'Checkout' : 'Hospedar'
           }
           
         </button>  
         }
-        </div>
-      </section>
+          </div>
+        </section>
       </div>
       <img className="paw" src={paw} alt="patinha">
       </img>
