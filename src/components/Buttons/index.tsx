@@ -10,6 +10,7 @@ interface buttonProps{
   onClick: () => void
 }
 
+
 const Button: React.FC<buttonProps> = (props) => {
   return(
     <StyledButton {...props}>{props.children}</StyledButton>
