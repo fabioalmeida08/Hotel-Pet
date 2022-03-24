@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  padding: 10px;
+  padding: 20px 10px;
 
   background-color: #FFF;
 
@@ -53,7 +53,7 @@ export const Content = styled.div`
 export const NoPetsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px 10px;
   width: 100%;
   justify-content: center;
   align-items: center;

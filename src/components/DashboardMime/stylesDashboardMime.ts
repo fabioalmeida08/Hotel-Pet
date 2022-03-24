@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-
-
 const Container = styled.div`
   width: 100%;
   display: flex;
@@ -11,8 +9,7 @@ const Container = styled.div`
   background-color: #fff;
   padding: 10px;
   
-
-  div{
+    div{
     position: relative;
     margin-bottom: 20px;
     span{

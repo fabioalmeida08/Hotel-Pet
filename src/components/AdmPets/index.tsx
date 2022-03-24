@@ -24,6 +24,7 @@ const AdmPets = () => {
             display: 'flex',
             flexDirection: 'column',
             width: '100%',
+            padding: '20px 10px',
         }
     } >
         <DashHeader paramn="Todos os Pets" /> 

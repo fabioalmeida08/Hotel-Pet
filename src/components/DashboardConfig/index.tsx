@@ -1,16 +1,23 @@
-import { Container, Header, Main } from "./stylesDashboardConfig"
+import { Container, Main } from "./stylesDashboardConfig"
 import pug from "../../assets/img/pugWarning.jpg"
+import DashHeader from "../DashHeader"
 const DashboardConfig = () => {
     return (
+      <div style={
+        {
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+            padding: '20px 10px',
+        }
+    } >
       <Container>
-        <Header>
-          <h2>Configurações</h2>
-          <div></div>
-        </Header>
+        <DashHeader paramn="Configurações" />
         <Main>
           <img src={pug} alt="" />
         </Main>
       </Container>
+      </div>
     )
   }
   

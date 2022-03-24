@@ -14,11 +14,9 @@ export const StyledCardPet = styled.div`
   width: 80vw;
   max-width: 298px;
   height: 32vh;
-  margin-left: 50px;
   max-height: 230px;
-
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   border-radius: 20px;
   background-color: #FFFFFF;
   color: #333333;

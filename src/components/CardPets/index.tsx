@@ -2,14 +2,10 @@ import { StyledCardPet, style } from "./StyledCardPet"
 import arrow from '../../assets/svg/Polygon 6.svg'
 import editSvg from '../../assets/svg/editar icon.svg'
 import paw from '../../assets/svg/paw.svg'
-
-import Button from '../Buttons'
-import { Dispatch, SetStateAction, useState } from "react";
-
+import { useState } from "react";
 import { Box, Modal } from "@mui/material";
 import CardEditPet from "../CardEditPet"
 import CardPetsStatus from "../CardPetsStatus";
-import { useAuth } from "../../contexts/AuthProvider"
 import ModalPetStatusAdmin from '../ModalPetStatusAdmin'
 
 interface petInfo {
