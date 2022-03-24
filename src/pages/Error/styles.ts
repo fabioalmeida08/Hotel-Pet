@@ -10,7 +10,7 @@ export const Container = styled.div`
 
     .background {
         position: fixed;
-        width: 2400px;
+        width: 100vw;
         height:50vh;
         z-index: 0;
         bottom: 0;
@@ -19,7 +19,7 @@ export const Container = styled.div`
 `
 
 export const Main = styled.section`
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
