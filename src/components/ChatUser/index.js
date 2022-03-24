@@ -33,18 +33,11 @@ const UserChat = () => {
         <h2>Chat</h2>
         </div>
       <DivChat>
-        {/* <ul>{receivedMessage.map((per) => console.log(per))}</ul> */}
-        <UlStyled>
-            <li>Fabio Back-End</li>
-            <li>Front-End que não gosta de Front</li>
-            <li>Socorro</li>
-            <li>Estilizar cansa</li>
-            <li>Igor ajeita rapido ai </li>
-        </UlStyled>
+        <ul>{receivedMessage.map((per) => console.log(per))}</ul>
       </DivChat>
 
       <DivInput>
-        <input onChange={(e) => setMessage(e.target.value)} />
+        <input placeholder="Nova mensagem" onChange={(e) => setMessage(e.target.value)} />
         <button onClick={() => handleSubmit()}>Enviar mensagem</button>
       </DivInput>
     </DivWrapper>

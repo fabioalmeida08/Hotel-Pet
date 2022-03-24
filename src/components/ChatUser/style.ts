@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 const DivWrapper = styled.div`
-  width: 90vw;
+  width: 88vw;
+  background-color:#e1e1e1;
   max-width: 350px;
+  height: 300px;
   margin-left: 20px;
 
   .superDiv {
@@ -21,10 +23,9 @@ const DivWrapper = styled.div`
     width: 88vw;
     max-width: 350px;
     height: 37px;
-    font-size: 10px;
+    font-size: 13px;
     border-radius: 0px 0px 4px 4px;
     border-style: none;
-    padding: 10px;
     background-color: var(--primary-1);
     color: var(--white);
     cursor: pointer;
@@ -65,19 +66,24 @@ const DivInput = styled.div`
   height: 80px;
 `;
 const UlStyled =styled.ul`
-    
+  
     list-style-type: none;
-    
+     color: #fff;
     li{
-      background-color: var(--primary-1);
-      margin: 4px 0px;
-      color: var(--white);
-      border-radius: 4px;
-      padding: 4px;
+        padding: 8px;
+        margin : 5px 0px;
+        font-size: 12px;
+        border-radius: 15px;
     }
-    li:nth-child(even){
-      text-align: end;
-      background-color: #c4c4c4 ;
+    .admin{
+      
+        text-align: end;
+        background-color: blue;
+    }
+    .user{
+
+       text-align: start;
+       background-color: orange;
     }
 `
 
