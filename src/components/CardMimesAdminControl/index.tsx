@@ -78,7 +78,6 @@ const CardMimesAdmin = ({ pet }: typedCard) => {
 
     }
 
-
     return (
         <DivWrapper key={pet.id + pet.name}>
 

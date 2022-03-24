@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import hotelPetApi from "../../services"
 import CardMimesAdmin from "../CardMimesAdminControl"
 import DashHeader from "../DashHeader"
@@ -26,17 +26,18 @@ interface  TypedObj{
     userId: number
 }
 const AdmMine = () => {
-    const [hosted, setIsHosted] = useState([])
-
-       if(hosted.length <= 0 ){
-           hotelPetApi.get("/pets", {
-   
-           }).then((response) => {
-              const isHosted = response.data.filter((pet : TypedObj) => pet.hospedado === true && pet.mimos.length > 0)
-              setIsHosted(isHosted)
-           }).catch((err) => console.log(err))
-
-       }
+    const [hosted, setIsHosted] = useState<TypedObj[]>([])
+    useEffect(() => {
+        if(hosted.length <= 0 ){
+            hotelPetApi.get("/pets", {
+                
+            }).then((response) => {
+                const isHosted = response.data.filter((pet : TypedObj) => pet.hospedado === true && pet.mimos.length > 0)
+                console.log(isHosted)
+                setIsHosted(isHosted)
+            }).catch((err) => console.log(err))
+        }
+    },[])
 
         
        
@@ -52,8 +53,9 @@ const AdmMine = () => {
                    <h2 className="SizeBtn" >Feito</h2>
                    <span></span>
                </DivOrganizer>
-                 {hosted.length > 0 && hosted.map((pet) => {
-                     return  <CardMimesAdmin  pet={pet}/>
+                 {hosted?.map((pet) => {
+                     console.log(pet)
+                     return  <CardMimesAdmin  pet={pet} key={pet.id}/>
                  })} 
     
             </Container>
