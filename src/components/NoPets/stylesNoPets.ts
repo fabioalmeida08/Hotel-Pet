@@ -12,7 +12,6 @@ export const Container = styled.div`
     img {
         height: 310px;
     }
-    //filter: drop-shadow(1.58209px 1.58209px 3.95522px rgba//(0, 0, 0, 0.25))
 
     h2 {
         color: var(--primary-1);
@@ -30,7 +29,15 @@ export const Container = styled.div`
     div {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        width: 100%;
         gap: 50px;
         padding-top: 20px;
+    }
+
+    @media (max-width: 875px) {
+        img {
+            display: none;
+        }
     }
 `
