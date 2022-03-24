@@ -43,6 +43,7 @@ const AdmMine = () => {
     return (
         <>
             <Container>
+                <h3>Controle de Mimos</h3>
                <DivOrganizer>
                    <h2>Pet</h2>
                    <h2>Serviço</h2>
