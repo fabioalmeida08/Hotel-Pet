@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthProvider";
-import { DivWrapper,DivInput, DivChat } from "./style";
+import { DivWrapper,DivInput, DivChat,UlStyled } from "./style";
 import { socket } from "../../services/chat";
 
 const UserChat = () => {
@@ -11,15 +11,15 @@ const UserChat = () => {
   const sendMessage = {
     from: "1",
     to: "admin",
-    message: message,
+    message: "message",
   };
   useEffect(() => {
-    io.emit("join_room", "1");
-    io.on("message", (data) => {
-
-      setReceivedMessage((prev) => [...prev, data]);
-    });
-  }, []);
+      io.emit("join_room", "1");
+      io.on("message", (data) => {
+      
+        setReceivedMessage((prev) => [...prev, data]);
+      });
+}, []);
 
   const handleSubmit = () => {
 
@@ -33,7 +33,14 @@ const UserChat = () => {
         <h2>Chat</h2>
         </div>
       <DivChat>
-        <ul>{receivedMessage.map((per) => console.log(per))}</ul>
+        {/* <ul>{receivedMessage.map((per) => console.log(per))}</ul> */}
+        <UlStyled>
+            <li>Fabio Back-End</li>
+            <li>Front-End que não gosta de Front</li>
+            <li>Socorro</li>
+            <li>Estilizar cansa</li>
+            <li>Igor ajeita rapido ai </li>
+        </UlStyled>
       </DivChat>
 
       <DivInput>

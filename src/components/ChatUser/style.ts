@@ -18,11 +18,11 @@ const DivWrapper = styled.div`
     color: var(--white);
   }
   button {
-    width: 33vw;
-    max-width: 150px;
+    width: 88vw;
+    max-width: 350px;
     height: 37px;
     font-size: 10px;
-    border-radius: 0px 0px 4px 0px;
+    border-radius: 0px 0px 4px 4px;
     border-style: none;
     padding: 10px;
     background-color: var(--primary-1);
@@ -33,16 +33,16 @@ const DivWrapper = styled.div`
     background-color: var(--primary-2);
   }
   input {
-    border-radius: 0px 0px 0px 4px;
+
     border-style: none;
     background-color: #c4c4c4;
     height: 37px;
-    width: 55vw;
-    max-width: 200px;
+    width: 88vw;
+    max-width: 350px;
     padding-left: 10px;
     border: 0;
     border-left: 4px;
-    border-bottom: 4px;
+    border-right: 4px;
     border-style: solid;
     border-color: var(--primary-1);
   }
@@ -57,10 +57,28 @@ const DivChat = styled.div`
   border-right: 4px;
   border-style: solid;
   border-color: var(--primary-1);
+
 `;
 const DivInput = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  height: 80px;
 `;
+const UlStyled =styled.ul`
+    
+    list-style-type: none;
+    
+    li{
+      background-color: var(--primary-1);
+      margin: 4px 0px;
+      color: var(--white);
+      border-radius: 4px;
+      padding: 4px;
+    }
+    li:nth-child(even){
+      text-align: end;
+      background-color: #c4c4c4 ;
+    }
+`
 
-export { DivWrapper, DivInput, DivChat };
+export { DivWrapper, DivInput, DivChat,UlStyled };
