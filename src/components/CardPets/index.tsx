@@ -36,8 +36,7 @@ interface petInfo {
 }
 
 const CardPet = ({pet, admin}:petInfo) => {
-=======
-const CardPet = ({name, age, specie, size, race}:petInfo) => {
+
 
   const [openEdit, setOpenEdit] = useState(false);
   const [openStatus, setOpenStatus] = useState(false);
