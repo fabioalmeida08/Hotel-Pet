@@ -10,7 +10,14 @@ export const Container = styled.div`
   gap: 50px;
   padding: 0 calc((100vw - 1200px) / 2);
   margin: 0 auto;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 5;
+
+  img {
+    cursor: pointer;
+  }
 
   @media screen and (min-width: 905px) {
     gap: 400px;
