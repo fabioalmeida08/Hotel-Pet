@@ -18,13 +18,7 @@ const StyledCardTutor = styled.div`
   }
 
   .Tutor {
-    height: 100%;
-    width: 40%;
-    border-radius: 20px 0 0 20px;
-    flex: 1;
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
+    display: none;
   }
 
   .CardContainer {
@@ -87,6 +81,16 @@ const StyledCardTutor = styled.div`
   }
 
   @media (min-width: 600px) {
+    .Tutor {
+    display: block;
+    height: 100%;
+    width: 40%;
+    border-radius: 20px 0 0 20px;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+  }
   }
 `
 export const StyledViewButton = styled.div`
