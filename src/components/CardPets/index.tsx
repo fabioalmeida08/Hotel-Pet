@@ -10,6 +10,12 @@ import ModalPetStatusAdmin from '../ModalPetStatusAdmin'
 import { toast } from "react-toastify"
 import { useState } from "react"
 import { useAuth } from "../../contexts/AuthProvider"
+import dog from '../../assets/pets/dogg.jpg'
+import agapornis from '../../assets/pets/agapornis.jpg'
+import alien from '../../assets/pets/alien.jpg'
+import cat from '../../assets/pets/cat.jpg'
+import reptil from '../../assets/pets/reptil.jpg'
+import many from '../../assets/pets/many.jpg'
 
 interface petInfo {
   pet: {
@@ -99,7 +105,19 @@ const CardPet = ({ pet, admin }: petInfo) => {
       }
 
 
-      <img className="FotoPet" src="https://i0.wp.com/www.portaldodog.com.br/cachorros/wp-content/uploads/2021/03/visa%CC%83o-do-cachorro-2.jpeg?resize=626%2C626&ssl=1" alt="petImagem"></img>
+      <img className="FotoPet" src={
+        pet.specie === 'Cachorro' ?
+        dog :
+        pet.specie === 'Aves' ? 
+        agapornis :
+        pet.specie === 'Gato' ?
+        cat :
+        pet.specie === 'Alien' ?
+        alien :
+        pet.specie === 'Reptil' ?
+        reptil :
+        many
+      } alt="petImagem"></img>
       <div className="CardContainer">
         <div className="CardHeader">
 
