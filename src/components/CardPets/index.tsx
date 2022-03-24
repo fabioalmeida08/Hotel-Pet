@@ -65,7 +65,7 @@ const CardPet = ({pet, admin}:petInfo) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <CardPetsStatus  />
+          <CardPetsStatus idPet={'13'} />
         </Box>
       </Modal>
 
