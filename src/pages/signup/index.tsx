@@ -47,7 +47,7 @@ const Login = () => {
                 height: 'fitContainer',
                 bgcolor: '#EFEFEF',
                 img:{
-                  height: 'fitContainer'
+                  height: '100%'
                 },
                 boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.21)'
               }}

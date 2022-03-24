@@ -19,7 +19,7 @@ interface IPropsStatus{
   setShowModal: Dispatch<SetStateAction<boolean>>
 }
 
-const ModalPetStatusAdmin = ({idPet = '14', setShowModal}: IPropsStatus) => {
+const ModalPetStatusAdmin = ({idPet, setShowModal}: IPropsStatus) => {
   const {authToken} = useAuth()
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [chosenActivity, setChosenActivity] = useState('')
@@ -38,7 +38,6 @@ const ModalPetStatusAdmin = ({idPet = '14', setShowModal}: IPropsStatus) => {
     if(chosenEmoji && chosenActivity && desc && time && chosenActivity !== '0'){
       const newData = {emoji:chosenEmoji, activity: chosenActivity, description: desc, time}
       toast.success('Status salvo com sucesso!', {position: toast.POSITION.TOP_CENTER})
-
       const pets = await axios.get(`https://hotelpetapi.herokuapp.com/pets/${idPet}`)
       .then(data => data.data)
       console.log(pets)
@@ -54,7 +53,7 @@ const ModalPetStatusAdmin = ({idPet = '14', setShowModal}: IPropsStatus) => {
 
       const resp = await axios.put(`https://hotelpetapi.herokuapp.com/pets/${idPet}`, request, config)
       console.log(resp)
-
+      console.log(resp)
       setChosenEmoji(null)
       setChosenActivity('0')
       setDesc('')

@@ -13,6 +13,7 @@ const StyledGrid = styled.div`
     gap: 12px;
     padding: 20px 0;
     ::-webkit-scrollbar{
+
    width: 0px;
  }
 `

@@ -4,11 +4,14 @@ import Timeline from "@mui/lab/Timeline";
 import { Scrollbar } from "./Scrollbar";
 import svg from "../../assets/svg/Group.svg";
 import arrow from "../../assets/svg/arrow_down.svg";
-import {useEffect, useState} from 'react'
+import {useEffect, useState, Dispatch, SetStateAction} from 'react'
 import axios from 'axios'
+import { GrClose } from "react-icons/gr";
+
 
 interface IProps{
-  idPet: String
+  idPet: String,
+  setOpenStatus: Function
 }
 
 interface IPet{
@@ -31,7 +34,7 @@ interface IResponse{
 		id: Number
 }
 
-const CardPetsStatus = ({idPet} : IProps) => {
+const CardPetsStatus = ({idPet, setOpenStatus} : IProps) => {
   const [arrowTop, setArrowTop] = useState(false)
   const [pet, setPet] = useState<IResponse>({} as IResponse)
   useEffect(() => {
@@ -41,6 +44,9 @@ const CardPetsStatus = ({idPet} : IProps) => {
   },[])
   return (
     <StyledCardPetsStatus>
+      <div className="close-form" onClick={() => setOpenStatus(false)}>
+        <GrClose/>
+      </div>
       <img
         className="avatar-pet"
         src="https://i0.wp.com/www.portaldodog.com.br/cachorros/wp-content/uploads/2021/03/visa%CC%83o-do-cachorro-2.jpeg?resize=626%2C626&ssl=1"

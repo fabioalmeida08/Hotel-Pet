@@ -99,7 +99,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <Container maxWidth='xs'>
+    <Container maxWidth='xs' sx={{ mb: 5 }} >
       <Box
         component='form'
         noValidate
