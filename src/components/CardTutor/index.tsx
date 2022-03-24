@@ -38,15 +38,6 @@ const CardTutor = ({name,adress,phone} : Info) => {
             <p>Contado de emergencia:</p>
             <span>a ver</span>
           </div>
-          <Stack direction='row' alignItems='center'>
-            <button>
-              <img src={editSvg} alt='botao editar'></img>
-              Editar
-            </button>
-            <StyledViewButton>
-              <button>Pets</button>
-            </StyledViewButton>
-          </Stack>
         </section>
       </div>
       <img className='paw' alt='pata' src={paw}></img>

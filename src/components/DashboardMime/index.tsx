@@ -7,13 +7,17 @@ import toys from '../../assets/img/toys.png'
 const DashboardMime = () => {
 
   return (
-    <>
-      <Container>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+    }}>
        <DashHeader paramn="Mimos" />
+      <Container>
         <CardMimos title="Sortido" description="Um novo brinquedo aleatorio para o seu pet se divertir e brincar" img={toys} />
         <CardMimos title="Spa" description="Todos os cuidados que seu pet merece" img={spa} />
       </Container>
-    </>
+    </div>
   )
 }
 
