@@ -2,10 +2,15 @@ import { StyledCardPet, style } from "./StyledCardPet"
 import arrow from '../../assets/svg/Polygon 6.svg'
 import editSvg from '../../assets/svg/editar icon.svg'
 import paw from '../../assets/svg/paw.svg'
-import { useState } from "react";
+
+import Button from '../Buttons'
+import { Dispatch, SetStateAction, useState } from "react";
+
 import { Box, Modal } from "@mui/material";
 import CardEditPet from "../CardEditPet"
 import CardPetsStatus from "../CardPetsStatus";
+import { useAuth } from "../../contexts/AuthProvider"
+import ModalPetStatusAdmin from '../ModalPetStatusAdmin'
 
 interface petInfo {
   pet:{
@@ -15,12 +20,12 @@ interface petInfo {
     race: string;
     size: string;
     hospedado: boolean;
+    id: number
   },
   admin?: boolean;
 }
 
 const CardPet = ({pet, admin}:petInfo) => {
-
 
   const [openEdit, setOpenEdit] = useState(false);
   const [openStatus, setOpenStatus] = useState(false);
@@ -42,16 +47,22 @@ const CardPet = ({pet, admin}:petInfo) => {
         </Box>
       </Modal>
 
-      <Modal
+    {admin && openStatus?
+  <ModalPetStatusAdmin idPet={`${pet.id}`} setShowModal={setOpenStatus}/>
+  :
+
+<Modal
         open={openStatus}
         onClose={handleCloseStatus}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <CardPetsStatus idPet={'13'} />
+          <CardPetsStatus idPet={`${pet.id}`} setOpenStatus={setOpenStatus}/>
         </Box>
       </Modal>
+  }
+      
 
       <img className="FotoPet" src="https://i0.wp.com/www.portaldodog.com.br/cachorros/wp-content/uploads/2021/03/visa%CC%83o-do-cachorro-2.jpeg?resize=626%2C626&ssl=1" alt="petImagem"></img>
       <div className="CardContainer">
