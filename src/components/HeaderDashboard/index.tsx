@@ -1,10 +1,7 @@
 import {
-  Badge,
-  Button,
   Container,
   Grid,
   IconButton,
-  ListItemIcon,
   Menu,
   MenuItem,
   Paper,
@@ -16,7 +13,6 @@ import {
 import { useState } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 import Logo from '../../assets/svg/dashboardLogo.svg'
-import { IoPaw } from "react-icons/io5";
 import { useAuth } from '../../contexts/AuthProvider'
 import { useNavigate } from "react-router-dom"
 import dashmimos from '../../assets/svg/dashboard/dashmimos.svg'

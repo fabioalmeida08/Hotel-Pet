@@ -33,7 +33,7 @@ const TimelineComponent = ({pet} : IPet) => {
         <TimelineSeparator>
           <TimelineConnector />
           <TimelineDot>  
-            <img src={pet.activity === 'play' ? play : pet.activity === 'food' ? food : neneca}></img>
+            <img alt='' src={pet.activity === 'play' ? play : pet.activity === 'food' ? food : neneca}></img>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>

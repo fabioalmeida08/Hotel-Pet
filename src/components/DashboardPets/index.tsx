@@ -7,28 +7,14 @@ import {
 } from './stylesDashboardPets'
 import CardPet from '../CardPets'
 import CardRegisterPet from '../CardRegisterPet'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useAuth } from '../../contexts/AuthProvider/index'
 import buttonDashboardPets from '../../assets/svg/buttonDashboardPets.svg'
 import dashcat from '../../assets/svg/dashboard/dashcat.svg'
 import NoPets from '../NoPets'
 
-interface typedPets {
-  age: number
-  hospedado?: boolean
-  id: number
-  mimos: Array<object>
-  name: string
-  race: string
-  size: string
-  specie: string
-  status: Array<object>
-  tutorId: number
-}
-
 const DashboardPets = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
-
 
   const { userPets } = useAuth()
 

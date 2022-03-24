@@ -2,7 +2,6 @@ import {
   Container,
   Stack,
   Typography,
-  Paper,
   Grid,
 } from '@mui/material'
 import useMediaQuery from '@mui/material/useMediaQuery'

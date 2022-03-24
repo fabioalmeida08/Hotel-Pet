@@ -1,6 +1,4 @@
-import { MenuItem, TextField, Modal } from '@mui/material'
-import DogPaw from '../../assets/img/pata.png'
-import backgroundCat from '../../assets/img/backgroundRegisterCat.png'
+import { MenuItem, TextField } from '@mui/material'
 import * as yup from 'yup'
 import {
   Controller,
@@ -8,7 +6,6 @@ import {
   SubmitHandler,
 } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import axios from 'axios'
 import { Container, Box, Grid, Button } from '@mui/material'
 import HotelPetApi from '../../services'
 import { useAuth } from '../../contexts/AuthProvider/'
