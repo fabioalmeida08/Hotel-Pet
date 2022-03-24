@@ -1,8 +1,70 @@
 import styled from "styled-components";
 
+const Container = styled.header`
+  max-width: 865px;
+  width: 83vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
 
-const ContainerHeader = styled.header``;
+const DivOrganizer = styled.div`
+  display: flex;
+  width: 50vw;
+  max-width: 872px;
+  margin-top: 17px;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  position: relative;
+  h2 {
+    color: var(--grey-3);
+    width: 140px;
+  }
+  .SizeBtn {
+    width: 80px;
+    text-align: center;
+  }
+  span {
+    top: 40px;
+    position: absolute;
+    width: 30vw;
+    max-width: 694px;
+    position: absolute;
+    width: 56vw;
+    max-width: 600px;
+    height: 2px;
+    background-color: var(--primary-3);
+  }
 
-const Container = styled.header``;
+  @media (min-width: 768px) {
+    display: flex;
+    width: 64vw;
+    max-width: 872px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    position: relative;
+    h2 {
+      color: var(--grey-3);
+      width: 140px;
+    }
+    .SizeBtn {
+      width: 80px;
+      text-align: center;
+    }
 
-export {ContainerHeader, Container}
+    span {
+      top: 40px;
+      position: absolute;
+      width: 56vw;
+      max-width: 694px;
+      position: absolute;
+      max-width: 600px;
+      height: 2px;
+      background-color: var(--primary-3);
+    }
+  }
+`;
+
+export { Container, DivOrganizer };

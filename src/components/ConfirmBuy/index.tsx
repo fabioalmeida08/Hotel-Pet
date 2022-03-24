@@ -14,8 +14,6 @@ interface CardTypes {
 }
 const ConfirmBuy = ({service, handle}: CardTypes) => {
 
-
-
     const { userPets, authToken } = useAuth()
     const schema = yup.object().shape({
         pet: yup.string().required(),

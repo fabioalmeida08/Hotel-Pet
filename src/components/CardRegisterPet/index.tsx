@@ -12,14 +12,13 @@ import backgroundCat from '../../assets/img/backgroundRegisterCat.png'
 import * as yup from 'yup'
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import axios from 'axios'
 import {
   AuthContext,
   useAuth,
 } from '../../contexts/AuthProvider'
 import { useContext } from 'react'
-import { AuthProvider } from '../../contexts/AuthProvider'
 import hotelPetApi from '../../services/index'
+import Draggable from 'react-draggable'
 
 interface Modal {
   isOpenModal: boolean
@@ -46,7 +45,7 @@ const CardRegisterPet = ({
     resolver: yupResolver(schema),
   })
 
-  const { authToken, setUserPets, userPets } = useAuth()
+  const { setUserPets, userPets } = useAuth()
   const { userId } = useContext(AuthContext)
   const onSubmit = handleSubmit((data) => {
     data.hospedado = false
@@ -78,6 +77,7 @@ const CardRegisterPet = ({
 
   return (
     <Container2>
+      <Draggable>
       <DivWrapper>
         <DivImgDesktop>
           <img
@@ -224,6 +224,7 @@ const CardRegisterPet = ({
           </DivButtons>
         </StyledForm>
       </DivWrapper>
+    </Draggable>
     </Container2>
   )
 }
