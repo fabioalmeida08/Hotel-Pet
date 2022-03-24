@@ -6,7 +6,6 @@ import hotelPetApi from "../../services"
 import { Box, Modal } from "@mui/material";
 import CardEditPet from "../CardEditPet"
 import CardPetsStatus from "../CardPetsStatus";
-import { useAuth } from "../../contexts/AuthProvider"
 import ModalPetStatusAdmin from '../ModalPetStatusAdmin'
 import { toast } from "react-toastify"
 import { useState } from "react"

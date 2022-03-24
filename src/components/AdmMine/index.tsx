@@ -26,25 +26,27 @@ interface  TypedObj{
     userId: number
 }
 const AdmMine = () => {
+
     const [hosted, setIsHosted] = useState([])
 
-       if(hosted.length <= 0 ){
-           hotelPetApi.get("/pets", {
-   
-           }).then((response) => {
-              const isHosted = response.data.filter((pet : TypedObj) => pet.hospedado === true && pet.mimos.length > 0)
-              setIsHosted(isHosted)
-           }).catch((err) => console.log(err))
-
-       }
-
+        if(hosted.length <= 0 ){
+            hotelPetApi.get("/pets", {
+            }).then((response) => {
+               const isHosted = response.data.filter((pet : TypedObj) => pet.hospedado === true && pet.mimos.length > 0)
+               setIsHosted(isHosted)
+            }).catch((err) => console.log(err))
+        }
         
-       
-           
     return (
-        <>
+        <div style={
+            {
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+            }
+        } >
             <Container>
-            <DashHeader paramn="Mimos" /> 
+                <DashHeader paramn="Mimos" /> 
 
                <DivOrganizer>
                    <h2>Pet</h2>
@@ -52,12 +54,12 @@ const AdmMine = () => {
                    <h2 className="SizeBtn" >Feito</h2>
                    <span></span>
                </DivOrganizer>
-                 {hosted.length > 0 && hosted.map((pet) => {
-                     return  <CardMimesAdmin  pet={pet}/>
+                 {hosted.length > 0 && hosted.map((pet, index) => {
+                     return  <CardMimesAdmin  pet={pet} key={index} />
                  })} 
     
             </Container>
-        </>
+        </div>
     )
 
 }

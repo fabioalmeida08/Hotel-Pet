@@ -15,11 +15,11 @@ const LoadingScreen = () => {
 
     return (
     <Container>
-        <Lottie
-          options={defaultOptions}
-          height={470}
-          width={400}
-        />
+      <Lottie
+        options={defaultOptions}
+        height={390}
+        width={320}
+      />
     </Container>
     )
 
