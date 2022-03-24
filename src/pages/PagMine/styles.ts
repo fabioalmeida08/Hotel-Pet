@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-
-min-width : 100vw;
-
+  min-width : 100vw;
 `;
 
 const CardUser = styled.div`

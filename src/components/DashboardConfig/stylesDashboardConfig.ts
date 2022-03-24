@@ -37,7 +37,7 @@ const Main = styled.section`
   justify-content: center;
   align-items: center;
     img {
-      max-width: 300px
+      max-width: 280px;
     }
 `;
 
