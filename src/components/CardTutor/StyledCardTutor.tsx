@@ -17,8 +17,9 @@ const StyledCardTutor = styled.div`
     z-index: 0;
   }
 
-  .FotoPet {
-   display: none;
+  .Tutor {
+    display: none;
+
   }
 
   .CardContainer {
@@ -81,8 +82,8 @@ const StyledCardTutor = styled.div`
   }
 
   @media (min-width: 600px) {
-    .FotoPet {
-      display: block;
+    .Tutor {
+    display: block;
     height: 100%;
     width: 40%;
     border-radius: 20px 0 0 20px;

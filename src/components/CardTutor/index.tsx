@@ -1,5 +1,6 @@
 import editSvg from '../../assets/svg/editar icon.svg'
 import paw from '../../assets/svg/paw.svg'
+import vilsinho from '../../assets/img/vilsinho.jpg'
 import StyledCardTutor, {
   StyledViewButton,
 } from './StyledCardTutor'
@@ -9,14 +10,16 @@ interface Info {
   adress: string
   phone: string
 }
+
+
 const CardTutor = ({name,adress,phone} : Info) => {
 
   return (
     <StyledCardTutor>
       <img
-        className='FotoPet'
+        className='Tutor'
         alt='foto tutor'
-        src='https://i0.wp.com/www.portaldodog.com.br/cachorros/wp-content/uploads/2021/03/visa%CC%83o-do-cachorro-2.jpeg?resize=626%2C626&ssl=1'
+        src={vilsinho}
       ></img>
       <div className='CardContainer'>
         <div className='CardHeader'>
