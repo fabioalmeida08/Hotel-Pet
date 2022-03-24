@@ -7,9 +7,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 200px;
+  gap: 50px;
   padding: 0 calc((100vw - 1200px) / 2);
   margin: 0 auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 
   @media screen and (min-width: 905px) {
     gap: 400px;
@@ -23,7 +24,6 @@ export const Container = styled.div`
 export const ButtonNav = styled.button`
   color: var(--white);
   font-size: var(--paragraph-2);
-  //font-family: var(--font-family-1);
   font-weight: bold;
   cursor: pointer;
   background: transparent;
@@ -50,7 +50,6 @@ export const Home = styled.div`
 export const DivNav = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 400px;
   align-items: center;
 `;
 
