@@ -2,14 +2,14 @@ import { useEffect, useState } from "react"
 import hotelPetApi from "../../services"
 import CardMimesAdmin from "../CardMimesAdminControl"
 import DashHeader from "../DashHeader"
-import { Container,DivOrganizer } from "./stylesAdmMine"
+import { Container,DivOrganizer,DivOver } from "./stylesAdmMine"
 interface  TypedObj{
     age: number
     hospedado: boolean
     id: number
     mimos: [
         {
-            type: string,
+            service: string,
             done: true
         }
     ]
@@ -27,17 +27,19 @@ interface  TypedObj{
 }
 const AdmMine = () => {
     const [hosted, setIsHosted] = useState<TypedObj[]>([])
+    const [update , setUpdate] = useState(false)
     useEffect(() => {
-        if(hosted.length <= 0 ){
-            hotelPetApi.get("/pets", {
-                
-            }).then((response) => {
-                const isHosted = response.data.filter((pet : TypedObj) => pet.hospedado === true && pet.mimos.length > 0)
-                console.log(isHosted)
-                setIsHosted(isHosted)
-            }).catch((err) => console.log(err))
+        if(!update){
+            if(hosted.length <= 0 ){
+                hotelPetApi.get("/pets", {
+                    
+                }).then((response) => {
+                    const isHosted = response.data.filter((pet : TypedObj) => pet.hospedado === true && pet.mimos.length > 0)
+                    setIsHosted(isHosted)
+                }).catch((err) => console.log(err))
+            }
         }
-    },[])
+    },[update])
 
         
        
@@ -53,10 +55,12 @@ const AdmMine = () => {
                    <h2 className="SizeBtn" >Feito</h2>
                    <span></span>
                </DivOrganizer>
-                 {hosted?.map((pet) => {
-                     console.log(pet)
-                     return  <CardMimesAdmin  pet={pet} key={pet.id}/>
+               <DivOver>
+                 {hosted?.map((pet,index) => {
+                     return  <CardMimesAdmin update={setUpdate} pet={pet} key={pet.id + index}/>
                  })} 
+
+               </DivOver>
     
             </Container>
         </>
