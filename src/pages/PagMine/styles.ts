@@ -7,9 +7,8 @@ const Container = styled.div`
 const CardUser = styled.div`
   margin-left: 20px;
   margin-right: 20px;
-
+  justify-content: center;
   display: flex;
-
   width: 92%;
   min-width: 280px;
   height: 738px;
