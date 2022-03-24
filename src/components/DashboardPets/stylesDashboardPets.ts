@@ -23,30 +23,6 @@ export const Container = styled.div`
   }
 `
 
-export const Header = styled.div`
-  height: 100px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  
-  h2 {
-    font-size: var(--paragraph-1);
-    font-weight: normal;
-    font-family: var(--font-family-2);
-  }
-
-  div {
-      position: absolute;
-      background-color: var(--secundary-1);
-      width: 200px;
-      height: 10px;
-      opacity: 0.6;
-      top: 55px;
-    }
-`
-
 export const Footer = styled.div`
   height: 100px;
   display: flex;

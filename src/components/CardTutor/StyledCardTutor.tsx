@@ -19,6 +19,7 @@ const StyledCardTutor = styled.div`
 
   .Tutor {
     display: none;
+
   }
 
   .CardContainer {

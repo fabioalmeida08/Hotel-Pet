@@ -3,9 +3,9 @@ import {
   Footer,
   Content,
   NoPetsContainer,
-  Header,
 } from './stylesDashboardPets'
 import CardPet from '../CardPets'
+import DashHeader from '../DashHeader'
 import CardRegisterPet from '../CardRegisterPet'
 import { useState } from 'react'
 import { useAuth } from '../../contexts/AuthProvider/index'
@@ -25,10 +25,7 @@ const DashboardPets = () => {
   if (userPets.length === 0) {
     return (
       <NoPetsContainer>
-        <Header>
-          <h2>Meus pets</h2>
-          <div></div>
-        </Header>
+        <DashHeader paramn="Meus Pets" />
         <NoPets />
         <button onClick={handleOpen}>
           <div>
@@ -47,10 +44,7 @@ const DashboardPets = () => {
   } else {
     return (
       <Container>
-        <Header>
-          <h2>Meus pets</h2>
-          <div></div>
-        </Header>
+        <DashHeader paramn="Meus Pets" />
         <Content>
           {userPets.map((pet, index) => {
             return (

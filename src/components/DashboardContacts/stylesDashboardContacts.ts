@@ -9,9 +9,6 @@ const ContainerAll = styled.div`
 
   padding:20px;
 
-  h2 {
-    margin-bottom: 20px; 
-  }
   img {
     height: 180px;
     border-radius: 18px;

@@ -43,7 +43,7 @@ const CardPet = ({pet, admin}:petInfo) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <CardEditPet handleCloseEdit={handleCloseEdit} />
+          <CardEditPet handleCloseEdit={handleCloseEdit} pet={pet}/>
         </Box>
       </Modal>
 

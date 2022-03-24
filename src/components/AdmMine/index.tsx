@@ -1,6 +1,7 @@
 import { useState } from "react"
 import hotelPetApi from "../../services"
 import CardMimesAdmin from "../CardMimesAdminControl"
+import DashHeader from "../DashHeader"
 import { Container,DivOrganizer } from "./stylesAdmMine"
 interface  TypedObj{
     age: number
@@ -43,6 +44,8 @@ const AdmMine = () => {
     return (
         <>
             <Container>
+            <DashHeader paramn="Mimos" /> 
+
                <DivOrganizer>
                    <h2>Pet</h2>
                    <h2>Serviço</h2>

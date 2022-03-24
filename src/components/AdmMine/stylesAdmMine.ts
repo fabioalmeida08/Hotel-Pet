@@ -6,11 +6,18 @@ const Container = styled.header`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+
+  h3{
+    color: var(--grey-3);
+    font-size: 20px;
+    margin-top: 25px;
+  }
 `;
 
 const DivOrganizer = styled.div`
   display: flex;
-  width: 50vw;
+  width: 64vw;
   max-width: 872px;
   margin-top: 17px;
   flex-direction: row;
@@ -20,10 +27,12 @@ const DivOrganizer = styled.div`
   h2 {
     color: var(--grey-3);
     width: 140px;
+    font-size:  17px;
   }
   .SizeBtn {
     width: 80px;
     text-align: center;
+    margin-left: 20px;
   }
   span {
     top: 40px;

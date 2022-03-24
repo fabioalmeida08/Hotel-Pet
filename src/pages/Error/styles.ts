@@ -2,24 +2,28 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     background-color: var(--secundary-1);
+    width: 100vw;
     height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
     .background {
         position: fixed;
-        width: 2400px;
-        height:50vh;
+        background-size: cover;
+        background-position: center;
+        width: 6000px;
         z-index: 0;
         bottom: 0;
+        left: 0;
         /* left: -500px; */
     }
 `
 
 export const Main = styled.section`
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +31,8 @@ export const Main = styled.section`
     z-index: 1;
 
     .sadDog {
-        top: 175px;
+        position: absolute;
+        bottom: 100px;
     }
 
     h2 {
