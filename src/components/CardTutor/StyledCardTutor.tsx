@@ -17,7 +17,7 @@ const StyledCardTutor = styled.div`
     z-index: 0;
   }
 
-  .FotoPet {
+  .Tutor {
     height: 100%;
     width: 40%;
     border-radius: 20px 0 0 20px;
