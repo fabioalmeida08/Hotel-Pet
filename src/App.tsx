@@ -5,7 +5,6 @@ import {CssBaseline} from '@mui/material'
 
 
 function App() {
-  const [showModal, setShowModal] = useState<SetStateAction<boolean>>(true)
   return (
     <>
       <CssBaseline/>
