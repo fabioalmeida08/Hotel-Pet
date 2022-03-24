@@ -3,9 +3,12 @@ import DashHeader from "../DashHeader"
 import Container from "./stylesDashboardMime"
 import spa from '../../assets/img/spa.jpg'
 import toys from '../../assets/img/toys.png'
+import { toast } from "react-toastify"
+import axios from "axios"
+import { useState } from "react"
 
 const DashboardMime = () => {
-
+  
   return (
     <div style={{
       display: 'flex',
