@@ -8,6 +8,7 @@ import {useNavigate} from 'react-router-dom'
 import LoadingScreen from "../../components/LoadingScreen"
 import { useEffect, useState } from "react";
 import HomeContacts from "../../components/HomeContacts";
+import HotelInfo from "../../components/HotelInfo";
 
 
 const Home = () => {
@@ -74,6 +75,7 @@ const navigate = useNavigate()
           Info.map((item,index)=> (<HomeInfo key={index}paragraph={item.paragraph} label={item.label} svg={item.svg} background={item.background} invert={item.invert} />) )
         }
         </>}
+        <HotelInfo/>
         <HomeContacts/>
       </>
     )

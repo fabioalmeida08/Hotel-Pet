@@ -10,7 +10,7 @@ const HomeContacts = () => {
 
     const contacts = [
         {
-            name: 'Christian Rezende', responsability: 'Scrum Master', github: 'https://github.com/cbcr93', linkedin: 'https://www.linkedin.com/in/christian-resende-06ba021a8/', img: `${chris}`
+            name: 'Christian Resende', responsability: 'Scrum Master', github: 'https://github.com/cbcr93', linkedin: 'https://www.linkedin.com/in/christian-resende-06ba021a8/', img: `${chris}`
         },
         {
             name: 'João Neto', responsability: 'PO', github: 'https://github.com/assemble05', linkedin: 'https://www.linkedin.com/in/joão-henrique-pereira-neto-6776251ba/', img: `${joao}`

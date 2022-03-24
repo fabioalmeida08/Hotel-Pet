@@ -15,6 +15,7 @@ export const Container = styled.div`
 export const Header = styled.div`
     display: flex;
     justify-content: center;
+    position: relative;
 
 
     h2 {
@@ -29,7 +30,7 @@ export const Header = styled.div`
       width: 200px;
       height: 10px;
       opacity: 0.6;
-      top: 930px;
+      top: 30px;
     }
 `
 
