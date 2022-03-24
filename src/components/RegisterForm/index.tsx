@@ -15,7 +15,6 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import {
   NavLink,
-  Navigate,
   useNavigate,
 } from 'react-router-dom'
 import {
@@ -99,7 +98,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <Container maxWidth='xs'>
+    <Container maxWidth='xs' sx={{ mb: 5 }} >
       <Box
         component='form'
         noValidate

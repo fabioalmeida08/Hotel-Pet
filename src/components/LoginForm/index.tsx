@@ -23,7 +23,7 @@ interface IFormData {
 }
 
 const LoginForm = () => {
-  const { signIn, logOut } = useAuth()
+  const { signIn } = useAuth()
 
   const [hide, setHide] = useState(false)
   const handlePasswordVisibility = () => {
@@ -53,7 +53,7 @@ const LoginForm = () => {
   }
 
   return (
-    <Container maxWidth='xs'>
+    <Container maxWidth='xs' sx={{ mb: 5 }}>
       <Box
         component='form'
         noValidate

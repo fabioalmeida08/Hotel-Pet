@@ -23,7 +23,7 @@ const Router = () => {
       <Route path='dashboard/contact' element={<PagContacts />} />
       <Route path='dashboard/config' element={<PagConfig />} />
       <Route path='dashboard/lodge' element={<PagLodge />} />
-      <Route path='*' element={Error}/>
+      <Route path='*' element={<Error/>}/>
       
       {/*   <Route path='pets' element={<PagPets />} />
         <Route path='mime' element={<PagMine />} />
