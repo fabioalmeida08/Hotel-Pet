@@ -9,20 +9,20 @@ const UserChat = () => {
   const { userId } = useAuth();
   const [receivedMessage, setReceivedMessage] = useState([]);
   const obj  = {
-      from : 1,
+      from : '1',
       to : "admin",
       message : "salve quebrada"
   }
   useEffect(() => {
-    io.emit("join_room", 1);
+    io.emit("join_room", '1');
     io.on("message", (data) => {
       console.log(data);
+      setReceivedMessage(prev => [...prev, data])
     });
-    io.emit(message, obj)
   }, []);
 
   const handleSubmit = () => {
-    io.emit(message, obj)
+    io.emit('message', obj)
 
 
   };
@@ -30,7 +30,9 @@ const UserChat = () => {
   return (
     <DivWrapper>
       <DivChat>
-        <ul></ul>
+        <ul>
+          {receivedMessage.map(message => <li>{message.message}</li>)}
+        </ul>
       </DivChat>
 
       <div>
