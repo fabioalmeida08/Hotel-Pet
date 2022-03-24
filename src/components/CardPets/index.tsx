@@ -4,7 +4,7 @@ import editSvg from '../../assets/svg/editar icon.svg'
 import paw from '../../assets/svg/paw.svg'
 
 import Button from '../Buttons'
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Box, Modal } from "@mui/material";
 import CardEditPet from "../CardEditPet"
 import CardPetsStatus from "../CardPetsStatus";
@@ -65,7 +65,7 @@ const CardPet = ({pet, admin}:petInfo) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <CardPetsStatus idPet={'13'} />
+          <CardPetsStatus idPet={'13'} setOpenStatus={setOpenStatus}/>
         </Box>
       </Modal>
 

@@ -26,6 +26,7 @@ interface AuthProviderValue {
   userPets: [] | typedPets[]
   allUsers: [] | typedUsers[]
   setUserPets: any
+  setAdmin: Function
 }
 
 interface typedPets {
@@ -105,9 +106,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       '@hotelPet:userId',
       JSON.stringify(id)
       )
-      
 
-    if (admin) setAdmin(true)
+    if (admin){
+      setAdmin(true)
+      localStorage.setItem(
+        '@hotelPet:admin',
+        'true'
+        )
+    } 
   }
 
   const signIn = async (userData: IFormData) => {
@@ -179,6 +185,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         authToken,
         logOut,
         admin,
+        setAdmin,
         userId,
         userName,
         userPets,

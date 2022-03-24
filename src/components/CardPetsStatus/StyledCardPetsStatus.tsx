@@ -4,6 +4,23 @@ export const StyledCardPetsStatus = styled.div`
   position: relative;
   width: 580px;
 
+  .close-form{
+  background: #FF3344;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  transition: .3s;
+
+  :hover{
+    filter: brightness(.7);
+  }
+}
+
   .emoji{
     text-align: center;
     position: relative;
