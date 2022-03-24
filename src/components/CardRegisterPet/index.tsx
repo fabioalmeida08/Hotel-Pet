@@ -12,14 +12,15 @@ import backgroundCat from '../../assets/img/backgroundRegisterCat.png'
 import * as yup from 'yup'
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import axios from 'axios'
 import {
   AuthContext,
   useAuth,
 } from '../../contexts/AuthProvider'
 import { useContext } from 'react'
-import { AuthProvider } from '../../contexts/AuthProvider'
 import hotelPetApi from '../../services/index'
+import BackgroundModal from '../BackgroundModal'
+import { GrClose } from 'react-icons/gr'
+
 
 interface Modal {
   isOpenModal: boolean
@@ -46,7 +47,7 @@ const CardRegisterPet = ({
     resolver: yupResolver(schema),
   })
 
-  const { authToken, setUserPets, userPets } = useAuth()
+  const { setUserPets, userPets } = useAuth()
   const { userId } = useContext(AuthContext)
   const onSubmit = handleSubmit((data) => {
     data.hospedado = false
@@ -77,8 +78,11 @@ const CardRegisterPet = ({
   })
 
   return (
-    <Container2>
+    <BackgroundModal>
       <DivWrapper>
+      <div className="close-form" onClick={() => setIsOpenModal(false)}>
+        <GrClose/>
+      </div>
         <DivImgDesktop>
           <img
             src={backgroundCat}
@@ -215,16 +219,10 @@ const CardRegisterPet = ({
 
           <DivButtons>
             <button type='submit'>Cadastrar</button>
-            <button
-              className='backButton'
-              onClick={() => setIsOpenModal(!isOpenModal)}
-            >
-              Voltar
-            </button>
           </DivButtons>
         </StyledForm>
       </DivWrapper>
-    </Container2>
+    </BackgroundModal>
   )
 }
 export default CardRegisterPet

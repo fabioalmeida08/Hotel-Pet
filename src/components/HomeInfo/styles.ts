@@ -77,8 +77,8 @@ const DivWrapper = styled.div<backGroundType>`
     color: var(--white);
   }
   @media (min-width: 1024px) {
-    flex-direction: ${(prop)=> prop.invert === true ? "row": "row-reverse"};
-    justify-content: center;
+    /* flex-direction: ${(prop)=> prop.invert === true ? "row": "row-reverse"}; */
+    /* justify-content: center; */
     height: 620px;
     font-size: var(--paragraph-2);
     }

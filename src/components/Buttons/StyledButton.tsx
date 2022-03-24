@@ -36,6 +36,7 @@ const StyledButton = styled.button<buttonProps>`
 
   @media (min-width: 600px){
     width: fit-content;
+    padding: 8px 16px;
   }
 
 `

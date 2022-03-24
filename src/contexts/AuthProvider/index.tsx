@@ -24,8 +24,9 @@ interface AuthProviderValue {
   userName: string
   userId: string | number
   userPets: [] | typedPets[]
-  allUsers: []
+  allUsers: [] | typedUsers[]
   setUserPets: any
+  setAdmin: Function
 }
 
 interface typedPets {
@@ -39,6 +40,15 @@ interface typedPets {
   specie: string
   status: Array<object>
   userId: number
+}
+
+interface typedUsers {
+  email: string
+		password: string
+		name: string
+		phone: string
+		address: string
+		id: number
 }
 
 export const AuthContext = createContext<AuthProviderValue>(
@@ -56,7 +66,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     () => JSON.parse(localStorage.getItem('@hotelPet:userPets') || '[]')
   )
   
-  const [allUsers, setAllUsers] = useState<[]>([])
+  const [allUsers, setAllUsers] = useState<typedUsers[]>(
+    () => JSON.parse(localStorage.getItem('@hotelPet:allUsers') || '[]')
+  )
 
   const [authToken, setAuthToken] = useState(
     () => localStorage.getItem('@hotelPet:token') || ''
@@ -94,19 +106,25 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       '@hotelPet:userId',
       JSON.stringify(id)
       )
-      
 
-    if (admin) setAdmin(true)
+    if (admin){
+      setAdmin(true)
+      localStorage.setItem(
+        '@hotelPet:admin',
+        'true'
+        )
+    } 
   }
 
   const signIn = async (userData: IFormData) => {
-    const { data } = await hotelPetApi.post(
-      '/login',
-      userData
-    )
+    try{
 
-    await login(data)
-
+      const { data } = await hotelPetApi.post(
+        '/login',
+        userData
+        )
+        
+        await login(data)
     const { data: data2 } = await hotelPetApi.get(
       `/users/${localStorage.getItem(
         '@hotelPet:userId'
@@ -138,7 +156,17 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       }
     )
     setAllUsers(data3)
+    localStorage.setItem(
+      '@hotelPet:allUsers',
+      JSON.stringify(data3)
+    )
+    
+    
     navigate('/dashboard/pets')
+  }catch(err){
+    return null
+  }
+
   }
 
   const logOut = () => {
@@ -156,6 +184,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         authToken,
         logOut,
         admin,
+        setAdmin,
         userId,
         userName,
         userPets,

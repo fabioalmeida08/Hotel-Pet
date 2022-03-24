@@ -13,19 +13,6 @@ import buttonDashboardPets from '../../assets/svg/buttonDashboardPets.svg'
 import dashcat from '../../assets/svg/dashboard/dashcat.svg'
 import NoPets from '../NoPets'
 
-interface typedPets {
-  age: number
-  hospedado: boolean
-  id: number
-  mimos: Array<object>
-  name: string
-  race: string
-  size: string
-  specie: string
-  status: Array<object>
-  tutorId: number
-}
-
 const DashboardPets = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
 
@@ -68,11 +55,7 @@ const DashboardPets = () => {
           {userPets.map((pet, index) => {
             return (
               <CardPet
-                name={pet.name}
-                size={pet.size}
-                age={pet.age}
-                race={pet.race}
-                specie={pet.specie}
+                pet={pet}
                 key={index}
               />
             )

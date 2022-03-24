@@ -21,6 +21,24 @@ const DivWrapper = styled.div`
   font-family: var(--font-family-3);
   border-radius: 8px;
   background-color: var(--white);
+  position: relative;
+
+  .close-form{
+  background: #FF3344;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  transition: .3s;
+
+  :hover{
+    filter: brightness(.7);
+  }
+}
 
   @media (min-width: 768px) {
     display: flex;
@@ -40,11 +58,13 @@ const StyledForm = styled.form`
 
 const DivHeader = styled.div`
   display: flex;
-  flex-direction: "row";
+  flex-direction: row-reverse;
   align-items: center;
-  justify-content: space-around;
-  padding-right: 20px;
-  width: 180px;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 16px;
+
+  
   h1 {
     font-size: 16px;
     color: var(--grey-3);
@@ -53,6 +73,14 @@ const DivHeader = styled.div`
   img {
     width: 30px;
     height: 30px;
+  }
+
+  @media (min-width: 600px){
+    margin-top: 12px;
+    h1{
+      font-size: 20px;
+      
+    }
   }
 `;
 const DivImgDesktop = styled.div`

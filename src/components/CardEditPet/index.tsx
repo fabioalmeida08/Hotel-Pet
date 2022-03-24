@@ -1,6 +1,4 @@
-import { MenuItem, TextField, Modal } from '@mui/material'
-import DogPaw from '../../assets/img/pata.png'
-import backgroundCat from '../../assets/img/backgroundRegisterCat.png'
+import { MenuItem, TextField } from '@mui/material'
 import * as yup from 'yup'
 import {
   Controller,
@@ -8,7 +6,6 @@ import {
   SubmitHandler,
 } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import axios from 'axios'
 import { Container, Box, Grid, Button } from '@mui/material'
 import HotelPetApi from '../../services'
 import { useAuth } from '../../contexts/AuthProvider/'
@@ -20,7 +17,7 @@ interface IFormData {
   size: string
 }
 
-const CardEditPet = ({ petId }:any) => {
+const CardEditPet = ({ petId , handleCloseEdit}:any) => {
   const schema = yup.object().shape({
     name: yup.string().required('Campo obrigatório'),
     specie: yup.string().required('Campo obrigatório'),
@@ -55,7 +52,11 @@ const CardEditPet = ({ petId }:any) => {
   }
 
   return (
-      <Container maxWidth='xs'>
+      <Container maxWidth='xs' sx={{
+        bgcolor: 'var(--white)',
+        padding: "20px",
+        borderRadius: "18px",
+       }}>
         <Box
           component='form'
           noValidate
@@ -181,7 +182,9 @@ const CardEditPet = ({ petId }:any) => {
                 fullWidth
                 type='submit'
                 variant='contained'
+                
                 sx={{
+                  bgcolor: 'var(--primary-1)',
                   ':hover': {
                     bgcolor: 'var(--secundary-1)',
                   },
@@ -195,10 +198,12 @@ const CardEditPet = ({ petId }:any) => {
                 fullWidth
                 variant='contained'
                 sx={{
+                  bgcolor: 'var(--primary-1)',
                   ':hover': {
                     bgcolor: 'var(--secundary-1)',
                   },
                 }}
+                onClick={()=>handleCloseEdit()}
               >
                 Voltar
               </Button>

@@ -47,7 +47,7 @@ const navigate = useNavigate()
   useEffect(() => {
     setInterval(() => {
       setCount(prevCount => prevCount + 1);
-    }, 1500);
+    }, 900);
   }, []);
   
   
