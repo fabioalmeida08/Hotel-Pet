@@ -26,6 +26,7 @@ const UserChat = () => {
       li.classList.add(data.from === 'admin' ? 'admin' : 'user')
       chat.current.appendChild(li)
     });
+    
   }, [io]);
 
   const handleSubmit = () => {
