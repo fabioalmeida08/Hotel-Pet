@@ -25,7 +25,7 @@ interface IFormData {
 
 const LoginForm = () => {
   const navigate = useNavigate()
-  const { signIn, logOut } = useAuth()
+  const { signIn } = useAuth()
   const [loading, setLoading] = useState(false)
 
   const [hide, setHide] = useState(false)

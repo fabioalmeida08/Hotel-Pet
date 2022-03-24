@@ -6,13 +6,13 @@ interface backGroundType {
 }
 const DivWrapper = styled.div<backGroundType>`
   width: 100vw;
-  height: 206px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   margin: 0 auto;
-  padding: 0px calc((100vw - 1200px) / 2);
+  padding: 0px 300px 0px 300px;
   background-color: ${(prop) =>
     prop.background !== true ? "var(--secundary-1)" : "var(--primary-1)"};
   span {
@@ -38,10 +38,11 @@ const DivWrapper = styled.div<backGroundType>`
   }
 
   p{
-    color: white;
+    color: var(--white);
   }
   @media (min-width: 768px) {
     flex-direction: ${(prop)=> prop.invert === true ? "row": "row-reverse"};
+    gap: ${(prop)=> prop.invert === false && "30%"};
     justify-content: center;
     height: 520px;
     background-color: ${(prop) =>
@@ -63,22 +64,31 @@ const DivWrapper = styled.div<backGroundType>`
     }
     img {
       margin: 0px 10px;
-      width: 375px;
-    height: 383px;
+      width: 90%;
+      max-width: 375px;
+      height: 90%;
+      max-height: 383px;
 
     }
   }
   p{
     max-width: 30ch;
     font-size: var(--info);
-    color:  ${(prop) =>
-      prop.background === true ? " var(--grey-2)" : "var(--grey-3)"};;
+    color: var(--white);
   }
   @media (min-width: 1024px) {
-    flex-direction: ${(prop)=> prop.invert === true ? "row": "row-reverse"};
-    justify-content: center;
+    /* flex-direction: ${(prop)=> prop.invert === true ? "row": "row-reverse"}; */
+    /* justify-content: center; */
     height: 620px;
     font-size: var(--paragraph-2);
+    }
+
+    @media (max-width: 1142px) {
+      padding: 100px;
+    }
+
+    @media (max-width: 1364px) {
+      gap: ${(prop)=> prop.invert === false && "10%"};
     }
 `;
 const DivOrganizer = styled.div`
@@ -86,19 +96,20 @@ const DivOrganizer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 70%;
   overflow: hidden;
+
   img{
     width: 500px;
   }
   p{
     max-width: 30ch;
-    font-size: var(--paragraph-2);
+    font-size: 16px;
   }
 
   @media (min-width: 766px){
     p{
-      color: var(--gray-2)
+      color: var(--gray-2);
     }
   }
 `;

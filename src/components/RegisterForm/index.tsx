@@ -15,7 +15,6 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import {
   NavLink,
-  Navigate,
   useNavigate,
 } from 'react-router-dom'
 import {
@@ -35,6 +34,7 @@ interface IFormData {
 }
 
 const RegisterForm = () => {
+
   const schema = yup.object().shape({
     name: yup
       .string()
@@ -256,7 +256,7 @@ const RegisterForm = () => {
             </Button>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Button fullWidth variant='contained'>
+            <Button onClick={() => navigate('/')} fullWidth variant='contained'>
               Voltar
             </Button>
           </Grid>

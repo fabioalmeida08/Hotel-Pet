@@ -5,25 +5,12 @@ import paw from '../../assets/svg/paw.svg'
 
 import Button from '../Buttons'
 import { Dispatch, SetStateAction, useState } from "react";
+
 import { Box, Modal } from "@mui/material";
 import CardEditPet from "../CardEditPet"
 import CardPetsStatus from "../CardPetsStatus";
 import { useAuth } from "../../contexts/AuthProvider"
 import ModalPetStatusAdmin from '../ModalPetStatusAdmin'
-
-
-interface typedPets {
-  age: number;
-  hospedado: boolean;
-  id: number;
-  mimos: Array<object>;
-  name: string;
-  race: string;
-  size: string;
-  specie: string;
-  status: Array<object>;
-  tutorId: number;
-}
 
 interface petInfo {
   pet:{

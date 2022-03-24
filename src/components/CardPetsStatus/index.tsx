@@ -75,7 +75,7 @@ const CardPetsStatus = ({idPet, setOpenStatus} : IProps) => {
         }
         ></img>}
           
-          <img src={svg} className="background-svg"></img>
+          <img src={svg} alt="" className="background-svg"></img>
           <Scrollbar className="scroll"
           onScroll={() => {
             const scroll = document.querySelector('.scroll')
