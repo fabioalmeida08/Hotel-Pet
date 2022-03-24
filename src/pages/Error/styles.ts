@@ -2,8 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     background-color: var(--secundary-1);
-    width: 100vw;
-    height: 100vh;
+    height: 800px;
     position: relative;
     display: flex;
     align-items: center;
@@ -29,10 +28,11 @@ export const Main = styled.section`
     justify-content: center;
     align-items: center;
     z-index: 1;
+    top: 650px;
 
     .sadDog {
         position: absolute;
-        bottom: 100px;
+        bottom: 80px;
     }
 
     h2 {
