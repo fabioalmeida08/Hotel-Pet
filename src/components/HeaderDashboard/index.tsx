@@ -16,7 +16,6 @@ import Logo from '../../assets/svg/dashboardLogo.svg'
 import { useAuth } from '../../contexts/AuthProvider'
 import { useNavigate } from "react-router-dom"
 import dashmimos from '../../assets/svg/dashboard/dashmimos.svg'
-import dashconfig from '../../assets/svg/dashboard/dashconfig.svg'
 import dashcontato from '../../assets/svg/dashboard/dashcontato.svg'
 import dashsair from '../../assets/svg/dashboard/dashsair.svg'
 import dashdog from '../../assets/svg/dashboard/dashdog.svg'
@@ -44,7 +43,6 @@ const DasboardHeader = () => {
     { children: "Meus Pets", navi: "pets", icon:`${dashdog}`},
     { children: "Mimos", navi: "mime", icon:`${dashmimos}`},
     { children: "Contatos", navi: "contact", icon: `${dashcontato}` },
-    { children: "Configurações", navi: "config", icon:`${dashconfig}` },
     { children: "Sair", navi: "/" , icon:`${dashsair}`},
   ];
 
@@ -83,9 +81,7 @@ const DasboardHeader = () => {
         }}
       >
         {!matches ? (
-          <>
             <img src={Logo} alt='' />
-          </>
         ) : (
           <Stack
             direction='row'
@@ -135,7 +131,6 @@ const DasboardHeader = () => {
                 
               >
                 {infoButton.map((item, index) => (
-                  <>
                     <MenuItem sx={{
                       color: 'var(--white)',
                       backgroundColor: 'var(--primary-1)',
@@ -148,7 +143,6 @@ const DasboardHeader = () => {
                       <img src={item.icon} alt={item.children}/>
                       {item.children}
                     </MenuItem>
-                  </>
                 ))}
               </Menu>
             </Grid>

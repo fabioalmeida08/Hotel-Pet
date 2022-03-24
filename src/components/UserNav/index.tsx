@@ -3,7 +3,6 @@ import {Container, Title} from "./StyledUserNav";
 import { useAuth } from "../../contexts/AuthProvider";
 import { IoPaw } from "react-icons/io5";
 import dashmimos from '../../assets/svg/dashboard/dashmimos.svg'
-import dashconfig from '../../assets/svg/dashboard/dashconfig.svg'
 import dashcontato from '../../assets/svg/dashboard/dashcontato.svg'
 import dashsair from '../../assets/svg/dashboard/dashsair.svg'
 import dashdog from '../../assets/svg/dashboard/dashdog.svg'
@@ -14,7 +13,7 @@ const UserNav = () => {
     { children: admin ? 'Todos os pets' : 'Meus pets', navi: "pets", icon:`${dashdog}`},
     { children: "Mimos", navi: "mime", icon:`${dashmimos}`},
     { children: "Contatos", navi: "contact", icon: `${dashcontato}` },
-    { children: "Configurações", navi: "config", icon:`${dashconfig}` },
+  
     { children: "Sair", navi: "/" , icon:`${dashsair}`},
   ];
 

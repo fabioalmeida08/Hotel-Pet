@@ -9,6 +9,7 @@ import CardPetsStatus from "../CardPetsStatus";
 import ModalPetStatusAdmin from '../ModalPetStatusAdmin'
 import { toast } from "react-toastify"
 import { useState } from "react"
+import { useAuth } from "../../contexts/AuthProvider"
 
 interface petInfo {
   pet: {
