@@ -5,7 +5,6 @@ interface backGroundType {
   invert?: boolean;
 }
 const DivWrapper = styled.div<backGroundType>`
-  width: 100vw;
   height: 300px;
   display: flex;
   justify-content: center;
