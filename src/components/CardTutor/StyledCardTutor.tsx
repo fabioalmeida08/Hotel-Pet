@@ -8,6 +8,7 @@ const StyledCardTutor = styled.div`
   border-radius: 20px;
   background-color: #ffffff;
   color: #333333;
+  box-shadow: 9px 4px 15px 0px rgb(0 0 0 / 30%);
   position: relative;
 
   .paw {
