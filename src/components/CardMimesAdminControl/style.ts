@@ -6,7 +6,7 @@ const DivWrapper = styled.div`
   max-width: 872px;
   flex-direction: row;
   justify-content: space-evenly;
-
+  margin-bottom: 5px;
   
   h4{
       color: var(--grey-3);
