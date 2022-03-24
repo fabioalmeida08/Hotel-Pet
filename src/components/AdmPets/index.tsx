@@ -19,12 +19,18 @@ const AdmPets = () => {
         .then(resp => setListPets(resp.data))
     })
     return (
-    <>
+    <div style={
+        {
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+        }
+    } >
         <DashHeader paramn="Todos os Pets" /> 
         <StyledGrid>
             {listPets.map(pet => <CardPet pet={pet} admin/>)}
         </StyledGrid>
-    </>
+    </div>
     )
 }
 
