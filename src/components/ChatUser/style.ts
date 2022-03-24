@@ -3,14 +3,11 @@ import styled from "styled-components";
 const DivWrapper = styled.div`
    
 
-
-
-   div{
-       button{
-           border-radius: 4px 4px 4px 4px;
-
-       }
-   }
+`
+const DivChat = styled.div`
+width: 200px;
+height: 200px;
+border-color: 2px solid black;
 `
 
-export {DivWrapper}
+export {DivWrapper,DivChat}
