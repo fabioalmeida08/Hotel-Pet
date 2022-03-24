@@ -2,17 +2,14 @@ import CardTutor from '../CardTutor'
 import {
   Container,
   Content,
-  Header,
 } from './styles'
+import DashHeader from "../DashHeader"
 import { useAuth } from '../../contexts/AuthProvider'
 const AdmContact = () => {
   const { allUsers } = useAuth()
   return (
     <Container>
-      <Header>
-        <h2>Tutores</h2>
-        <div></div>
-      </Header>
+      <DashHeader  paramn="Tutores"/>
       <Content>
         {allUsers.map((user) => (
           <CardTutor
