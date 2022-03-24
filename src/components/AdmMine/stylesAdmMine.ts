@@ -75,5 +75,11 @@ const DivOrganizer = styled.div`
     }
   }
 `;
+const DivOver = styled.div`
+overflow-y: scroll;
+::-webkit-scrollbar{
+  display: none;
+}
+`
 
-export { Container, DivOrganizer };
+export { Container, DivOrganizer, DivOver};
