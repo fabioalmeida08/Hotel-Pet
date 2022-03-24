@@ -4,26 +4,35 @@ export const StyledCardPetsStatus = styled.div`
   position: relative;
   width: 580px;
 
-  p{
+  .emoji{
     text-align: center;
     position: relative;
     z-index:100;
   }
 
+  .emoji-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .status-container{
     position: relative;
+    margin-left: 20px;
   }
 
   .background-svg{
     position: absolute;
     z-index: 0;
-    left: 50px;
+    left: 150px;
     top: 30px;
   }
 
   .svg{
     position: absolute;
-    left: 48.2%;
+    left: 49.8%;
     bottom: 20px;
     cursor: pointer;
   }
@@ -84,8 +93,15 @@ export const StyledCardPetsStatus = styled.div`
       z-index: 2;
     }
 
-    .svg, .svg-top{
+    .svg-top{
       left: 47%;
+    }
+    .svg{
+      left: 49.8%
+    }
+
+    .background-svg{
+      left: 45px;
     }
   }
 

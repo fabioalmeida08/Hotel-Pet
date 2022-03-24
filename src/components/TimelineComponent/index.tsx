@@ -5,7 +5,21 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import Typography from '@mui/material/Typography';
-const TimelineComponent = () => {
+import neneca from '../../assets/status/status neneca.svg'
+import food from '../../assets/status/status food.svg'
+import play from '../../assets/status/status play.svg'
+
+interface IPet{
+  pet:{
+  time: String,
+  emoji: String,
+  description: String,
+  activity: String
+  }
+}
+
+
+const TimelineComponent = ({pet} : IPet) => {
   return(
 <TimelineItem>
         <TimelineOppositeContent
@@ -14,19 +28,20 @@ const TimelineComponent = () => {
           variant="body2"
           color="#FFFFFF"
         >
-          9:30 am
+          {pet.time}
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineConnector />
-          <TimelineDot>        
+          <TimelineDot>  
+            <img src={pet.activity === 'play' ? play : pet.activity === 'food' ? food : neneca}></img>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent sx={{ py: '12px', px: 2 , color: "#FFFFFF"}}>
-          <Typography variant="h6" component="span">
-            Eat
+          <Typography variant="h6" component="span" align='inherit' sx={{textAlign: 'inherit'}}>
+            {pet.activity}
           </Typography>
-          <Typography>Because you need strength</Typography>
+          <Typography>{pet.description}</Typography>
         </TimelineContent>
       </TimelineItem>
   )
