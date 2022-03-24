@@ -13,7 +13,8 @@ export const Container = styled.div`
     color: var(--white);
     border-radius: 49px 0px 0px 49px;
 
-    min-width: 200px;
+    width: 34vw;
+    max-width: 300px;
     height: 100%;
 
     div {

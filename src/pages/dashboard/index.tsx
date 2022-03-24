@@ -1,4 +1,3 @@
-import DashboardPets from "../../components/DashboardPets"
 import DasboardHeader from "../../components/HeaderDashboard"
 import UserNav from "../../components/UserNav"
 import { Container, CardUser } from "./styles"
@@ -18,7 +17,6 @@ const Dashboard = () => {
         <DasboardHeader />
         <CardUser>
           <UserNav />
-          {/* <DashboardPets /> */}
         </CardUser>
       </Container>
     )   
