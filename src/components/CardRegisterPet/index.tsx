@@ -20,7 +20,8 @@ import {
 import { useContext } from 'react'
 import { AuthProvider } from '../../contexts/AuthProvider'
 import hotelPetApi from '../../services/index'
-import Draggable from 'react-draggable'
+import BackgroundModal from '../BackgroundModal'
+import { GrClose } from 'react-icons/gr'
 
 interface Modal {
   isOpenModal: boolean
@@ -78,9 +79,11 @@ const CardRegisterPet = ({
   })
 
   return (
-    <Container2>
-      <Draggable>
+    <BackgroundModal>
       <DivWrapper>
+      <div className="close-form" onClick={() => setIsOpenModal(false)}>
+        <GrClose/>
+      </div>
         <DivImgDesktop>
           <img
             src={backgroundCat}
@@ -217,17 +220,10 @@ const CardRegisterPet = ({
 
           <DivButtons>
             <button type='submit'>Cadastrar</button>
-            <button
-              className='backButton'
-              onClick={() => setIsOpenModal(!isOpenModal)}
-            >
-              Voltar
-            </button>
           </DivButtons>
         </StyledForm>
       </DivWrapper>
-    </Draggable>
-    </Container2>
+    </BackgroundModal>
   )
 }
 export default CardRegisterPet
