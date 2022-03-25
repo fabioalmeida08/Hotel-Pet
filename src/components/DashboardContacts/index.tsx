@@ -1,5 +1,4 @@
-import { Container, ContainerInfo, ContainerHotel, ContainerAll, ContainerChat }  from "./stylesDashboardContacts"
-import map from "../../assets/svg/map.svg"
+import { Container, ContainerInfo, ContainerHotel, ContainerAll }  from "./stylesDashboardContacts"
 import DashHeader from "../DashHeader"
 import UserChat from "../ChatUser"
 const DashboardContacts = () => {
