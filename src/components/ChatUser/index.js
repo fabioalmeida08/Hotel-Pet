@@ -8,7 +8,7 @@ import {
 } from './style'
 import { socket } from '../../services/chat'
 const UserChat = () => {
-  // const chat = useRef(2)
+   const chat = useRef(2)
   const io = socket
   const [message, setMessage] = useState('')
   const { userId } = useAuth()
@@ -28,7 +28,7 @@ const UserChat = () => {
       li.classList.add(
         data.from === 'admin' ? 'admin' : 'user'
       )
-      // chat.current.appendChild(li)
+       chat.current.appendChild(li)
     })
   }, [io])
 
@@ -43,7 +43,7 @@ const UserChat = () => {
         <h2>Contate-nos</h2>
       </div>
       <DivChat>
-        <UlStyled ></UlStyled>
+        <UlStyled ref={chat} ></UlStyled>
       </DivChat>
 
       <DivInput>
