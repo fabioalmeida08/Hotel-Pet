@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react'
-import { useAuth } from '../../contexts/AuthProvider'
 import {
   DivWrapper,
   DivInput,
@@ -7,19 +6,19 @@ import {
   UlStyled,
 } from './style'
 import { socket } from '../../services/chat'
-const UserChat = () => {
+
+const AdminChat = () => {
 
    const chat = useRef()
   const io = socket
   const [message, setMessage] = useState('')
-  const { userId } = useAuth()
   const sendMessage = {
-    from: userId,
-    to: 'admin',
+    from: 'admin',
+    to: 2,
     message: message,
   }
   useEffect(() => {
-    io.emit('join_room', userId)
+    io.emit('join_room', 'admin')
     io.on('message', (data) => {
       const li = document.createElement('li')
       li.textContent = data.message
@@ -54,4 +53,4 @@ const UserChat = () => {
     </DivWrapper>
   )
 }
-export default UserChat
+export default AdminChat

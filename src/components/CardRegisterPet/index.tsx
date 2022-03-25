@@ -5,7 +5,6 @@ import {
   DivWrapper,
   DivHeader,
   DivImgDesktop,
-  Container2,
 } from './styles'
 import DogPaw from '../../assets/img/pata.png'
 import backgroundCat from '../../assets/img/backgroundRegisterCat.png'

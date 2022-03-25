@@ -1,10 +1,7 @@
-import editSvg from '../../assets/svg/editar icon.svg'
 import paw from '../../assets/svg/paw.svg'
 import vilsinho from '../../assets/img/vilsinho.jpg'
 import StyledCardTutor, {
-  StyledViewButton,
 } from './StyledCardTutor'
-import { Stack } from '@mui/material'
 interface Info {
   name: string
   adress: string
