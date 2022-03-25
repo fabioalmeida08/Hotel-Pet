@@ -118,3 +118,9 @@ export const NoPetsContainer = styled.div`
     }
   }
 `
+
+export const ContainerChat = styled.div`
+display: flex;
+justify-content: center;
+padding-bottom: 20px;
+`
