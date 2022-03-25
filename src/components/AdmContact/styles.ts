@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100%;
+  width: 80%;
   padding: 20px 0;
 
   background-color: #FFF;
@@ -64,13 +64,17 @@ export const Footer = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  overflow: scroll;
+  justify-content: flex-start;
+  margin-left: 20px;
+  margin-right: 20px;
+  flex-flow: row;
+  width: px;
+  overflow-x: scroll;
   gap: 30px;
-  height: 500px;
+  height: 250px;
 
   ::-webkit-scrollbar{
-    width: 0px;
+    width: none;
   }
 `
 

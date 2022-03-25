@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const StyledCardTutor = styled.div`
-  width: 350px;
+  width: 450px;
   height: 200px;
   display: flex;
   align-items: flex-start;
@@ -19,7 +19,15 @@ const StyledCardTutor = styled.div`
   }
 
   .Tutor {
-    display: none;
+    display: block;
+    height: 100%;
+    /* width: 40%; */
+    border-radius: 20px 0 0 20px;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+
 
   }
 
@@ -28,6 +36,7 @@ const StyledCardTutor = styled.div`
     flex: 2;
     position: relative;
     z-index: 1;
+    width: 800px;
   }
 
   .CardHeader {
@@ -82,7 +91,7 @@ const StyledCardTutor = styled.div`
     }
   }
 
-  @media (min-width: 600px) {
+  /* @media (min-width: 600px) {
     .Tutor {
     display: block;
     height: 100%;
@@ -93,7 +102,7 @@ const StyledCardTutor = styled.div`
     background-position: center;
     object-fit: cover;
   }
-  }
+  } */
 `
 export const StyledViewButton = styled.div`
 button {
