@@ -7,7 +7,8 @@ import {
   UlStyled,
 } from './style'
 import { socket } from '../../services/chat'
-const UserChat = () => {
+
+const AdminChat = () => {
   const {admin} = useAuth()
   const [to, setTo] = useState('')
    const chat = useRef()
@@ -15,12 +16,12 @@ const UserChat = () => {
   const [message, setMessage] = useState('')
   const { userId } = useAuth()
   const sendMessage = {
-    from: userId,
-    to: 'admin',
+    from: 'admin',
+    to: userId,
     message: message,
   }
   useEffect(() => {
-    io.emit('join_room', userId)
+    io.emit('join_room', 'admin')
     io.on('message', (data) => {
       const li = document.createElement('li')
       li.textContent = data.message
@@ -55,4 +56,4 @@ const UserChat = () => {
     </DivWrapper>
   )
 }
-export default UserChat
+export default AdminChat

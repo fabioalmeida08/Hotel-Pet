@@ -2,8 +2,7 @@ import CardTutor from '../CardTutor'
 import { Container, Content ,ContainerChat} from './styles'
 import DashHeader from '../DashHeader'
 import { useAuth } from '../../contexts/AuthProvider'
-import UserChat from '../ChatUser'
-import { Stack } from '@mui/material'
+import AdminChat from '../ChatAdm'
 
 const AdmContact = () => {
   const { allUsers } = useAuth()
@@ -22,7 +21,7 @@ const AdmContact = () => {
           ))}
         </Content>
         <ContainerChat>
-          <UserChat />
+          <AdminChat />
         </ContainerChat>
       </Container>
     </>
