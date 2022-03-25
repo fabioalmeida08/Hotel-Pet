@@ -3,9 +3,10 @@ import 'react-toastify/dist/ReactToastify.css'
 import Router from './routes'
 import {CssBaseline} from '@mui/material'
 import {useAuth} from './contexts/AuthProvider'
-
+import {socket} from './services/chat'
+import { useEffect } from 'react'
 function App() {
-  const {setAdmin} = useAuth()
+    const {setAdmin} = useAuth()
   if(localStorage.getItem('@hotelPet:admin')){
     setAdmin(true)
   }

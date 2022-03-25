@@ -1,6 +1,6 @@
-import { Container, ContainerInfo, ContainerHotel, ContainerAll, ContainerChat }  from "./stylesDashboardContacts"
-import map from "../../assets/svg/map.svg"
+import { Container, ContainerInfo, ContainerHotel, ContainerAll }  from "./stylesDashboardContacts"
 import DashHeader from "../DashHeader"
+import UserChat from "../ChatUser"
 const DashboardContacts = () => {
     return ( 
       <ContainerAll>
@@ -19,9 +19,10 @@ const DashboardContacts = () => {
               <h3>Endereço:</h3>
               <p>Av. Parana, do outro lado de lá, nº1</p>
             </ContainerInfo>
-            <img src={map} alt="" />
+            <UserChat/>
           </ContainerHotel>
-          <ContainerChat></ContainerChat>
+         
+        
         </Container>
       </ContainerAll>
     )
