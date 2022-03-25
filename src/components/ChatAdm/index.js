@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react'
-import { useAuth } from '../../contexts/AuthProvider'
 import {
   DivWrapper,
   DivInput,
@@ -9,15 +8,13 @@ import {
 import { socket } from '../../services/chat'
 
 const AdminChat = () => {
-  const {admin} = useAuth()
-  const [to, setTo] = useState('')
+
    const chat = useRef()
   const io = socket
   const [message, setMessage] = useState('')
-  const { userId } = useAuth()
   const sendMessage = {
     from: 'admin',
-    to: userId,
+    to: 2,
     message: message,
   }
   useEffect(() => {

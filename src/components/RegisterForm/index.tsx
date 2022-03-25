@@ -21,6 +21,7 @@ import {
   MdVisibility,
   MdVisibilityOff,
 } from 'react-icons/md'
+import { toast } from 'react-toastify'
 import { useState } from 'react'
 import HotelPetApi from '../../services/'
 
@@ -93,9 +94,13 @@ const RegisterForm = () => {
     delete data.passwordConfirm
     HotelPetApi.post('/register', (data))
       .then(() => {
+        toast.success('Cadastro feito com sucesso !')
         navigate('/login')
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        toast.error('Algo deu errado, tente novamente!')
+        console.log(err)
+      })
   }
 
   return (

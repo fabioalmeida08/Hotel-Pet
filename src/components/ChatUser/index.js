@@ -8,8 +8,7 @@ import {
 } from './style'
 import { socket } from '../../services/chat'
 const UserChat = () => {
-  const {admin} = useAuth()
-  const [to, setTo] = useState('')
+
    const chat = useRef()
   const io = socket
   const [message, setMessage] = useState('')

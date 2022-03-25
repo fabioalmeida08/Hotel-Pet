@@ -7,7 +7,6 @@ import { Box, Modal } from "@mui/material";
 import CardEditPet from "../CardEditPet"
 import CardPetsStatus from "../CardPetsStatus";
 import ModalPetStatusAdmin from '../ModalPetStatusAdmin'
-import { toast } from "react-toastify"
 import { useState } from "react"
 import { useAuth } from "../../contexts/AuthProvider"
 import dog from '../../assets/pets/dogg.jpg'
@@ -61,15 +60,6 @@ const CardPet = ({ pet, admin }: petInfo) => {
 
       if (response.status === 200) {
 
-        toast.success('Pet Hospedado :)', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
         setHosted(hosted.hospedado)
       }
     })

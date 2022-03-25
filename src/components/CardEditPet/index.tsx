@@ -6,7 +6,7 @@ import {
   SubmitHandler,
 } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Container, Box, Grid, Button } from '@mui/material'
+import { Container, Box, Grid } from '@mui/material'
 import { LoadingButton } from '@mui/lab'
 import HotelPetApi from '../../services'
 import { useAuth } from '../../contexts/AuthProvider/'
@@ -74,7 +74,7 @@ const CardEditPet = ({ pet, handleCloseEdit }: any) => {
         toast.success('Informações Editadas com sucesso!')
       })
       .catch((err) => {
-        console.log(err)
+     
         toast.error('Algo deu errado , tente novamente! :(')
       })
     handleBtnState()

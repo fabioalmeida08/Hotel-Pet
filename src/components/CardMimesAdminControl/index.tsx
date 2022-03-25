@@ -30,7 +30,7 @@ interface typedCard {
 }
 const CardMimesAdmin = ({ pet,update }: typedCard) => {
 
-    const [change, setChange] = useState(false)
+    const [change] = useState(false)
 
     const data = {
         "age": pet.age,
@@ -55,8 +55,6 @@ const CardMimesAdmin = ({ pet,update }: typedCard) => {
                     localStorage.getItem('@hotelPet:token') || ''
                 )}`,
             }
-        }).then((response) => {
-            console.log(response)
         })
         .catch((err) => console.log(err))
         
