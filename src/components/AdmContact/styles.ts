@@ -5,6 +5,10 @@ export const Container = styled.div`
   padding: 20px 0;
 
   background-color: #FFF;
+  /* display:flex; */
+  /* justify-content: center;
+  flex-flow:column;
+  align-items: center; */
 
   .button {
     background: var(--secundary-1);
