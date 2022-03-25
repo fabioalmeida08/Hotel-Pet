@@ -54,7 +54,7 @@ const navigate = useNavigate()
   
   return (
     <>
-      {/* {count < 2 ? <LoadingScreen /> : 
+      {count < 2 ? <LoadingScreen /> : 
       <>
       <HeaderHome/>
       <StyledHomeIntro>
@@ -77,8 +77,8 @@ const navigate = useNavigate()
         }
         <HotelInfo/>
         <HomeContacts/>
-        </>} */}
-        <UserChat/>
+        </>}
+
       </>
     )
   }

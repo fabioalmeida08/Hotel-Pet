@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 const DivWrapper = styled.div`
   width: 88vw;
-  background-color:#e1e1e1;
   max-width: 350px;
   height: 300px;
-  margin-left: 20px;
+  margin-top: 50px;
 
   .superDiv {
     h2 {
@@ -15,7 +14,7 @@ const DivWrapper = styled.div`
     justify-content: center;
     width: 88vw;
     max-width: 350px;
-    border-radius: 4px 4px 0px 0px;
+    border-radius: 16px 16px 0px 0px;
     background-color: var(--primary-1);
     color: var(--white);
   }
@@ -24,7 +23,7 @@ const DivWrapper = styled.div`
     max-width: 350px;
     height: 37px;
     font-size: 13px;
-    border-radius: 0px 0px 4px 4px;
+    border-radius: 0px 0px 16px 16px;
     border-style: none;
     background-color: var(--primary-1);
     color: var(--white);
@@ -34,7 +33,6 @@ const DivWrapper = styled.div`
     background-color: var(--primary-2);
   }
   input {
-
     border-style: none;
     background-color: #c4c4c4;
     height: 37px;
@@ -58,33 +56,36 @@ const DivChat = styled.div`
   border-right: 4px;
   border-style: solid;
   border-color: var(--primary-1);
-
 `;
 const DivInput = styled.div`
   display: flex;
   flex-direction: column;
   height: 80px;
 `;
-const UlStyled =styled.ul`
-  
-    list-style-type: none;
-     color: #fff;
-    li{
-        padding: 8px;
-        margin : 5px 0px;
-        font-size: 12px;
-        border-radius: 15px;
-    }
-    .admin{
-      
-        text-align: end;
-        background-color: blue;
-    }
-    .user{
+const UlStyled = styled.ul`
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  height: 190px;
+  list-style-type: none;
+  color: #fff;
+  li {
+    padding: 15px;
+    margin: 5px 0px;
+    font-size: 13px;
+    border-radius: 15px;
+  }
+  .admin {
+    padding-right: 20px;
+    text-align: end;
+    background-color: blue;
+  }
+  .user {
+    padding-left: 20px;
+    text-align: start;
+    background-color: orange;
+  }
+`;
 
-       text-align: start;
-       background-color: orange;
-    }
-`
-
-export { DivWrapper, DivInput, DivChat,UlStyled };
+export { DivWrapper, DivInput, DivChat, UlStyled };
