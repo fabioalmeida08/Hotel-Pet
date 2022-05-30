@@ -5,6 +5,6 @@
 ### É possível cadastrar seu pet, hospedá-lo e até mesmo comprar mimos para tal, que o administrador precisa aprovar a compra.
 ### Rotas seguras, pois não se pode acessar ao dashboard sem estar logado.
 ## Feito com :
-- TypeScripe 
-- styled-components
-- material UI
+- TypeScript 
+- Styled-Components
+- Material UI
